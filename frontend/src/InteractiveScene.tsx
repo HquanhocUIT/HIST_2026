@@ -16,6 +16,21 @@ type SceneState = {
   focusLight: THREE.PointLight;
 };
 
+const exhibitIds: ExhibitId[] = ["drum", "jar", "dagger"];
+
+const exhibitLabels: Record<ExhibitId, string> = {
+  drum: "Trống đồng Ngọc Lũ",
+  jar: "Thạp đồng Đào Thịnh",
+  dagger: "Dao găm đồng Đông Sơn",
+};
+
+// Tọa độ cục bộ của hotspot trên mặt trước và gần giữa từng hiện vật.
+const hotspotAnchors: Record<ExhibitId, [number, number, number]> = {
+  drum: [0, 0.78, 0.74],
+  jar: [0, 0.82, 0.58],
+  dagger: [0, 1.03, 0.08],
+};
+
 function addMesh(
   group: THREE.Group,
   geometry: THREE.BufferGeometry,
@@ -161,6 +176,7 @@ function createDagger() {
 
 function tagModel(group: THREE.Group, id: ExhibitId) {
   group.userData.exhibitId = id;
+
   group.traverse((object) => {
     object.userData.exhibitId = id;
   });
@@ -173,6 +189,7 @@ export function InteractiveScene({
   const containerRef = useRef<HTMLDivElement>(null);
   const sceneStateRef = useRef<SceneState | null>(null);
   const onSelectRef = useRef(onSelect);
+  const hotspotRefs = useRef(new Map<ExhibitId, HTMLButtonElement>());
 
   onSelectRef.current = onSelect;
 
@@ -190,10 +207,14 @@ export function InteractiveScene({
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.domElement.className = "three-canvas";
-    renderer.domElement.setAttribute("aria-label", "Interactive 3D exhibit viewer");
+    renderer.domElement.setAttribute(
+      "aria-label",
+      "Không gian xem hiện vật 3D tương tác",
+    );
     container.appendChild(renderer.domElement);
 
     scene.add(new THREE.HemisphereLight(0xe5e4d8, 0x343a32, 2));
+
     const keyLight = new THREE.DirectionalLight(0xffe0a4, 3);
     keyLight.position.set(-4, 7, 5);
     scene.add(keyLight);
@@ -240,6 +261,7 @@ export function InteractiveScene({
     const resize = () => {
       const width = container.clientWidth || 1;
       const height = container.clientHeight || 1;
+
       renderer.setSize(width, height);
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
@@ -271,6 +293,7 @@ export function InteractiveScene({
       pointer.y = -((event.clientY - bounds.top) / bounds.height) * 2 + 1;
 
       raycaster.setFromCamera(pointer, camera);
+
       const intersections = raycaster.intersectObjects(
         Array.from(models.values()),
         true,
@@ -284,6 +307,7 @@ export function InteractiveScene({
         }
 
         const id = object?.userData.exhibitId as ExhibitId | undefined;
+
         if (id) {
           onSelectRef.current(id);
           return;
@@ -294,12 +318,54 @@ export function InteractiveScene({
     renderer.domElement.addEventListener("pointerdown", onPointerDown);
     renderer.domElement.addEventListener("pointerup", onPointerUp);
 
+    const projectHotspots = () => {
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+
+      if (!width || !height) return;
+
+      models.forEach((model, id) => {
+        const hotspot = hotspotRefs.current.get(id);
+        if (!hotspot) return;
+
+        const [localX, localY, localZ] = hotspotAnchors[id];
+        const scale = model.scale.x;
+
+        const position = new THREE.Vector3(
+          model.position.x + localX * scale,
+          model.position.y + localY * scale,
+          model.position.z + localZ * scale,
+        );
+
+        position.project(camera);
+
+        const isVisible =
+          position.z >= -1 &&
+          position.z <= 1 &&
+          position.x >= -1 &&
+          position.x <= 1 &&
+          position.y >= -1 &&
+          position.y <= 1;
+
+        hotspot.style.visibility = isVisible ? "visible" : "hidden";
+
+        if (!isVisible) return;
+
+        hotspot.style.left = `${(position.x * 0.5 + 0.5) * width}px`;
+        hotspot.style.top = `${(-position.y * 0.5 + 0.5) * height}px`;
+      });
+    };
+
     let animationFrame = 0;
+
     const render = () => {
       animationFrame = window.requestAnimationFrame(render);
       controls.update();
+      camera.updateMatrixWorld();
+      projectHotspots();
       renderer.render(scene, camera);
     };
+
     render();
 
     sceneStateRef.current = { camera, controls, models, focusLight };
@@ -307,20 +373,26 @@ export function InteractiveScene({
     return () => {
       window.cancelAnimationFrame(animationFrame);
       resizeObserver.disconnect();
+
       renderer.domElement.removeEventListener("pointerdown", onPointerDown);
       renderer.domElement.removeEventListener("pointerup", onPointerUp);
+
       controls.dispose();
 
       const materials = new Set<THREE.Material>();
+
       scene.traverse((object) => {
         if (object instanceof THREE.Mesh) {
           object.geometry.dispose();
+
           const meshMaterials = Array.isArray(object.material)
             ? object.material
             : [object.material];
+
           meshMaterials.forEach((material) => materials.add(material));
         }
       });
+
       materials.forEach((material) => material.dispose());
 
       renderer.dispose();
@@ -346,5 +418,30 @@ export function InteractiveScene({
     state.focusLight.position.set(selectedModel.position.x, 2, 1.2);
   }, [selectedId]);
 
-  return <div className="scene-container" ref={containerRef} />;
+  return (
+    <div className="scene-container" ref={containerRef}>
+      {exhibitIds.map((id) => (
+        <button
+          key={id}
+          ref={(element) => {
+            if (element) {
+              hotspotRefs.current.set(id, element);
+            } else {
+              hotspotRefs.current.delete(id);
+            }
+          }}
+          className={`exhibit-hotspot ${
+            selectedId === id ? "is-selected" : ""
+          }`}
+          type="button"
+          aria-label={`Chọn ${exhibitLabels[id]}`}
+          aria-pressed={selectedId === id}
+          style={{ left: "50%", top: "50%" }}
+          onClick={() => onSelectRef.current(id)}
+        >
+          <span className="hotspot-marker" aria-hidden="true" />
+        </button>
+      ))}
+    </div>
+  );
 }

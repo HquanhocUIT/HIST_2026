@@ -3,6 +3,7 @@ import {
   InteractiveScene,
   type ExhibitId,
 } from "./InteractiveScene";
+import { exhibitInformation } from "./exhibitInformation";
 import "./App.css";
 
 const exhibits: {
@@ -14,39 +15,42 @@ const exhibits: {
   {
     id: "drum",
     number: "01",
-    name: "Ngoc Lu Bronze Drum",
-    collection: "Dong Son collection",
+    name: "Trống đồng Ngọc Lũ",
+    collection: "Bộ sưu tập Đông Sơn",
   },
   {
     id: "jar",
     number: "02",
-    name: "Dao Thinh Bronze Jar",
-    collection: "Dong Son collection",
+    name: "Thạp đồng Đào Thịnh",
+    collection: "Bộ sưu tập Đông Sơn",
   },
   {
     id: "dagger",
     number: "03",
-    name: "Bronze Dagger",
-    collection: "Dong Son collection",
+    name: "Dao găm đồng Đông Sơn",
+    collection: "Bộ sưu tập Đông Sơn",
   },
 ];
 
 function App() {
   const [selectedId, setSelectedId] = useState<ExhibitId>("drum");
+
   const selectedExhibit =
     exhibits.find((exhibit) => exhibit.id === selectedId) ?? exhibits[0];
+
+  const selectedInformation = exhibitInformation[selectedId];
 
   return (
     <main className="app">
       <header className="app-header">
         <strong>HeritageXR</strong>
-        <span>Interactive exhibit viewer</span>
+        <span>Không gian trưng bày 3D</span>
       </header>
 
       <div className="viewer-layout">
         <aside className="exhibit-sidebar">
-          <p className="section-label">EXHIBITS</p>
-          <h1>Select an object</h1>
+          <p className="section-label">HIỆN VẬT</p>
+          <h1>Chọn hiện vật</h1>
 
           <div className="exhibit-list">
             {exhibits.map((exhibit) => (
@@ -59,6 +63,7 @@ function App() {
                 aria-pressed={exhibit.id === selectedId}
               >
                 <span className="exhibit-number">{exhibit.number}</span>
+
                 <span className="exhibit-option-text">
                   <strong>{exhibit.name}</strong>
                   <small>{exhibit.collection}</small>
@@ -71,10 +76,11 @@ function App() {
         <section className="viewer-panel">
           <div className="viewer-heading">
             <div>
-              <span className="section-label">SELECTED EXHIBIT</span>
+              <span className="section-label">HIỆN VẬT ĐANG CHỌN</span>
               <h2>{selectedExhibit.name}</h2>
             </div>
-            <span className="viewer-status">3D VIEW</span>
+
+            <span className="viewer-status">CHẾ ĐỘ 3D</span>
           </div>
 
           <InteractiveScene
@@ -82,8 +88,50 @@ function App() {
             onSelect={setSelectedId}
           />
 
+          <section
+            className="exhibit-information"
+            aria-label={`Thông tin về ${selectedExhibit.name}`}
+          >
+            <div className="information-header">
+              <div>
+                <span className="section-label">THÔNG TIN HIỆN VẬT</span>
+                <p className="information-period">
+                  {selectedInformation.period}
+                </p>
+              </div>
+
+              <span className="information-material">
+                {selectedInformation.material}
+              </span>
+            </div>
+
+            <p className="information-overview">
+              {selectedInformation.overview}
+            </p>
+
+            <ul className="information-facts">
+              {selectedInformation.facts.map((fact) => (
+                <li key={fact}>{fact}</li>
+              ))}
+            </ul>
+
+            {selectedInformation.note && (
+              <p className="information-note">{selectedInformation.note}</p>
+            )}
+
+            <a
+              className="information-source"
+              href={selectedInformation.sourceUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Nguồn: {selectedInformation.sourceTitle} ↗
+            </a>
+          </section>
+
           <p className="viewer-help">
-            Drag to rotate · Scroll or pinch to zoom · Click an object to select
+            Kéo để xoay · Cuộn hoặc chụm hai ngón để thu phóng · Chạm vào hiện
+            vật để chọn
           </p>
         </section>
       </div>

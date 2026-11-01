@@ -99,7 +99,7 @@
 
 .viewer-panel {
   display: grid;
-  grid-template-rows: auto minmax(400px, 1fr) auto;
+  grid-template-rows: auto minmax(400px, 1fr) auto auto;
   min-width: 0;
   min-height: calc(100vh - 58px);
   padding: 18px;
@@ -126,6 +126,7 @@
 }
 
 .scene-container {
+  position: relative;
   min-width: 0;
   min-height: 400px;
   overflow: hidden;
@@ -133,6 +134,9 @@
 }
 
 .three-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
   display: block;
   width: 100%;
   height: 100%;
@@ -142,6 +146,102 @@
 
 .three-canvas:active {
   cursor: grabbing;
+}
+
+.exhibit-hotspot {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(184, 165, 116, 0.8);
+  border-radius: 50%;
+  background: rgba(16, 19, 17, 0.82);
+  box-shadow: 0 0 0 3px rgba(216, 189, 130, 0.14);
+  cursor: pointer;
+}
+
+.exhibit-hotspot:hover,
+.exhibit-hotspot.is-selected {
+  border-color: #e1c77e;
+  box-shadow:
+    0 0 0 4px rgba(216, 189, 130, 0.2),
+    0 0 16px rgba(216, 189, 130, 0.4);
+}
+
+.hotspot-marker {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e1c77e;
+  box-shadow: 0 0 10px rgba(225, 199, 126, 0.9);
+}
+
+.exhibit-hotspot.is-selected .hotspot-marker {
+  background: #fff0b3;
+  box-shadow: 0 0 12px rgba(255, 240, 179, 1);
+}
+
+.exhibit-information {
+  padding: 16px;
+  border: 1px solid #2a2e2a;
+  border-radius: 5px;
+  background: #151916;
+}
+
+.information-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.information-period {
+  margin: 0;
+  color: #aeb5ae;
+  font-size: 12px;
+}
+
+.information-material {
+  padding: 6px 8px;
+  border: 1px solid #343a34;
+  border-radius: 3px;
+  color: #c6b17b;
+  font-size: 11px;
+}
+
+.information-overview {
+  margin: 14px 0;
+  color: #d6d8d2;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.information-facts {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding-left: 18px;
+  color: #aeb5ae;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.information-note {
+  margin: 12px 0 0;
+  color: #c6b17b;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.information-source {
+  display: inline-block;
+  margin-top: 14px;
+  color: #c6b17b;
+  font-size: 11px;
 }
 
 .viewer-help {
@@ -160,13 +260,18 @@
 
   .viewer-panel {
     order: 1;
-    grid-template-rows: auto minmax(350px, 56vh) auto;
+    grid-template-rows: auto minmax(350px, 56vh) auto auto;
     min-height: 0;
     padding: 12px;
   }
 
   .scene-container {
     min-height: 350px;
+  }
+
+  .exhibit-hotspot {
+    width: 34px;
+    height: 34px;
   }
 
   .exhibit-sidebar {
