@@ -298,44 +298,139 @@ function createJar() {
 
   const bronze = new THREE.MeshStandardMaterial({
     color: 0x9a7848,
-    metalness: 0.72,
-    roughness: 0.36,
+    metalness: 0.74,
+    roughness: 0.38,
   });
 
-  const profile = [
+  const bronzeHighlight = new THREE.MeshStandardMaterial({
+    color: 0xb18a50,
+    metalness: 0.78,
+    roughness: 0.34,
+  });
+
+  const darkBronze = new THREE.MeshStandardMaterial({
+    color: 0x58401f,
+    metalness: 0.68,
+    roughness: 0.44,
+  });
+
+  // A more cylindrical vessel body that gently narrows toward its base.
+  const bodyProfile = [
     new THREE.Vector2(0, 0),
-    new THREE.Vector2(0.38, 0),
-    new THREE.Vector2(0.55, 0.16),
-    new THREE.Vector2(0.62, 0.5),
-    new THREE.Vector2(0.53, 0.85),
-    new THREE.Vector2(0.36, 1.08),
-    new THREE.Vector2(0.28, 1.24),
-    new THREE.Vector2(0.28, 1.57),
-    new THREE.Vector2(0.39, 1.63),
+    new THREE.Vector2(0.34, 0),
+    new THREE.Vector2(0.4, 0.08),
+    new THREE.Vector2(0.45, 0.22),
+    new THREE.Vector2(0.48, 0.48),
+    new THREE.Vector2(0.49, 0.92),
+    new THREE.Vector2(0.47, 1.24),
+    new THREE.Vector2(0.44, 1.48),
   ];
 
   addMesh(
     artifact,
-    new THREE.LatheGeometry(profile, 40),
+    new THREE.LatheGeometry(bodyProfile, 48),
     bronze,
     [0, 0.08, 0],
   );
 
-  [0.42, 0.72, 1.02].forEach((height) => {
-    const ring = new THREE.Mesh(
-      new THREE.TorusGeometry(
-        height > 0.8 ? 0.4 : 0.57,
-        0.025,
-        8,
-        40,
-      ),
-      bronze,
+  // Low-relief bronze bands give the body a finished Dong Son look.
+  [
+    { height: 0.3, radius: 0.46 },
+    { height: 0.56, radius: 0.49 },
+    { height: 1.02, radius: 0.49 },
+    { height: 1.34, radius: 0.46 },
+    { height: 1.55, radius: 0.44 },
+  ].forEach(({ height, radius }, index) => {
+    const band = new THREE.Mesh(
+      new THREE.TorusGeometry(radius, index === 4 ? 0.018 : 0.012, 8, 48),
+      index % 2 === 0 ? bronzeHighlight : darkBronze,
     );
 
-    ring.rotation.x = Math.PI / 2;
-    ring.position.y = height;
-    artifact.add(ring);
+    band.rotation.x = Math.PI / 2;
+    band.position.y = height;
+    artifact.add(band);
   });
+
+  // The original thạp has a truncated-cone lid; this covers the open mouth.
+  const lidBottomY = 1.56;
+  const lidHeight = 0.26;
+  const lidTopRadius = 0.2;
+  const lidBottomRadius = 0.43;
+
+  addMesh(
+    artifact,
+    new THREE.CylinderGeometry(
+      lidTopRadius,
+      lidBottomRadius,
+      lidHeight,
+      48,
+      1,
+      false,
+    ),
+    bronze,
+    [0, lidBottomY + lidHeight / 2, 0],
+  );
+
+  // Rolled rim where the lid meets the vessel.
+  const lidRim = new THREE.Mesh(
+    new THREE.TorusGeometry(lidBottomRadius, 0.022, 8, 48),
+    darkBronze,
+  );
+  lidRim.rotation.x = Math.PI / 2;
+  lidRim.position.y = lidBottomY;
+  artifact.add(lidRim);
+
+  // Eleven restrained bands follow the taper of the lid.
+  for (let index = 1; index <= 11; index += 1) {
+    const t = index / 12;
+    const radius =
+      lidBottomRadius + (lidTopRadius - lidBottomRadius) * t + 0.006;
+    const band = new THREE.Mesh(
+      new THREE.TorusGeometry(radius, 0.006, 6, 48),
+      index % 2 === 0 ? darkBronze : bronzeHighlight,
+    );
+
+    band.rotation.x = Math.PI / 2;
+    band.position.y = lidBottomY + lidHeight * t;
+    artifact.add(band);
+  }
+
+  const lidTopY = lidBottomY + lidHeight;
+
+  // A small bronze sun medallion replaces the distracting pale open center.
+  addMesh(
+    artifact,
+    new THREE.CylinderGeometry(0.075, 0.075, 0.014, 32),
+    darkBronze,
+    [0, lidTopY + 0.008, 0],
+  );
+
+  const sunRing = new THREE.Mesh(
+    new THREE.TorusGeometry(0.105, 0.008, 6, 36),
+    bronzeHighlight,
+  );
+  sunRing.rotation.x = Math.PI / 2;
+  sunRing.position.y = lidTopY + 0.017;
+  artifact.add(sunRing);
+
+  // Twelve simple rays echo the documented sun motif without adding figures.
+  for (let index = 0; index < 12; index += 1) {
+    const angle = (index / 12) * Math.PI * 2;
+    const radius = 0.148;
+    const ray = new THREE.Mesh(
+      new THREE.BoxGeometry(0.018, 0.008, 0.09),
+      bronzeHighlight,
+    );
+
+    ray.position.set(
+      Math.sin(angle) * radius,
+      lidTopY + 0.018,
+      Math.cos(angle) * radius,
+    );
+    ray.rotation.y = angle;
+    ray.castShadow = true;
+    artifact.add(ray);
+  }
 
   return createDisplayCase(artifact);
 }
