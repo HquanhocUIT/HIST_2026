@@ -5,7 +5,7 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 export type ExhibitId = "drum" | "jar" | "dagger";
 
 type InteractiveSceneProps = {
-  selectedId: ExhibitId;
+  selectedId: ExhibitId | null;
   onSelect: (id: ExhibitId) => void;
 };
 
@@ -17,6 +17,7 @@ type SceneState = {
 };
 
 const exhibitIds: ExhibitId[] = ["drum", "jar", "dagger"];
+const pedestalTop = 0.86;
 
 const exhibitLabels: Record<ExhibitId, string> = {
   drum: "Trống đồng Ngọc Lũ",
@@ -24,11 +25,10 @@ const exhibitLabels: Record<ExhibitId, string> = {
   dagger: "Dao găm đồng Đông Sơn",
 };
 
-// Tọa độ cục bộ của hotspot trên mặt trước và gần giữa từng hiện vật.
 const hotspotAnchors: Record<ExhibitId, [number, number, number]> = {
-  drum: [0, 0.78, 0.74],
-  jar: [0, 0.82, 0.58],
-  dagger: [0, 1.03, 0.08],
+  drum: [0, pedestalTop + 0.78, 0.74],
+  jar: [0, pedestalTop + 0.82, 0.58],
+  dagger: [0, pedestalTop + 1.03, 0.08],
 };
 
 function addMesh(
@@ -45,50 +45,257 @@ function addMesh(
   return mesh;
 }
 
+function createPedestalFrustum(
+  topRadius: number,
+  bottomRadius: number,
+  height: number,
+) {
+  const geometry = new THREE.CylinderGeometry(
+    topRadius,
+    bottomRadius,
+    height,
+    4,
+  );
+
+  geometry.rotateY(Math.PI / 4);
+
+  return geometry;
+}
+
+function createDisplayCase(artifact: THREE.Group) {
+  const exhibit = new THREE.Group();
+  const caseWidth = 2.1;
+  const caseDepth = 1.95;
+  const caseBottom = 0.08;
+  const caseHeight = 3.12;
+
+  const darkBase = new THREE.MeshStandardMaterial({
+    color: 0x171a18,
+    metalness: 0.42,
+    roughness: 0.44,
+  });
+
+  const pedestalMaterial = new THREE.MeshStandardMaterial({
+    color: 0xe7e4dc,
+    metalness: 0.08,
+    roughness: 0.72,
+  });
+
+  const glassFrame = new THREE.MeshStandardMaterial({
+    color: 0x806638,
+    metalness: 0.78,
+    roughness: 0.27,
+  });
+
+  const glassMaterial = new THREE.MeshStandardMaterial({
+    color: 0xb8d2c6,
+    metalness: 0.04,
+    roughness: 0.12,
+    transparent: true,
+    opacity: 0.075,
+    side: THREE.DoubleSide,
+    depthWrite: false,
+  });
+
+  // Low dark base, similar to the reference display case.
+  addMesh(
+    exhibit,
+    new THREE.BoxGeometry(caseWidth + 0.1, 0.12, caseDepth + 0.1),
+    darkBase,
+    [0, 0.02, 0],
+  );
+
+  // White stepped pedestal.
+  addMesh(
+    exhibit,
+    createPedestalFrustum(1.12, 1.32, 0.52),
+    pedestalMaterial,
+    [0, 0.34, 0],
+  );
+
+  addMesh(
+    exhibit,
+    createPedestalFrustum(0.98, 1.12, 0.18),
+    pedestalMaterial,
+    [0, 0.69, 0],
+  );
+
+  addMesh(
+    exhibit,
+    new THREE.BoxGeometry(1.42, 0.08, 1.42),
+    pedestalMaterial,
+    [0, 0.82, 0],
+  );
+
+  // Glass walls and roof.
+  const glassCenterY = caseBottom + caseHeight / 2;
+
+  const frontGlass = addMesh(
+    exhibit,
+    new THREE.PlaneGeometry(caseWidth, caseHeight),
+    glassMaterial,
+    [0, glassCenterY, caseDepth / 2],
+  );
+
+  const backGlass = addMesh(
+    exhibit,
+    new THREE.PlaneGeometry(caseWidth, caseHeight),
+    glassMaterial,
+    [0, glassCenterY, -caseDepth / 2],
+  );
+
+  const leftGlass = addMesh(
+    exhibit,
+    new THREE.PlaneGeometry(caseDepth, caseHeight),
+    glassMaterial,
+    [-caseWidth / 2, glassCenterY, 0],
+  );
+
+  const rightGlass = addMesh(
+    exhibit,
+    new THREE.PlaneGeometry(caseDepth, caseHeight),
+    glassMaterial,
+    [caseWidth / 2, glassCenterY, 0],
+  );
+
+  leftGlass.rotation.y = Math.PI / 2;
+  rightGlass.rotation.y = Math.PI / 2;
+
+  const roofGlass = addMesh(
+    exhibit,
+    new THREE.PlaneGeometry(caseWidth, caseDepth),
+    glassMaterial,
+    [0, caseBottom + caseHeight, 0],
+  );
+
+  roofGlass.rotation.x = -Math.PI / 2;
+
+  // Thin upright bronze posts at the corners.
+  const postPositions: [number, number, number][] = [
+    [-caseWidth / 2, glassCenterY, -caseDepth / 2],
+    [-caseWidth / 2, glassCenterY, caseDepth / 2],
+    [caseWidth / 2, glassCenterY, -caseDepth / 2],
+    [caseWidth / 2, glassCenterY, caseDepth / 2],
+  ];
+
+  postPositions.forEach((position) => {
+    addMesh(
+      exhibit,
+      new THREE.CylinderGeometry(0.018, 0.018, caseHeight, 8),
+      glassFrame,
+      position,
+    );
+  });
+
+  // Narrow rails at the top and foot of the glass enclosure.
+  const railThickness = 0.035;
+  const railHeight = 0.035;
+  const caseTop = caseBottom + caseHeight;
+
+  [-1, 1].forEach((side) => {
+    const z = side * (caseDepth / 2);
+    const x = side * (caseWidth / 2);
+
+    addMesh(
+      exhibit,
+      new THREE.BoxGeometry(caseWidth, railHeight, railThickness),
+      glassFrame,
+      [0, caseBottom + 0.025, z],
+    );
+
+    addMesh(
+      exhibit,
+      new THREE.BoxGeometry(caseWidth, railHeight, railThickness),
+      glassFrame,
+      [0, caseTop - 0.02, z],
+    );
+
+    addMesh(
+      exhibit,
+      new THREE.BoxGeometry(railThickness, railHeight, caseDepth),
+      glassFrame,
+      [x, caseBottom + 0.025, 0],
+    );
+
+    addMesh(
+      exhibit,
+      new THREE.BoxGeometry(railThickness, railHeight, caseDepth),
+      glassFrame,
+      [x, caseTop - 0.02, 0],
+    );
+  });
+
+  // A soft warm light illuminates the artifact inside the case.
+  const caseLight = new THREE.PointLight(0xffdfaa, 1.4, 4);
+  caseLight.position.set(0, 2.85, 0.15);
+  exhibit.add(caseLight);
+
+  // Raise the artifact so it rests on the top tier of the pedestal.
+  artifact.position.y = pedestalTop;
+  exhibit.add(artifact);
+
+  frontGlass.renderOrder = 2;
+  backGlass.renderOrder = 2;
+  leftGlass.renderOrder = 2;
+  rightGlass.renderOrder = 2;
+  roofGlass.renderOrder = 2;
+
+  return exhibit;
+}
+
 function createDrum() {
-  const group = new THREE.Group();
+  const artifact = new THREE.Group();
+
   const bronze = new THREE.MeshStandardMaterial({
     color: 0x98703b,
     metalness: 0.78,
     roughness: 0.32,
   });
+
   const darkBronze = new THREE.MeshStandardMaterial({
     color: 0x65451f,
     metalness: 0.68,
     roughness: 0.4,
   });
 
-  addMesh(group, new THREE.CylinderGeometry(0.72, 0.72, 1.05, 40), bronze, [
-    0,
-    0.78,
-    0,
-  ]);
-  addMesh(group, new THREE.CylinderGeometry(0.75, 0.75, 0.1, 40), bronze, [
-    0,
-    1.34,
-    0,
-  ]);
-  addMesh(group, new THREE.CylinderGeometry(0.62, 0.7, 0.14, 40), darkBronze, [
-    0,
-    0.16,
-    0,
-  ]);
+  addMesh(
+    artifact,
+    new THREE.CylinderGeometry(0.72, 0.72, 1.05, 40),
+    bronze,
+    [0, 0.78, 0],
+  );
+
+  addMesh(
+    artifact,
+    new THREE.CylinderGeometry(0.75, 0.75, 0.1, 40),
+    bronze,
+    [0, 1.34, 0],
+  );
+
+  addMesh(
+    artifact,
+    new THREE.CylinderGeometry(0.62, 0.7, 0.14, 40),
+    darkBronze,
+    [0, 0.16, 0],
+  );
 
   [0.42, 0.78, 1.12].forEach((height) => {
     const ring = new THREE.Mesh(
       new THREE.TorusGeometry(0.73, 0.025, 8, 40),
       darkBronze,
     );
+
     ring.rotation.x = Math.PI / 2;
     ring.position.y = height;
-    group.add(ring);
+    artifact.add(ring);
   });
 
-  return group;
+  return createDisplayCase(artifact);
 }
 
 function createJar() {
-  const group = new THREE.Group();
+  const artifact = new THREE.Group();
+
   const bronze = new THREE.MeshStandardMaterial({
     color: 0x9a7848,
     metalness: 0.72,
@@ -107,28 +314,41 @@ function createJar() {
     new THREE.Vector2(0.39, 1.63),
   ];
 
-  addMesh(group, new THREE.LatheGeometry(profile, 40), bronze, [0, 0.08, 0]);
+  addMesh(
+    artifact,
+    new THREE.LatheGeometry(profile, 40),
+    bronze,
+    [0, 0.08, 0],
+  );
 
   [0.42, 0.72, 1.02].forEach((height) => {
     const ring = new THREE.Mesh(
-      new THREE.TorusGeometry(height > 0.8 ? 0.4 : 0.57, 0.025, 8, 40),
+      new THREE.TorusGeometry(
+        height > 0.8 ? 0.4 : 0.57,
+        0.025,
+        8,
+        40,
+      ),
       bronze,
     );
+
     ring.rotation.x = Math.PI / 2;
     ring.position.y = height;
-    group.add(ring);
+    artifact.add(ring);
   });
 
-  return group;
+  return createDisplayCase(artifact);
 }
 
 function createDagger() {
-  const group = new THREE.Group();
+  const artifact = new THREE.Group();
+
   const bronze = new THREE.MeshStandardMaterial({
     color: 0xa18452,
     metalness: 0.8,
     roughness: 0.3,
   });
+
   const darkBronze = new THREE.MeshStandardMaterial({
     color: 0x66502e,
     metalness: 0.7,
@@ -136,6 +356,7 @@ function createDagger() {
   });
 
   const bladeShape = new THREE.Shape();
+
   bladeShape.moveTo(0, 0);
   bladeShape.lineTo(0.13, 0.36);
   bladeShape.lineTo(0.09, 1.15);
@@ -152,7 +373,7 @@ function createDagger() {
   bladeShape.closePath();
 
   addMesh(
-    group,
+    artifact,
     new THREE.ExtrudeGeometry(bladeShape, {
       depth: 0.08,
       bevelEnabled: true,
@@ -164,14 +385,21 @@ function createDagger() {
     [0, 0.08, -0.04],
   );
 
-  addMesh(group, new THREE.CylinderGeometry(0.065, 0.065, 0.3, 12), darkBronze, [
-    0,
-    1.83,
-    0,
-  ]);
-  addMesh(group, new THREE.SphereGeometry(0.09, 12, 8), bronze, [0, 2, 0]);
+  addMesh(
+    artifact,
+    new THREE.CylinderGeometry(0.065, 0.065, 0.3, 12),
+    darkBronze,
+    [0, 1.83, 0],
+  );
 
-  return group;
+  addMesh(
+    artifact,
+    new THREE.SphereGeometry(0.09, 12, 8),
+    bronze,
+    [0, 2, 0],
+  );
+
+  return createDisplayCase(artifact);
 }
 
 function tagModel(group: THREE.Group, id: ExhibitId) {
@@ -189,9 +417,11 @@ export function InteractiveScene({
   const containerRef = useRef<HTMLDivElement>(null);
   const sceneStateRef = useRef<SceneState | null>(null);
   const onSelectRef = useRef(onSelect);
+  const selectedIdRef = useRef<ExhibitId | null>(selectedId);
   const hotspotRefs = useRef(new Map<ExhibitId, HTMLButtonElement>());
 
   onSelectRef.current = onSelect;
+  selectedIdRef.current = selectedId;
 
   useEffect(() => {
     const container = containerRef.current;
@@ -201,7 +431,7 @@ export function InteractiveScene({
     scene.background = new THREE.Color(0x101311);
 
     const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
-    camera.position.set(0, 3, 8);
+    camera.position.set(0, 4.3, 10.4);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -211,6 +441,7 @@ export function InteractiveScene({
       "aria-label",
       "Không gian xem hiện vật 3D tương tác",
     );
+
     container.appendChild(renderer.domElement);
 
     scene.add(new THREE.HemisphereLight(0xe5e4d8, 0x343a32, 2));
@@ -219,13 +450,15 @@ export function InteractiveScene({
     keyLight.position.set(-4, 7, 5);
     scene.add(keyLight);
 
-    const focusLight = new THREE.PointLight(0xd8bd82, 12, 5);
+    const focusLight = new THREE.PointLight(0xd8bd82, 12, 8);
+    focusLight.position.set(0, 2, 1.2);
     scene.add(focusLight);
 
     const floor = new THREE.Mesh(
       new THREE.PlaneGeometry(30, 30),
       new THREE.MeshStandardMaterial({ color: 0x171b18, roughness: 1 }),
     );
+
     floor.rotation.x = -Math.PI / 2;
     floor.position.y = -0.04;
     scene.add(floor);
@@ -237,9 +470,9 @@ export function InteractiveScene({
     ]);
 
     const positions: Record<ExhibitId, number> = {
-      drum: -2.6,
+      drum: -2.2,
       jar: 0,
-      dagger: 2.6,
+      dagger: 2.2,
     };
 
     models.forEach((model, id) => {
@@ -252,10 +485,10 @@ export function InteractiveScene({
     controls.enableDamping = true;
     controls.enablePan = false;
     controls.minDistance = 3.5;
-    controls.maxDistance = 10;
+    controls.maxDistance = 16;
     controls.minPolarAngle = 0.25;
     controls.maxPolarAngle = Math.PI * 0.48;
-    controls.target.set(0, 0.9, 0);
+    controls.target.set(0, 1.95, 0);
     controls.update();
 
     const resize = () => {
@@ -264,6 +497,20 @@ export function InteractiveScene({
 
       renderer.setSize(width, height);
       camera.aspect = width / height;
+
+      const isMobileScan =
+        selectedIdRef.current === null && width < 760;
+
+      camera.fov = isMobileScan ? 54 : 42;
+
+      if (selectedIdRef.current === null) {
+        camera.position.set(
+          0,
+          4.3,
+          isMobileScan ? 12.2 : 10.4,
+        );
+      }
+
       camera.updateProjectionMatrix();
     };
 
@@ -289,15 +536,17 @@ export function InteractiveScene({
       if (pointerStart.distanceTo(pointerEnd) > 6) return;
 
       const bounds = renderer.domElement.getBoundingClientRect();
+
       pointer.x = ((event.clientX - bounds.left) / bounds.width) * 2 - 1;
       pointer.y = -((event.clientY - bounds.top) / bounds.height) * 2 + 1;
 
       raycaster.setFromCamera(pointer, camera);
 
-      const intersections = raycaster.intersectObjects(
-        Array.from(models.values()),
-        true,
+      const visibleModels = Array.from(models.values()).filter(
+        (model) => model.visible,
       );
+
+      const intersections = raycaster.intersectObjects(visibleModels, true);
 
       for (const intersection of intersections) {
         let object: THREE.Object3D | null = intersection.object;
@@ -327,6 +576,11 @@ export function InteractiveScene({
       models.forEach((model, id) => {
         const hotspot = hotspotRefs.current.get(id);
         if (!hotspot) return;
+
+        if (selectedIdRef.current !== null || !model.visible) {
+          hotspot.style.visibility = "hidden";
+          return;
+        }
 
         const [localX, localY, localZ] = hotspotAnchors[id];
         const scale = model.scale.x;
@@ -405,17 +659,40 @@ export function InteractiveScene({
     const state = sceneStateRef.current;
     if (!state) return;
 
-    const selectedModel = state.models.get(selectedId);
-    if (!selectedModel) return;
-
     state.models.forEach((model, id) => {
-      model.scale.setScalar(id === selectedId ? 1.08 : 1);
+      const isSelected = selectedId === id;
+
+      model.visible = selectedId === null || isSelected;
+      model.scale.setScalar(isSelected ? 1.08 : 1);
     });
 
-    state.controls.target.set(selectedModel.position.x, 0.9, 0);
-    state.camera.position.set(selectedModel.position.x + 3, 2.8, 6.2);
+    if (selectedId === null) {
+      const isMobile = window.innerWidth < 760;
+
+      state.camera.fov = isMobile ? 54 : 42;
+      state.camera.position.set(
+        0,
+        4.3,
+        isMobile ? 12.2 : 10.4,
+      );
+      state.controls.target.set(0, 1.95, 0);
+      state.focusLight.position.set(0, 2.6, 1.2);
+    } else {
+      const selectedModel = state.models.get(selectedId);
+      if (!selectedModel) return;
+
+      state.camera.fov = 42;
+      state.controls.target.set(selectedModel.position.x, 1.95, 0);
+      state.camera.position.set(
+        selectedModel.position.x + 2.6,
+        3.45,
+        6.2,
+      );
+      state.focusLight.position.set(selectedModel.position.x, 2.6, 1.2);
+    }
+
+    state.camera.updateProjectionMatrix();
     state.controls.update();
-    state.focusLight.position.set(selectedModel.position.x, 2, 1.2);
   }, [selectedId]);
 
   return (
