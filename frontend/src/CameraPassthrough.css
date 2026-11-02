@@ -1,0 +1,126 @@
+.camera-passthrough-shell {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  min-height: 100svh;
+  background: #101311;
+}
+
+.camera-passthrough-video,
+.camera-passthrough-shade {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.camera-passthrough-video {
+  z-index: 0;
+  display: block;
+  object-fit: cover;
+  background: #101311;
+  opacity: 0;
+  transition: opacity 260ms ease;
+}
+
+.camera-passthrough-video.is-active {
+  opacity: 1;
+}
+
+.camera-passthrough-shade {
+  z-index: 1;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(7, 10, 8, 0.38),
+      transparent 24%,
+      transparent 66%,
+      rgba(7, 10, 8, 0.45)
+    ),
+    rgba(8, 11, 9, 0.12);
+}
+
+.camera-passthrough-content {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.camera-passthrough-control {
+  position: fixed;
+  z-index: 50;
+  top: 72px;
+  right: 16px;
+  display: grid;
+  justify-items: end;
+  gap: 6px;
+  max-width: min(320px, calc(100vw - 24px));
+}
+
+.camera-toggle-button {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid rgba(218, 190, 119, 0.6);
+  border-radius: 999px;
+  color: #f1e3c1;
+  background: rgba(14, 17, 15, 0.84);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+}
+
+.camera-toggle-button:hover,
+.camera-toggle-button.is-active {
+  border-color: #e6c979;
+  background: rgba(50, 43, 27, 0.9);
+}
+
+.camera-toggle-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #b3ad96;
+}
+
+.camera-toggle-button.is-active .camera-toggle-dot {
+  background: #79d19a;
+  box-shadow: 0 0 10px rgba(121, 209, 154, 0.8);
+}
+
+.camera-passthrough-caption {
+  max-width: 100%;
+  padding: 5px 9px;
+  border: 1px solid rgba(202, 190, 157, 0.2);
+  border-radius: 6px;
+  color: #e2dece;
+  background: rgba(14, 17, 15, 0.76);
+  backdrop-filter: blur(10px);
+  font-size: 10px;
+  line-height: 1.4;
+  text-align: right;
+}
+
+@media (max-width: 760px) {
+  .camera-passthrough-control {
+    top: 66px;
+    right: 10px;
+    max-width: 220px;
+  }
+
+  .camera-toggle-button {
+    min-height: 36px;
+    padding: 7px 10px;
+    font-size: 10px;
+  }
+
+  .camera-passthrough-caption {
+    font-size: 9px;
+  }
+}

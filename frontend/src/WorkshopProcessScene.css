@@ -1,0 +1,501 @@
+.workshop-process-scene {
+  position: relative;
+  min-width: 0;
+  min-height: 520px;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid #33362d;
+  background: linear-gradient(180deg, #20231c 0%, #24271e 65%, #1b1d16 100%);
+}
+
+.workshop-process-heading {
+  position: absolute;
+  z-index: 3;
+  top: 18px;
+  left: 18px;
+}
+
+.workshop-process-heading h2 {
+  margin: 4px 0 0;
+  color: #f1e5ca;
+  font: 500 20px/1.2 Georgia, serif;
+}
+
+.workshop-process-top {
+  position: absolute;
+  z-index: 3;
+  top: 20%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 13px;
+  transform: translateX(-50%);
+  border: 1px solid #736243;
+  border-radius: 999px;
+  color: #e6d5ae;
+  background: #171a15dc;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.workshop-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #e6a95d;
+  box-shadow: 0 0 10px #ec8d3d;
+  animation: workshopPulse 1.7s ease-in-out infinite;
+}
+
+.workshop-process-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.workshop-beam {
+  stroke: #796b4b;
+  stroke-width: 18;
+  opacity: 0.45;
+}
+
+.workshop-beam-thin {
+  stroke: #867856;
+  stroke-width: 3;
+  opacity: 0.42;
+}
+
+.workshop-crossbeam {
+  stroke: #907f58;
+  stroke-width: 2;
+  opacity: 0.25;
+}
+
+.workshop-stage {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(12px) scale(0.985);
+  transform-origin: center;
+  transition:
+    opacity 0.72s ease,
+    transform 0.72s cubic-bezier(0.2, 0.7, 0.2, 1),
+    visibility 0.72s;
+}
+
+.workshop-stage.is-active {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.workshop-shadow {
+  fill: #10120f;
+  opacity: 0.42;
+}
+
+.workshop-table {
+  fill: #654a2c;
+  stroke: #b38a4a;
+  stroke-width: 3;
+}
+
+.workshop-leg {
+  fill: #46351f;
+}
+
+.workshop-skin {
+  fill: #bbb08f;
+}
+
+.workshop-apron {
+  fill: #685e49;
+}
+
+.workshop-clay {
+  fill: #90846a;
+  stroke: #d0b77c;
+  stroke-width: 3;
+}
+
+.workshop-clay-rim {
+  fill: #443b2b;
+  stroke: #bba36d;
+  stroke-width: 5;
+}
+
+.workshop-clay-lines,
+.workshop-pattern-lines {
+  fill: none;
+  stroke: #d9c28e;
+  stroke-width: 3;
+  opacity: 0.78;
+}
+
+.workshop-pattern-lines {
+  stroke-dasharray: 4 7;
+  stroke-width: 4;
+}
+
+.workshop-mold {
+  fill: #282a22;
+  stroke: #968457;
+  stroke-width: 3;
+}
+
+.workshop-inner-mold {
+  fill: #151711;
+  stroke: #ac9766;
+  stroke-width: 3;
+  stroke-dasharray: 7 6;
+}
+
+.workshop-decoration {
+  fill: none;
+  stroke: #c39956;
+  stroke-width: 5;
+}
+
+.workshop-tool {
+  fill: none;
+  stroke: #b9a16b;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.workshop-arm {
+  fill: none;
+  stroke: #b8a785;
+  stroke-width: 14;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transform-box: fill-box;
+  transform-origin: 50% 20%;
+}
+
+.workshop-arm-tap {
+  animation: workshopTap 1.15s ease-in-out infinite;
+}
+
+.workshop-arm-carve {
+  animation: workshopCarve 1.6s ease-in-out infinite;
+}
+
+.workshop-arm-lift {
+  animation: workshopLift 2.2s ease-in-out infinite;
+}
+
+.workshop-arm-pour {
+  animation: workshopPour 2.4s ease-in-out infinite;
+}
+
+.workshop-arm-finish {
+  animation: workshopFinish 1.5s ease-in-out infinite;
+}
+
+.workshop-label {
+  fill: #e8d7ad;
+  font-size: 19px;
+  letter-spacing: 3px;
+  text-anchor: middle;
+}
+
+.workshop-label-hot {
+  fill: #f0c277;
+}
+
+.workshop-furnace {
+  fill: #30251b;
+  stroke: #b0783f;
+  stroke-width: 6;
+}
+
+.workshop-furnace-opening {
+  fill: #211a14;
+  stroke: #d07a34;
+  stroke-width: 4;
+}
+
+.workshop-fire-glow {
+  fill: #e78b36;
+  opacity: 0.72;
+  animation: workshopFlicker 1.2s ease-in-out infinite alternate;
+}
+
+.workshop-fire {
+  fill: #e88032;
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: workshopFlicker 0.9s ease-in-out infinite alternate;
+}
+
+.workshop-crucible {
+  fill: #69472a;
+  stroke: #d6ad68;
+  stroke-width: 4;
+}
+
+.workshop-pour-stream {
+  fill: none;
+  stroke: url(#workshopMolten);
+  stroke-width: 12;
+  stroke-linecap: round;
+  stroke-dasharray: 38 12;
+  animation: workshopPourFlow 0.75s linear infinite;
+}
+
+.workshop-molten-line {
+  stroke: #e88c3f;
+  stroke-width: 8;
+}
+
+.workshop-bronze {
+  fill: #a0783d;
+  stroke: #e0bd72;
+  stroke-width: 3;
+}
+
+.workshop-bronze-rim {
+  fill: #5a4b2d;
+  stroke: #d7b56e;
+  stroke-width: 4;
+}
+
+.workshop-bronze-lines {
+  fill: none;
+  stroke: #ddbd73;
+  stroke-width: 4;
+}
+
+.workshop-process-caption {
+  position: absolute;
+  z-index: 3;
+  bottom: 68px;
+  left: 50%;
+  width: min(620px, calc(100% - 36px));
+  padding: 12px 16px;
+  transform: translateX(-50%);
+  border: 1px solid #82714a;
+  border-radius: 12px;
+  color: #e9dbbb;
+  background: #131610e8;
+  font-size: 12px;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.workshop-process-caption strong {
+  color: #f1cb75;
+}
+
+.workshop-play-button {
+  position: absolute;
+  z-index: 4;
+  right: 18px;
+  bottom: 16px;
+  padding: 9px 13px;
+  border: 1px solid #988153;
+  border-radius: 999px;
+  color: #f0d18a;
+  background: #292315;
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+}
+
+.workshop-play-button:hover {
+  background: #3a311e;
+}
+
+.workshop-completion-actions {
+  position: absolute;
+  z-index: 5;
+  right: 16px;
+  bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px;
+  border: 1px solid #766442;
+  border-radius: 12px;
+  background: #12150fee;
+  box-shadow: 0 8px 24px #0006;
+}
+
+.workshop-completion-actions > span {
+  padding: 0 5px;
+  color: #e7dcc1;
+  font-size: 10px;
+}
+
+.workshop-completion-actions button {
+  min-height: 34px;
+  padding: 7px 10px;
+  border: 1px solid #8b764b;
+  border-radius: 999px;
+  color: #efd28c;
+  background: #242117;
+  cursor: pointer;
+  font: inherit;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.workshop-completion-actions button:hover {
+  background: #3a311e;
+}
+
+.workshop-completion-actions .workshop-continue-button {
+  border-color: #bea25f;
+  color: #ffe5a4;
+  background: #40351e;
+}
+
+.workshop-unavailable {
+  display: grid;
+  min-height: 360px;
+  align-content: center;
+  justify-items: center;
+  padding: 24px;
+  color: #d7d3c5;
+  text-align: center;
+}
+
+.workshop-unavailable h2 {
+  margin: 12px 0 8px;
+  font: 500 22px Georgia, serif;
+}
+
+.workshop-unavailable p {
+  max-width: 460px;
+  color: #aeb5ae;
+  line-height: 1.6;
+}
+
+@keyframes workshopPulse {
+  50% {
+    opacity: 0.48;
+    box-shadow: 0 0 3px #ec8d3d;
+  }
+}
+
+@keyframes workshopTap {
+  50% {
+    transform: rotate(-12deg) translateY(5px);
+  }
+}
+
+@keyframes workshopCarve {
+  50% {
+    transform: rotate(9deg) translateX(-4px);
+  }
+}
+
+@keyframes workshopLift {
+  50% {
+    transform: rotate(-10deg) translateY(-4px);
+  }
+}
+
+@keyframes workshopPour {
+  50% {
+    transform: rotate(8deg) translateY(3px);
+  }
+}
+
+@keyframes workshopFinish {
+  50% {
+    transform: rotate(10deg) translateX(6px);
+  }
+}
+
+@keyframes workshopFlicker {
+  to {
+    transform: scaleY(0.82);
+    opacity: 0.55;
+  }
+}
+
+@keyframes workshopPourFlow {
+  to {
+    stroke-dashoffset: -50;
+  }
+}
+
+@media (max-width: 760px) {
+  .workshop-process-scene {
+    min-height: 390px;
+  }
+
+  .workshop-process-heading {
+    top: 12px;
+    left: 12px;
+  }
+
+  .workshop-process-heading h2 {
+    font-size: 16px;
+  }
+
+  .workshop-process-top {
+    top: 22%;
+    padding: 7px 9px;
+    font-size: 8px;
+  }
+
+  .workshop-process-caption {
+    bottom: 54px;
+    width: calc(100% - 22px);
+    padding: 8px 10px;
+    font-size: 9px;
+  }
+
+  .workshop-play-button {
+    right: 10px;
+    bottom: 8px;
+    padding: 7px 10px;
+    font-size: 9px;
+  }
+
+  .workshop-completion-actions {
+    right: 7px;
+    bottom: 7px;
+    left: 7px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    padding: 6px;
+  }
+
+  .workshop-completion-actions > span {
+    grid-column: 1 / -1;
+    font-size: 9px;
+    text-align: center;
+  }
+
+  .workshop-completion-actions button {
+    min-height: 31px;
+    padding: 6px;
+    font-size: 9px;
+  }
+
+  .workshop-process-scene.is-complete .workshop-process-caption {
+    bottom: 82px;
+  }
+
+  .workshop-label {
+    font-size: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .workshop-process-scene *,
+  .workshop-process-scene *::before,
+  .workshop-process-scene *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

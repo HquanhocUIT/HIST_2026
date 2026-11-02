@@ -1,0 +1,354 @@
+.interactive-story-scene {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+}
+
+.story-scene-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse at 50% 42%,
+      rgba(71, 62, 41, 0.25),
+      transparent 54%
+    ),
+    #090d0f;
+}
+
+.story-scene-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none;
+}
+
+.story-scene-canvas:active {
+  cursor: grabbing;
+}
+
+.story-scene-instructions {
+  position: absolute;
+  z-index: 3;
+  top: 16px;
+  left: 16px;
+  display: grid;
+  gap: 4px;
+  padding: 10px 12px;
+  border: 1px solid rgba(198, 177, 123, 0.32);
+  border-radius: 5px;
+  color: #e3d5b4;
+  background: rgba(12, 16, 15, 0.86);
+  pointer-events: none;
+}
+
+.story-scene-instructions strong {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.story-scene-eyebrow {
+  color: #a9a18a;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.story-explosion-meter {
+  position: absolute;
+  z-index: 3;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  width: 112px;
+  gap: 7px;
+  color: #b9ad8d;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  pointer-events: none;
+}
+
+.story-explosion-track {
+  height: 3px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: rgba(224, 214, 188, 0.18);
+}
+
+.story-explosion-track span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  border-radius: inherit;
+  background: #d8b86f;
+  box-shadow: 0 0 8px rgba(216, 184, 111, 0.65);
+}
+
+.story-part-hotspot,
+.casting-process-hotspot {
+  position: absolute;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 9px;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(216, 184, 111, 0.56);
+  border-radius: 999px;
+  color: #e9dfc9;
+  background: rgba(12, 16, 15, 0.94);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  font: inherit;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.story-part-hotspot {
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.story-part-hotspot:hover,
+.story-part-hotspot.is-active {
+  border-color: #f0cc78;
+  background: rgba(76, 58, 28, 0.96);
+  box-shadow:
+    0 0 0 3px rgba(216, 184, 111, 0.14),
+    0 0 16px rgba(216, 184, 111, 0.2);
+}
+
+.story-part-hotspot-number {
+  color: #c6a962;
+  font-size: 9px;
+}
+
+.story-part-hotspot-dot {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: #f1ce7a;
+  box-shadow: 0 0 8px rgba(241, 206, 122, 0.8);
+}
+
+.story-part-hotspot-name,
+.casting-process-name {
+  max-width: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.casting-process-hotspot {
+  border-color: #e4c478;
+  background: rgba(44, 35, 20, 0.96);
+  animation: casting-hotspot-enter 700ms
+    cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.casting-process-hotspot:hover,
+.casting-process-hotspot.is-active {
+  border-color: #ffe39a;
+  color: #fff0cb;
+  background: rgba(76, 58, 28, 0.97);
+  box-shadow:
+    0 0 0 3px rgba(216, 184, 111, 0.16),
+    0 0 18px rgba(216, 184, 111, 0.25);
+}
+
+.casting-process-number {
+  display: grid;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  place-items: center;
+  border-radius: 50%;
+  color: #19160f;
+  background: #e4c478;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.story-layer-story,
+.casting-story-card {
+  position: absolute;
+  z-index: 3;
+  bottom: 42px;
+  left: 16px;
+  width: min(345px, calc(100% - 32px));
+  padding: 13px 14px;
+  border: 1px solid rgba(198, 177, 123, 0.28);
+  border-radius: 6px;
+  background: rgba(13, 17, 16, 0.93);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
+}
+
+.story-layer-story h3,
+.casting-story-card h3 {
+  margin: 5px 0 7px;
+  color: #eadfc7;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.story-layer-story p,
+.casting-story-card p {
+  margin: 0;
+  color: #c0c5bd;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.story-layer-story small,
+.casting-story-card small {
+  display: block;
+  margin-top: 9px;
+  color: #c9ad6e;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.casting-story-card {
+  width: min(380px, calc(100% - 32px));
+}
+
+.casting-step-copy {
+  animation: casting-copy-enter 420ms ease-out both;
+}
+
+.casting-controls {
+  display: flex;
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.casting-controls button {
+  padding: 7px 10px;
+  border: 1px solid #3b3e36;
+  border-radius: 4px;
+  color: #d6d8d2;
+  background: #171b18;
+  cursor: pointer;
+  font: inherit;
+  font-size: 10px;
+}
+
+.casting-controls button:hover:not(:disabled) {
+  border-color: #c6a962;
+  color: #f0dfb7;
+}
+
+.casting-controls button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.casting-controls .casting-play-button {
+  border-color: rgba(216, 184, 111, 0.55);
+  color: #f0dfb7;
+  background: #30291d;
+}
+
+.story-scene-help {
+  position: absolute;
+  z-index: 3;
+  right: 12px;
+  bottom: 12px;
+  left: 12px;
+  margin: 0;
+  color: #a8ada5;
+  font-size: 10px;
+  text-align: center;
+  pointer-events: none;
+}
+
+@keyframes casting-hotspot-enter {
+  from {
+    opacity: 0;
+    filter: blur(4px);
+    transform: translate(-50%, calc(-50% + 12px)) scale(0.86);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes casting-copy-enter {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 760px) {
+  .story-scene-viewport {
+    min-height: 440px;
+  }
+
+  .story-scene-instructions {
+    top: 10px;
+    left: 10px;
+    max-width: calc(100% - 135px);
+    padding: 8px 9px;
+  }
+
+  .story-scene-instructions strong {
+    font-size: 10px;
+  }
+
+  .story-explosion-meter {
+    top: 13px;
+    right: 10px;
+    width: 105px;
+  }
+
+  .story-part-hotspot,
+  .casting-process-hotspot {
+    gap: 4px;
+    padding: 5px 7px;
+    font-size: 9px;
+  }
+
+  .story-part-hotspot-name,
+  .casting-process-name {
+    max-width: 76px;
+  }
+
+  .casting-process-number {
+    width: 18px;
+    height: 18px;
+    flex-basis: 18px;
+  }
+
+  .story-layer-story,
+  .casting-story-card {
+    bottom: 38px;
+    left: 10px;
+    width: min(345px, calc(100% - 20px));
+    padding: 11px 12px;
+  }
+
+  .story-scene-help {
+    bottom: 10px;
+    font-size: 9px;
+  }
+}

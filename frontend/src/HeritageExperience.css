@@ -1,0 +1,750 @@
+/* Shared typography and colors for the mixed-reality style demo. */
+.heritage-experience,
+.heritage-experience *,
+.heritage-experience *::before,
+.heritage-experience *::after {
+  box-sizing: border-box;
+  font-family: "Times New Roman", Times, serif !important;
+}
+
+.spatial-app {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  flex-direction: column;
+  overflow: hidden;
+  color: #f0eadb;
+  background: transparent !important;
+}
+
+.spatial-header {
+  position: relative;
+  z-index: 12;
+  display: grid;
+  min-height: 58px;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 14px;
+  padding: 7px 18px;
+  border-bottom: 1px solid rgba(220, 210, 180, 0.18);
+  background: rgba(12, 14, 12, 0.72) !important;
+  backdrop-filter: blur(18px);
+}
+
+.heritage-brand {
+  display: grid;
+  gap: 3px;
+}
+
+.heritage-brand strong {
+  color: #f1e4c6;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.heritage-brand span {
+  color: #b4ad98;
+  font-size: 9px;
+  letter-spacing: 0.13em;
+}
+
+.spatial-header-center {
+  overflow: hidden;
+  max-width: min(42vw, 480px);
+  color: #e3d8bd;
+  font-size: 12px;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.heritage-header-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.heritage-total-points {
+  padding: 7px 11px;
+  border: 1px solid rgba(213, 187, 119, 0.5);
+  border-radius: 999px;
+  color: #e8cb7f;
+  background: rgba(18, 20, 16, 0.58);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.spatial-stage {
+  position: relative;
+  min-height: 0;
+  flex: 1;
+  overflow: hidden;
+  background: transparent;
+}
+
+.glass-surface {
+  border: 1px solid rgba(223, 202, 147, 0.38);
+  background: rgba(14, 18, 16, 0.62);
+  box-shadow: 0 14px 48px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(18px) saturate(125%);
+  -webkit-backdrop-filter: blur(18px) saturate(125%);
+}
+
+.section-label {
+  display: block;
+  margin: 0 0 6px;
+  color: #d5bd7d;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Initial camera view and floating hotspots. */
+.scan-experience {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.spatial-app .scan-experience .scene-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: transparent !important;
+}
+
+.spatial-app .scan-experience .three-canvas {
+  background: transparent !important;
+}
+
+.scan-guidance {
+  position: absolute;
+  z-index: 5;
+  top: 18px;
+  left: 18px;
+  width: min(360px, calc(100vw - 36px));
+  padding: 13px 16px;
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.scan-guidance strong {
+  display: block;
+  color: #fff4d6;
+  font-size: 15px;
+  font-weight: 500;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.scan-guidance p {
+  margin: 5px 0 0;
+  color: #eee5d2;
+  font-size: 11px;
+  line-height: 1.45;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.scan-bottom-hint {
+  position: absolute;
+  z-index: 5;
+  bottom: 18px;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  max-width: calc(100vw - 28px);
+  padding: 9px 13px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  color: #f0eadb;
+  font-size: 10px;
+  text-align: center;
+}
+
+.scan-status-dot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #9dd3a4;
+  box-shadow: 0 0 10px rgba(157, 211, 164, 0.8);
+}
+
+/* Selected object: the model fills the view, tabs appear only here. */
+.object-experience {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.object-experience > .interactive-structure-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  background: transparent !important;
+}
+
+.object-experience .structure-scene-viewport {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  background: transparent !important;
+}
+
+.object-experience .structure-scene-heading {
+  display: none;
+}
+
+.object-experience .structure-cutaway-toggle {
+  top: 92px;
+  right: 18px;
+}
+
+.object-experience .structure-part-card {
+  right: 18px;
+  bottom: 124px;
+  background: rgba(13, 17, 15, 0.72);
+  backdrop-filter: blur(16px);
+}
+
+.object-experience .structure-scene-footnote {
+  bottom: 92px;
+  max-width: min(500px, calc(100% - 30px));
+  padding: 6px 9px;
+  border-radius: 7px;
+  color: #eee4ce;
+  background: rgba(13, 17, 15, 0.6);
+  backdrop-filter: blur(12px);
+}
+
+.object-experience-heading {
+  position: absolute;
+  z-index: 8;
+  top: 16px;
+  left: 16px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  max-width: calc(100% - 32px);
+  padding: 10px 13px;
+  border-radius: 12px;
+}
+
+.object-title-copy {
+  min-width: 0;
+}
+
+.object-title-copy .section-label {
+  margin-bottom: 3px;
+}
+
+.object-title-copy h1 {
+  overflow: hidden;
+  margin: 0;
+  color: #fff0ce;
+  font-size: 16px;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.object-title-copy p {
+  margin: 3px 0 0;
+  color: #d0c7b0;
+  font-size: 10px;
+}
+
+.spatial-back-button,
+.spatial-assistant-button,
+.spatial-next-button {
+  min-height: 36px;
+  padding: 7px 11px;
+  border: 1px solid rgba(221, 196, 129, 0.54);
+  border-radius: 8px;
+  color: #f2e7cf;
+  background: rgba(17, 20, 17, 0.74);
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.spatial-back-button:hover,
+.spatial-assistant-button:hover,
+.spatial-next-button:hover {
+  border-color: #e8ca7e;
+  background: rgba(49, 42, 28, 0.88);
+}
+
+.object-action-dock {
+  position: absolute;
+  z-index: 10;
+  bottom: calc(14px + env(safe-area-inset-bottom));
+  left: 50%;
+  width: min(720px, calc(100vw - 32px));
+  padding: 9px 11px 11px;
+  transform: translateX(-50%);
+  border-radius: 15px;
+}
+
+.object-action-dock > p {
+  margin: 0 0 7px;
+  color: #d2c9ad;
+  font-size: 9px;
+  text-align: center;
+}
+
+.object-action-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.object-action-button {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 7px;
+  border: 1px solid rgba(200, 185, 142, 0.28);
+  border-radius: 9px;
+  color: #f0e9d8;
+  background: rgba(33, 35, 29, 0.78);
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+.object-action-button:hover {
+  border-color: #e4c776;
+  background: rgba(63, 53, 32, 0.9);
+}
+
+.object-action-icon {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgba(226, 197, 118, 0.65);
+  border-radius: 50%;
+  color: #e7ca7c;
+  font-size: 11px;
+}
+
+.spatial-assistant-panel {
+  position: absolute;
+  z-index: 16;
+  top: 82px;
+  right: 16px;
+  display: grid;
+  width: min(360px, calc(100vw - 24px));
+  max-height: calc(100% - 200px);
+  grid-template-rows: auto minmax(0, 1fr);
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.spatial-assistant-panel > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border-bottom: 1px solid rgba(220, 210, 180, 0.2);
+}
+
+.spatial-assistant-panel > header strong {
+  color: #f1e6ce;
+  font-size: 12px;
+}
+
+.spatial-assistant-panel > header button {
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(220, 210, 180, 0.3);
+  border-radius: 50%;
+  color: #f0e7d4;
+  background: rgba(15, 18, 16, 0.7);
+  cursor: pointer;
+  font: inherit;
+}
+
+/* Selecting a bottom action hides the dock and opens one frosted panel. */
+.content-experience {
+  position: absolute;
+  z-index: 20;
+  inset: 0;
+  display: grid;
+  overflow: auto;
+  padding: 24px 18px;
+  place-items: center;
+  background: rgba(4, 7, 6, 0.18);
+}
+
+.content-glass-panel {
+  display: grid;
+  width: min(1060px, 100%);
+  max-height: calc(100svh - 108px);
+  gap: 18px;
+  overflow: auto;
+  padding: clamp(16px, 3vw, 30px);
+  border: 1px solid rgba(223, 202, 147, 0.48);
+  border-radius: 18px;
+  color: #f3ecdc;
+  background: rgba(12, 16, 14, 0.68);
+  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.44);
+  backdrop-filter: blur(24px) saturate(135%);
+  -webkit-backdrop-filter: blur(24px) saturate(135%);
+}
+
+.content-experience-header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 15px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid rgba(222, 206, 164, 0.22);
+}
+
+.content-experience-header h1 {
+  margin: 2px 0 0;
+  color: #fff0d0;
+  font-size: clamp(19px, 2.4vw, 28px);
+  font-weight: 500;
+}
+
+.spatial-information-content {
+  display: grid;
+  gap: 15px;
+  max-width: 850px;
+  margin: 0 auto;
+  color: #f0eadb;
+  line-height: 1.65;
+}
+
+.spatial-information-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.spatial-information-meta span {
+  padding: 7px 10px;
+  border: 1px solid rgba(226, 197, 118, 0.38);
+  border-radius: 999px;
+  color: #f1d895;
+  background: rgba(21, 24, 19, 0.5);
+  font-size: 11px;
+}
+
+.spatial-information-overview {
+  margin: 0;
+  color: #fff6e3;
+  font-size: clamp(15px, 1.7vw, 18px);
+  line-height: 1.65;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+}
+
+.spatial-information-facts {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 21px;
+  color: #f1ebdc;
+  font-size: 13px;
+}
+
+.spatial-information-facts li::marker {
+  color: #e5c779;
+}
+
+.information-note,
+.heritage-3d-note {
+  margin: 0;
+  padding: 10px 12px;
+  border-left: 2px solid #d4b66d;
+  color: #f1dfad;
+  background: rgba(19, 20, 16, 0.56);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.information-source {
+  color: #f0d18a;
+  font-size: 11px;
+}
+
+.spatial-story-content {
+  display: grid;
+  gap: 14px;
+}
+
+.spatial-story-copy h2 {
+  margin: 0 0 7px;
+  color: #fff0d0;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 500;
+}
+
+.spatial-story-copy p {
+  max-width: 900px;
+  margin: 0;
+  color: #f0eadb;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.spatial-story-copy .spatial-story-description {
+  margin-top: 7px;
+  color: #e6cf94;
+  font-size: 10px;
+}
+
+.spatial-story-video {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(219, 192, 126, 0.38);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.72);
+}
+
+.spatial-story-video video {
+  display: block;
+  width: 100%;
+  max-height: 58vh;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #050605;
+}
+
+.spatial-story-sources {
+  display: grid;
+  gap: 6px;
+}
+
+.spatial-story-sources a {
+  color: #ecd083;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.content-experience-crafting .content-glass-panel,
+.content-experience-quiz .content-glass-panel {
+  width: min(1180px, 100%);
+}
+
+.spatial-crafting-content .workshop-process-scene {
+  min-height: 440px;
+  height: min(62vh, 700px);
+  border-radius: 12px;
+}
+
+.spatial-quiz-content .quiz-panel {
+  width: min(850px, 100%);
+  margin: 0 auto;
+  background: rgba(16, 20, 17, 0.88);
+}
+
+.story-viewer-video-error {
+  display: grid;
+  min-height: 260px;
+  padding: 18px;
+  place-items: center;
+  color: #f0d18a;
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .spatial-header {
+    min-height: 54px;
+    grid-template-columns: 1fr auto;
+    padding: 6px 10px;
+  }
+
+  .spatial-header-center {
+    display: none;
+  }
+
+  .heritage-brand strong {
+    font-size: 12px;
+  }
+
+  .heritage-brand span {
+    font-size: 8px;
+  }
+
+  .heritage-total-points {
+    padding: 6px 9px;
+    font-size: 10px;
+  }
+
+  .scan-guidance {
+    top: 12px;
+    left: 10px;
+    width: min(300px, calc(100vw - 20px));
+    padding: 10px 12px;
+  }
+
+  .scan-guidance strong {
+    font-size: 13px;
+  }
+
+  .scan-guidance p {
+    font-size: 10px;
+  }
+
+  .scan-bottom-hint {
+    bottom: 12px;
+    font-size: 9px;
+  }
+
+  .object-experience-heading {
+    top: 10px;
+    left: 8px;
+    max-width: calc(100% - 16px);
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 8px;
+    padding: 8px;
+    border-radius: 10px;
+  }
+
+  .object-title-copy h1 {
+    font-size: 13px;
+  }
+
+  .object-title-copy p {
+    font-size: 9px;
+  }
+
+  .object-experience-heading .spatial-assistant-button {
+    display: none;
+  }
+
+  .spatial-back-button {
+    min-height: 34px;
+    padding: 6px 8px;
+    font-size: 9px;
+  }
+
+  .object-experience .structure-cutaway-toggle {
+    top: 80px;
+    right: 10px;
+    padding: 7px 9px;
+    font-size: 9px;
+  }
+
+  .object-action-dock {
+    bottom: calc(8px + env(safe-area-inset-bottom));
+    width: calc(100vw - 16px);
+    padding: 7px;
+    border-radius: 12px;
+  }
+
+  .object-action-dock > p {
+    margin-bottom: 5px;
+    font-size: 8px;
+  }
+
+  .object-action-list {
+    gap: 4px;
+  }
+
+  .object-action-button {
+    min-height: 48px;
+    flex-direction: column;
+    gap: 3px;
+    padding: 4px 2px;
+    font-size: 8px;
+  }
+
+  .object-action-icon {
+    width: 21px;
+    height: 21px;
+    font-size: 9px;
+  }
+
+  .object-experience .structure-part-card {
+    right: 9px;
+    bottom: 122px;
+    width: min(280px, calc(100% - 18px));
+  }
+
+  .object-experience .structure-scene-footnote {
+    bottom: 100px;
+    left: 9px;
+    font-size: 8px;
+  }
+
+  .content-experience {
+    padding: 10px;
+    place-items: center;
+  }
+
+  .content-glass-panel {
+    max-height: calc(100svh - 92px);
+    gap: 12px;
+    padding: 13px;
+    border-radius: 14px;
+  }
+
+  .content-experience-header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "back next"
+      "title title";
+    gap: 8px;
+    padding-bottom: 9px;
+  }
+
+  .content-experience-header .spatial-back-button {
+    grid-area: back;
+    justify-self: start;
+  }
+
+  .content-experience-header > div {
+    grid-area: title;
+  }
+
+  .content-experience-header .spatial-next-button {
+    grid-area: next;
+    justify-self: end;
+  }
+
+  .content-experience-header h1 {
+    font-size: 20px;
+  }
+
+  .spatial-information-overview {
+    font-size: 14px;
+  }
+
+  .spatial-information-facts {
+    font-size: 11px;
+  }
+
+  .spatial-story-video video {
+    max-height: 42vh;
+  }
+
+  .spatial-crafting-content .workshop-process-scene {
+    min-height: 360px;
+    height: 54vh;
+  }
+
+  .spatial-assistant-panel {
+    top: 62px;
+    right: 8px;
+    max-height: calc(100% - 150px);
+  }
+}

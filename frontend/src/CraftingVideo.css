@@ -1,0 +1,123 @@
+.crafting-video-panel {
+  display: grid;
+  width: 100%;
+  gap: 12px;
+}
+
+.crafting-video-heading h2 {
+  margin: 3px 0 6px;
+  color: #fff0d0;
+  font-size: clamp(20px, 2.4vw, 30px);
+  font-weight: 500;
+}
+
+.crafting-video-heading p {
+  margin: 0;
+  color: #e7dfce;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.crafting-video {
+  display: block;
+  width: 100%;
+  max-height: min(62vh, 720px);
+  aspect-ratio: 16 / 9;
+  border: 1px solid rgba(219, 192, 126, 0.45);
+  border-radius: 12px;
+  background: #050605;
+  object-fit: contain;
+}
+
+.crafting-video-note {
+  margin: 0;
+  padding: 10px 12px;
+  border-left: 2px solid #d4b66d;
+  color: #f1dfad;
+  background: rgba(19, 20, 16, 0.56);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.crafting-video-source {
+  color: #f0d18a;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.crafting-video-source:hover {
+  color: #ffe7a3;
+}
+
+.crafting-video-error {
+  display: grid;
+  min-height: 280px;
+  gap: 8px;
+  padding: 18px;
+  place-content: center;
+  border: 1px solid rgba(219, 192, 126, 0.45);
+  border-radius: 12px;
+  color: #f0d18a;
+  background: rgba(0, 0, 0, 0.72);
+  text-align: center;
+}
+
+.crafting-video-error span {
+  color: #d4cbb8;
+  font-size: 12px;
+}
+
+.crafting-video-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 9px;
+  padding-top: 4px;
+}
+
+.crafting-video-actions span {
+  margin-right: auto;
+  color: #e7dfce;
+  font-size: 12px;
+}
+
+.crafting-video-actions button {
+  min-height: 36px;
+  padding: 7px 12px;
+  border: 1px solid rgba(221, 196, 129, 0.54);
+  border-radius: 8px;
+  color: #f2e7cf;
+  background: rgba(17, 20, 17, 0.82);
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+}
+
+.crafting-video-actions button:hover {
+  border-color: #e8ca7e;
+  background: rgba(49, 42, 28, 0.92);
+}
+
+.crafting-video-actions .crafting-video-continue {
+  color: #211c11;
+  background: #e2c56e;
+}
+
+.crafting-video-actions .crafting-video-continue:hover {
+  background: #f0d78d;
+}
+
+@media (max-width: 760px) {
+  .crafting-video {
+    max-height: 42vh;
+  }
+
+  .crafting-video-heading p {
+    font-size: 12px;
+  }
+
+  .crafting-video-actions span {
+    width: 100%;
+  }
+}

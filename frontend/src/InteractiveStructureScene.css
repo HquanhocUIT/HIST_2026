@@ -1,0 +1,298 @@
+.interactive-structure-scene,
+.structure-scene-viewport {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  min-height: 420px;
+  height: 100%;
+}
+
+.structure-scene-viewport {
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(
+      ellipse at 50% 55%,
+      rgba(130, 99, 44, 0.1),
+      transparent 42%
+    ),
+    #090d0f;
+}
+
+.structure-scene-canvas {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: grab;
+}
+
+.structure-scene-canvas:active {
+  cursor: grabbing;
+}
+
+.structure-scene-connectors {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.structure-scene-connector-line {
+  fill: none;
+  stroke: rgba(225, 199, 126, 0.8);
+  stroke-width: 1.4;
+  filter: drop-shadow(0 0 3px rgba(225, 199, 126, 0.45));
+  transition:
+    stroke 160ms ease,
+    stroke-width 160ms ease;
+}
+
+.structure-scene-connector-line.is-active {
+  stroke: #ffe28d;
+  stroke-width: 2;
+}
+
+.structure-scene-connector-endpoint {
+  fill: #ffe28d;
+  stroke: rgba(16, 19, 17, 0.9);
+  stroke-width: 1.2;
+  filter: drop-shadow(0 0 5px rgba(255, 226, 141, 0.8));
+}
+
+.structure-scene-heading {
+  position: absolute;
+  z-index: 5;
+  top: 16px;
+  left: 16px;
+  display: grid;
+  gap: 5px;
+  max-width: min(64%, 360px);
+  padding: 10px 12px;
+  border: 1px solid rgba(190, 164, 99, 0.42);
+  border-radius: 5px;
+  background: rgba(13, 17, 15, 0.9);
+  pointer-events: none;
+}
+
+.structure-scene-eyebrow {
+  color: #c8b477;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.structure-scene-heading strong {
+  color: #e3dfd3;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.structure-cutaway-toggle {
+  position: absolute;
+  z-index: 6;
+  top: 16px;
+  right: 16px;
+  padding: 9px 12px;
+  border: 1px solid #907947;
+  border-radius: 5px;
+  color: #ebdfbd;
+  background: rgba(28, 27, 21, 0.94);
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+}
+
+.structure-cutaway-toggle:hover,
+.structure-cutaway-toggle.is-active {
+  border-color: #e0c16b;
+  background: #39301d;
+}
+
+.structure-hotspot {
+  position: absolute;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  width: min(184px, calc(50% - 26px));
+  min-width: 0;
+  padding: 0;
+  transform: translateY(-50%);
+  border: 0;
+  color: #e9e2d2;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-size: 9px;
+  text-align: left;
+  white-space: nowrap;
+  transition: opacity 140ms ease;
+}
+
+.structure-hotspot.is-left {
+  left: 14px;
+}
+
+.structure-hotspot.is-right {
+  right: 14px;
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.structure-hotspot-number {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  place-items: center;
+  border: 1px solid #e2c56e;
+  border-radius: 50%;
+  color: #211c11;
+  background: #e2c56e;
+  box-shadow: 0 0 10px rgba(225, 199, 126, 0.24);
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.structure-hotspot-label {
+  display: block;
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  padding: 7px 9px;
+  border: 1px solid rgba(213, 184, 107, 0.7);
+  border-radius: 999px;
+  background: rgba(16, 19, 17, 0.95);
+  box-shadow: 0 0 0 2px rgba(225, 199, 126, 0.08);
+  text-overflow: ellipsis;
+}
+
+.structure-hotspot:hover .structure-hotspot-label,
+.structure-hotspot.is-active .structure-hotspot-label {
+  border-color: #ffe28d;
+  box-shadow: 0 0 12px rgba(225, 199, 126, 0.32);
+}
+
+.structure-part-card {
+  position: absolute;
+  z-index: 5;
+  right: 16px;
+  bottom: 38px;
+  width: min(330px, calc(100% - 32px));
+  padding: 13px 15px;
+  border: 1px solid #80704a;
+  border-radius: 8px;
+  background: rgba(13, 17, 15, 0.95);
+  animation: structure-card-in 200ms ease both;
+}
+
+.structure-part-card h3 {
+  margin: 5px 0 6px;
+  color: #e3ddce;
+  font-size: 13px;
+  font-weight: 550;
+}
+
+.structure-part-card p {
+  margin: 0;
+  color: #bdc2bb;
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.structure-scene-footnote {
+  position: absolute;
+  z-index: 3;
+  bottom: 10px;
+  left: 14px;
+  max-width: 55%;
+  margin: 0;
+  color: #aeb3a9;
+  font-size: 9px;
+  line-height: 1.4;
+  pointer-events: none;
+}
+
+@keyframes structure-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 760px) {
+  .interactive-structure-scene,
+  .structure-scene-viewport {
+    min-height: 350px;
+  }
+
+  .structure-scene-heading {
+    top: 10px;
+    left: 10px;
+    max-width: 54%;
+  }
+
+  .structure-cutaway-toggle {
+    top: 10px;
+    right: 10px;
+    padding: 8px;
+    font-size: 10px;
+  }
+
+  .structure-hotspot {
+    width: min(160px, calc(50% - 20px));
+    gap: 5px;
+    font-size: 8px;
+  }
+
+  .structure-hotspot.is-left {
+    left: 8px;
+  }
+
+  .structure-hotspot.is-right {
+    right: 8px;
+  }
+
+  .structure-hotspot-number {
+    width: 21px;
+    height: 21px;
+    flex-basis: 21px;
+  }
+
+  .structure-hotspot-label {
+    padding: 6px 7px;
+  }
+
+  .structure-part-card {
+    right: 10px;
+    bottom: 34px;
+  }
+
+  .structure-scene-footnote {
+    bottom: 7px;
+    left: 10px;
+    max-width: 52%;
+    font-size: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .structure-part-card,
+  .structure-hotspot-label,
+  .structure-scene-connector-line {
+    animation: none;
+    transition: none;
+  }
+}
