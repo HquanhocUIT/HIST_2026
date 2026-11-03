@@ -4,6 +4,7 @@ import { InteractiveStructureScene } from "./InteractiveStructureScene";
 import { exhibitInformation } from "./exhibitInformation";
 import { exhibitStories } from "./exhibitStories";
 import { CraftingVideo } from "./CraftingVideo";
+import { NarratedVideo } from "./NarratedVideo";
 import { QuizPanel, readDemoPoints } from "./QuizPanel";
 import type { ExhibitChatContext } from "./Chatbot";
 import { PhuChatbot } from "./components/PhuChatbot";
@@ -172,6 +173,25 @@ function MuseumApp() {
 
           <div className="heritage-header-actions">
             <span className="heritage-total-points">✦ {points} điểm</span>
+            <a
+              href="/admin"
+              aria-label="Mở trang quản trị"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                minHeight: "34px",
+                padding: "7px 11px",
+                border: "1px solid rgba(218, 190, 119, 0.5)",
+                borderRadius: "8px",
+                color: "#f1e3c1",
+                background: "rgba(14, 17, 15, 0.88)",
+                font: "inherit",
+                fontSize: "11px",
+                textDecoration: "none",
+              }}
+            >
+              Quản trị
+            </a>
           </div>
         </header>
 
@@ -364,20 +384,14 @@ function MuseumApp() {
 
                     <div className="spatial-story-video">
                       {!storyVideoUnavailable ? (
-                        <video
-                          key={selectedStory.videoSrc}
-                          controls
-                          playsInline
-                          preload="metadata"
-                          aria-label={`Video câu chuyện ${selectedExhibit.name}`}
+                        <NarratedVideo
+                          key={selectedExhibit.id}
+                          exhibitId={selectedExhibit.id}
+                          kind="story"
+                          ariaLabel={`Video câu chuyện ${selectedExhibit.name}`}
+                          onLoadedData={() => setStoryVideoUnavailable(false)}
                           onError={() => setStoryVideoUnavailable(true)}
-                        >
-                          <source
-                            src={selectedStory.videoSrc}
-                            type="video/mp4"
-                          />
-                          Trình duyệt không hỗ trợ phát video.
-                        </video>
+                        />
                       ) : (
                         <div
                           className="story-viewer-video-error"

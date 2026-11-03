@@ -1,0 +1,18 @@
+.narrated-video-copy {
+  padding: 12px 14px;
+}
+
+.narrated-video-script {
+  margin: 0;
+  color: #e7dfce;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.narrated-video-status {
+  margin: 0;
+  padding: 8px 14px 12px;
+  color: #f0d18a;
+  font-size: 12px;
+  line-height: 1.5;
+}

@@ -1,0 +1,38 @@
+{
+  "drum": {
+    "crafting": {
+      "title": "Quy trình chế tác trống đồng",
+      "source": "videos/ngoc-lu-bronze-drum-crafting.mp4",
+      "narration": "Người thợ tạo mẫu và lõi, định hình mặt, tang, thân và chân trống. Khuôn nhiều mảnh ôm lấy mẫu; hoa văn được tạo trước khi nung khuôn và rót đồng. Khi nguội, khuôn được phá, trống được làm sạch và hoàn thiện."
+    },
+    "story": {
+      "title": "Câu chuyện trống đồng Ngọc Lũ",
+      "source": "videos/ngoc-lu-bronze-drum-v2.mp4",
+      "narration": "Năm 1893, khi đắp đê ở Như Trác, Hà Nam, người dân tìm thấy trống đồng lớn dưới bãi cát, rồi đưa về đình Ngọc Lũ. Tháng 4 năm 1903, Viện Viễn Đông Bác cổ sưu tầm trống và đưa vào bảo tàng. Năm 2012, trống được công nhận là Bảo vật quốc gia. Nguyên nhân vết nứt chưa được xác nhận."
+    }
+  },
+  "jar": {
+    "crafting": {
+      "title": "Quy trình chế tác thạp đồng",
+      "source": "videos/dao-thinh-bronze-jar-crafting.mp4",
+      "narration": "Người thợ tạo dáng thân, nắp và hoa văn rồi chuẩn bị mẫu để thử khuôn. Khuôn thạp Đào Thịnh còn đang được nghiên cứu; cảnh này chỉ minh họa một phương án. Hợp kim nóng chảy được rót vào khuôn; khi nguội, thạp được mở khuôn và làm sạch."
+    },
+    "story": {
+      "title": "Câu chuyện thạp đồng Đào Thịnh",
+      "source": "videos/dao-thinh-bronze-jar-v2.mp4",
+      "narration": "Ngày 14 tháng 9 năm 1961, người dân đi đánh cá trên sông Hồng phát hiện thạp đồng khi bờ sông sạt lở. Hiện vật được báo cho chính quyền rồi chuyển đến cơ quan văn hóa Yên Bái. Thạp vỡ nhiều mảnh; bên trong có thạp nhỏ, tro than và di cốt người. Sau phục dựng, thạp được gìn giữ tại bảo tàng."
+    }
+  },
+  "dagger": {
+    "crafting": {
+      "title": "Quy trình chế tác dao găm",
+      "source": "videos/dong-son-bronze-dagger-crafting.mp4",
+      "narration": "Người thợ tạo mẫu cho lưỡi, chắn tay và chuôi dao, rồi chuẩn bị khuôn theo dáng mẫu. Đồng nóng chảy được rót vào khuôn. Khi nguội, vật đúc được lấy ra, sửa phần thừa, mài lưỡi và hoàn thiện bề mặt."
+    },
+    "story": {
+      "title": "Câu chuyện dao găm Đông Sơn",
+      "source": "videos/dong-son-bronze-dagger-v2.mp4",
+      "narration": "Khoảng hai nghìn đến hai nghìn năm trăm năm trước, người Đông Sơn chế tác nhiều kiểu dao găm đồng. Chúng khác nhau ở lưỡi, chắn tay và đốc; một số đốc tạo hình người hoặc động vật. Dao găm dùng để chiến đấu, tự vệ, sinh hoạt và mang ý nghĩa biểu trưng. Video chỉ minh họa chung, không định danh hiện vật."
+    }
+  }
+}

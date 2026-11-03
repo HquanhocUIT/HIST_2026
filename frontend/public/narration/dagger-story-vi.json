@@ -1,0 +1,14 @@
+{
+  "provider": "local",
+  "model": "KorvaTTS-0.1.3",
+  "voice": "ngoc_huyen",
+  "language": "vi",
+  "exhibit": "dagger",
+  "video_kind": "story",
+  "steps": 32,
+  "speed": 0.96,
+  "seed": 42,
+  "fingerprint": "7ff0f853c7d9ff852b87514472893551c6d17f443139272c6db1fab59b3c099c",
+  "duration_seconds": 19.39,
+  "sample_rate": 44100
+}

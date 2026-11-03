@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import type { CustomHotspot } from "./syncStore";
 
 export type ExhibitId = "drum" | "jar" | "dagger";
 
@@ -8,6 +9,10 @@ type InteractiveSceneProps = {
   selectedId: ExhibitId | null;
   onSelect: (id: ExhibitId) => void;
   showDisplayCase?: boolean;
+  hideCase?: boolean;
+  customHotspots?: CustomHotspot[];
+  onSurfaceClick3D?: (localPos: [number, number, number]) => void;
+  onHotspotClick?: (hotspot: CustomHotspot) => void;
 };
 
 type SceneState = {
@@ -99,7 +104,7 @@ function createDisplayCase(artifact: THREE.Group) {
     depthWrite: false,
   });
 
-  // Đế tối phía dưới tủ trưng bày.
+  // Low dark base, similar to the reference display case.
   addMesh(
     caseStructure,
     new THREE.BoxGeometry(caseWidth + 0.1, 0.12, caseDepth + 0.1),
@@ -107,7 +112,7 @@ function createDisplayCase(artifact: THREE.Group) {
     [0, 0.02, 0],
   );
 
-  // Bệ trưng bày màu sáng.
+  // White stepped pedestal.
   addMesh(
     caseStructure,
     createPedestalFrustum(1.12, 1.32, 0.52),
@@ -129,7 +134,7 @@ function createDisplayCase(artifact: THREE.Group) {
     [0, 0.82, 0],
   );
 
-  // Các vách kính.
+  // Glass walls and roof.
   const glassCenterY = caseBottom + caseHeight / 2;
 
   const frontGlass = addMesh(
@@ -172,7 +177,7 @@ function createDisplayCase(artifact: THREE.Group) {
 
   roofGlass.rotation.x = -Math.PI / 2;
 
-  // Khung kim loại đứng ở các góc tủ.
+  // Thin upright bronze posts at the corners.
   const postPositions: [number, number, number][] = [
     [-caseWidth / 2, glassCenterY, -caseDepth / 2],
     [-caseWidth / 2, glassCenterY, caseDepth / 2],
@@ -189,7 +194,7 @@ function createDisplayCase(artifact: THREE.Group) {
     );
   });
 
-  // Thanh khung mảnh ở phần trên và dưới.
+  // Narrow rails at the top and foot of the glass enclosure.
   const railThickness = 0.035;
   const railHeight = 0.035;
   const caseTop = caseBottom + caseHeight;
@@ -227,10 +232,12 @@ function createDisplayCase(artifact: THREE.Group) {
     );
   });
 
+  // A soft warm light illuminates the artifact inside the case.
   const caseLight = new THREE.PointLight(0xffdfaa, 1.4, 4);
   caseLight.position.set(0, 2.85, 0.15);
   caseStructure.add(caseLight);
 
+  // Keep the case and artifact in separate groups so detail views can hide the case.
   artifact.position.y = pedestalTop;
   exhibit.add(caseStructure);
   exhibit.add(artifact);
@@ -317,6 +324,7 @@ function createJar(includeDisplayCase = true) {
     roughness: 0.44,
   });
 
+  // A more cylindrical vessel body that gently narrows toward its base.
   const bodyProfile = [
     new THREE.Vector2(0, 0),
     new THREE.Vector2(0.34, 0),
@@ -335,6 +343,7 @@ function createJar(includeDisplayCase = true) {
     [0, 0.08, 0],
   );
 
+  // Low-relief bronze bands give the body a finished Dong Son look.
   [
     { height: 0.3, radius: 0.46 },
     { height: 0.56, radius: 0.49 },
@@ -352,6 +361,7 @@ function createJar(includeDisplayCase = true) {
     artifact.add(band);
   });
 
+  // The original thạp has a truncated-cone lid; this covers the open mouth.
   const lidBottomY = 1.56;
   const lidHeight = 0.26;
   const lidTopRadius = 0.2;
@@ -371,6 +381,7 @@ function createJar(includeDisplayCase = true) {
     [0, lidBottomY + lidHeight / 2, 0],
   );
 
+  // Rolled rim where the lid meets the vessel.
   const lidRim = new THREE.Mesh(
     new THREE.TorusGeometry(lidBottomRadius, 0.022, 8, 48),
     darkBronze,
@@ -379,6 +390,7 @@ function createJar(includeDisplayCase = true) {
   lidRim.position.y = lidBottomY;
   artifact.add(lidRim);
 
+  // Eleven restrained bands follow the taper of the lid.
   for (let index = 1; index <= 11; index += 1) {
     const t = index / 12;
     const radius =
@@ -395,6 +407,7 @@ function createJar(includeDisplayCase = true) {
 
   const lidTopY = lidBottomY + lidHeight;
 
+  // A small bronze sun medallion replaces the distracting pale open center.
   addMesh(
     artifact,
     new THREE.CylinderGeometry(0.075, 0.075, 0.014, 32),
@@ -410,6 +423,7 @@ function createJar(includeDisplayCase = true) {
   sunRing.position.y = lidTopY + 0.017;
   artifact.add(sunRing);
 
+  // Twelve simple rays echo the documented sun motif without adding figures.
   for (let index = 0; index < 12; index += 1) {
     const angle = (index / 12) * Math.PI * 2;
     const radius = 0.148;
@@ -518,32 +532,42 @@ export function InteractiveScene({
   selectedId,
   onSelect,
   showDisplayCase = true,
+  hideCase,
+  customHotspots = [],
+  onSurfaceClick3D,
+  onHotspotClick,
 }: InteractiveSceneProps) {
+  const effectiveShowDisplayCase =
+    hideCase === undefined ? showDisplayCase : !hideCase;
+
   const containerRef = useRef<HTMLDivElement>(null);
   const sceneStateRef = useRef<SceneState | null>(null);
   const onSelectRef = useRef(onSelect);
   const selectedIdRef = useRef<ExhibitId | null>(selectedId);
-  const showDisplayCaseRef = useRef(showDisplayCase);
+  const showDisplayCaseRef = useRef(effectiveShowDisplayCase);
   const hotspotRefs = useRef(new Map<ExhibitId, HTMLButtonElement>());
+  const customHotspotRefs = useRef(new Map<string, HTMLButtonElement>());
+  const customHotspotsRef = useRef(customHotspots);
+  const onSurfaceClick3DRef = useRef(onSurfaceClick3D);
+  const onHotspotClickRef = useRef(onHotspotClick);
 
   onSelectRef.current = onSelect;
   selectedIdRef.current = selectedId;
-  showDisplayCaseRef.current = showDisplayCase;
+  showDisplayCaseRef.current = effectiveShowDisplayCase;
+  customHotspotsRef.current = customHotspots;
+  onSurfaceClick3DRef.current = onSurfaceClick3D;
+  onHotspotClickRef.current = onHotspotClick;
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    // Không đặt scene.background để camera phía sau renderer nhìn xuyên qua.
     const scene = new THREE.Scene();
 
     const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
     camera.position.set(0, 4.3, 10.4);
 
-    const renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      alpha: true,
-    });
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(0x000000, 0);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -600,11 +624,17 @@ export function InteractiveScene({
       renderer.setSize(width, height);
       camera.aspect = width / height;
 
-      const isMobileScan = selectedIdRef.current === null && width < 760;
+      const isMobileScan =
+        selectedIdRef.current === null && width < 760;
+
       camera.fov = isMobileScan ? 54 : 42;
 
       if (selectedIdRef.current === null) {
-        camera.position.set(0, 4.3, isMobileScan ? 12.2 : 10.4);
+        camera.position.set(
+          0,
+          4.3,
+          isMobileScan ? 12.2 : 10.4,
+        );
       }
 
       camera.updateProjectionMatrix();
@@ -652,11 +682,28 @@ export function InteractiveScene({
         }
 
         const id = object?.userData.exhibitId as ExhibitId | undefined;
+        if (!id) continue;
 
-        if (id) {
-          onSelectRef.current(id);
-          return;
+        const addHotspot = onSurfaceClick3DRef.current;
+        if (addHotspot) {
+          const model = models.get(id);
+
+          if (model) {
+            const artifact =
+              (model.userData.artifact as THREE.Group | undefined) ?? model;
+            artifact.updateWorldMatrix(true, false);
+
+            const localPoint = artifact.worldToLocal(
+              intersection.point.clone(),
+            );
+
+            addHotspot([localPoint.x, localPoint.y, localPoint.z]);
+            return;
+          }
         }
+
+        onSelectRef.current(id);
+        return;
       }
     };
 
@@ -707,6 +754,51 @@ export function InteractiveScene({
       });
     };
 
+    const projectCustomHotspots = () => {
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+      const activeId = selectedIdRef.current;
+      const activeModel = activeId ? models.get(activeId) : undefined;
+
+      customHotspotsRef.current.forEach((hotspot) => {
+        const button = customHotspotRefs.current.get(hotspot.id);
+        if (!button) return;
+
+        if (!activeModel || !activeModel.visible) {
+          button.style.visibility = "hidden";
+          return;
+        }
+
+        // Tọa độ hotspot là tọa độ cục bộ của hiện vật, không phải của tủ kính.
+        const artifact =
+          (activeModel.userData.artifact as THREE.Group | undefined) ??
+          activeModel;
+        artifact.updateWorldMatrix(true, false);
+
+        const position = artifact.localToWorld(
+          new THREE.Vector3(...hotspot.localPos),
+        );
+        position.project(camera);
+
+        const isVisible =
+          width > 0 &&
+          height > 0 &&
+          position.z >= -1 &&
+          position.z <= 1 &&
+          position.x >= -1 &&
+          position.x <= 1 &&
+          position.y >= -1 &&
+          position.y <= 1;
+
+        button.style.visibility = isVisible ? "visible" : "hidden";
+
+        if (!isVisible) return;
+
+        button.style.left = `${(position.x * 0.5 + 0.5) * width}px`;
+        button.style.top = `${(-position.y * 0.5 + 0.5) * height}px`;
+      });
+    };
+
     let animationFrame = 0;
 
     const render = () => {
@@ -714,6 +806,7 @@ export function InteractiveScene({
       controls.update();
       camera.updateMatrixWorld();
       projectHotspots();
+      projectCustomHotspots();
       renderer.render(scene, camera);
     };
 
@@ -762,14 +855,12 @@ export function InteractiveScene({
       model.visible = selectedId === null || isSelected;
       model.scale.setScalar(isSelected ? 1.08 : 1);
 
-      const displayCase = model.userData.displayCase as
-        | THREE.Group
-        | undefined;
+      const displayCase = model.userData.displayCase as THREE.Group | undefined;
       const artifact = model.userData.artifact as THREE.Group | undefined;
 
       if (displayCase && artifact) {
-        displayCase.visible = showDisplayCase;
-        artifact.position.y = showDisplayCase ? pedestalTop : 0;
+        displayCase.visible = effectiveShowDisplayCase;
+        artifact.position.y = effectiveShowDisplayCase ? pedestalTop : 0;
       }
     });
 
@@ -777,19 +868,19 @@ export function InteractiveScene({
       const isMobile = window.innerWidth < 760;
 
       state.camera.fov = isMobile ? 54 : 42;
-      state.camera.position.set(0, 4.3, isMobile ? 12.2 : 10.4);
+      state.camera.position.set(
+        0,
+        4.3,
+        isMobile ? 12.2 : 10.4,
+      );
       state.controls.target.set(0, 1.95, 0);
       state.focusLight.position.set(0, 2.6, 1.2);
     } else {
       const selectedModel = state.models.get(selectedId);
       if (!selectedModel) return;
 
-      const artifact = selectedModel.userData.artifact as
-        | THREE.Group
-        | undefined;
-      const focusBounds = new THREE.Box3().setFromObject(
-        artifact ?? selectedModel,
-      );
+      const artifact = selectedModel.userData.artifact as THREE.Group | undefined;
+      const focusBounds = new THREE.Box3().setFromObject(artifact ?? selectedModel);
       const focusTarget = focusBounds.getCenter(new THREE.Vector3());
 
       state.camera.fov = 42;
@@ -799,16 +890,12 @@ export function InteractiveScene({
         focusTarget.y + 1.5,
         focusTarget.z + 6.2,
       );
-      state.focusLight.position.set(
-        focusTarget.x,
-        focusTarget.y + 0.7,
-        focusTarget.z + 1.2,
-      );
+      state.focusLight.position.set(focusTarget.x, focusTarget.y + 0.7, focusTarget.z + 1.2);
     }
 
     state.camera.updateProjectionMatrix();
     state.controls.update();
-  }, [selectedId, showDisplayCase]);
+  }, [selectedId, effectiveShowDisplayCase]);
 
   return (
     <div className="scene-container" ref={containerRef}>
@@ -830,6 +917,26 @@ export function InteractiveScene({
           aria-pressed={selectedId === id}
           style={{ left: "50%", top: "50%" }}
           onClick={() => onSelectRef.current(id)}
+        >
+          <span className="hotspot-marker" aria-hidden="true" />
+        </button>
+      ))}
+      {customHotspots.map((hotspot) => (
+        <button
+          key={hotspot.id}
+          ref={(element) => {
+            if (element) {
+              customHotspotRefs.current.set(hotspot.id, element);
+            } else {
+              customHotspotRefs.current.delete(hotspot.id);
+            }
+          }}
+          className="exhibit-hotspot"
+          type="button"
+          aria-label={hotspot.title}
+          title={hotspot.title}
+          style={{ left: "50%", top: "50%" }}
+          onClick={() => onHotspotClickRef.current?.(hotspot)}
         >
           <span className="hotspot-marker" aria-hidden="true" />
         </button>
