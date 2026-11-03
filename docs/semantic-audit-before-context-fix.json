@@ -1,0 +1,901 @@
+{
+  "run_at": 1793709204,
+  "corpus_version": "ae1e7fc0c34fdd29",
+  "model": "gemini-3.5-flash-lite",
+  "review_method": "Separate Gemini call checks question relevance, cited support, uncertainty and coverage against hand-written rubrics. This is model-assisted review, not expert historical approval.",
+  "passed": 19,
+  "total": 20,
+  "elapsed_seconds": 197,
+  "results": [
+    {
+      "id": "motif-origin-exact",
+      "artifact": "jar",
+      "question": "hoa văn đc lấy ý tưởng từ đâu",
+      "rubric": "Giải thích bối cảnh thiên nhiên, đời sống và tín ngưỡng; phân biệt diễn giải khảo cổ với ý tưởng chưa được ghi lại của nghệ nhân. Không chỉ lặp số tia/vành/băng.",
+      "passed": true,
+      "response": {
+        "artifact_id": "jar",
+        "status": "answered",
+        "answer": "Các đề tài ấy có thể liên hệ với thiên nhiên, đời sống sông nước và tín ngưỡng của cư dân Đông Sơn: chim, thuyền, chiến binh và mong ước sinh sôi, mùa màng phát triển. Đó là cách các nhà nghiên cứu diễn giải những hình tượng còn lại. Chưa có ghi chép trực tiếp của nghệ nhân để xác nhận chính xác họ đã lấy ý tưởng như thế nào.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "DT-01-symbolism",
+            "title": "Nét đặc sắc nhóm Bảo vật Quốc gia văn hóa Đông Sơn",
+            "url": "https://baotanglichsu.vn/vi/Articles/3096/71184/net-djac-sac-nhom-bao-vat-quoc-gia-van-hoa-djong-son-luu-giu-tai-bao-tang-lich-su-quoc-gia.html",
+            "section": "Ý nghĩa và bối cảnh đề tài trang trí",
+            "excerpt": "Các nhà nghiên cứu diễn giải trang trí thạp qua đời sống, thuyền chiến, mong ước mùa màng sinh sôi và tín ngưỡng phồn thực. Đây là liên hệ từ hình tượng còn lại, không phải ghi chép trực tiếp về quá trình nảy ý tưởng của nghệ nhân."
+          },
+          {
+            "number": 2,
+            "chunk_id": "DT-01-motif-detail",
+            "title": "Giới thiệu Bảo vật quốc gia. 3. Thạp đồng Đào Thịnh và thông điệp của nền văn hóa Đông Sơn",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/13608/gioi-thieu-bao-vat-quoc-gia-3-thap-djong-djao-thinh-va-thong-djiep-cua-nen-van-hoa-djong-son.html",
+            "section": "Các đề tài trang trí",
+            "excerpt": "Ngoài hình mặt trời, trang trí thạp gồm chim mỏ dài, họa tiết hình học và sáu chiến thuyền. Các chiến binh cầm cung, lao, giáo, rìu hoặc dao găm; hình tượng gắn với sinh hoạt và chiến đấu của cư dân Đông Sơn."
+          }
+        ],
+        "elapsed_ms": 2,
+        "usage": {},
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "question_focus": {
+        "intent": "motif_inspiration",
+        "topic": "motif",
+        "operation": "interpret",
+        "multiple": false,
+        "requests": []
+      },
+      "review": {
+        "answers_actual_question": true,
+        "supported_by_evidence": true,
+        "respects_uncertainty": true,
+        "covers_requested_parts": true,
+        "explanation": "Câu trả lời đã giải đáp đúng trọng tâm câu hỏi về nguồn cảm hứng của hoa văn, dựa trên diễn giải của các nhà nghiên cứu về thiên nhiên, đời sống sông nước và tín ngưỡng. Câu trả lời tuân thủ nghiêm ngặt tính không chắc chắn, phân biệt rõ ràng giữa diễn giải khoa học và ghi chép thực tế của nghệ nhân (chưa có ghi chép trực tiếp), đồng thời đáp ứng tốt các tiêu chí trong rubric."
+      }
+    },
+    {
+      "id": "motif-origin-unseen",
+      "artifact": "jar",
+      "question": "Những nét khắc được nghệ nhân sáng tạo dựa trên điều gì?",
+      "rubric": "Đi thẳng vào nguồn đề tài/cảm hứng, thừa nhận không biết tâm ý người làm. Không biến thành danh sách kích thước, niên đại hay số hoa văn.",
+      "passed": true,
+      "response": {
+        "artifact_id": "jar",
+        "status": "answered",
+        "answer": "Các nhà nghiên cứu diễn giải các đề tài trang trí trên thạp gắn liền với đời sống sinh hoạt, chiến đấu, thuyền chiến, mong ước mùa màng sinh sôi và tín ngưỡng phồn thực của cư dân Đông Sơn. Tuy nhiên, đây là những liên hệ được suy luận từ các hình tượng còn lại trên hiện vật, chứ không phải là ghi chép trực tiếp về quá trình nảy sinh ý tưởng của người nghệ nhân xưa.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "DT-01-symbolism",
+            "title": "Nét đặc sắc nhóm Bảo vật Quốc gia văn hóa Đông Sơn",
+            "url": "https://baotanglichsu.vn/vi/Articles/3096/71184/net-djac-sac-nhom-bao-vat-quoc-gia-van-hoa-djong-son-luu-giu-tai-bao-tang-lich-su-quoc-gia.html",
+            "section": "Ý nghĩa và bối cảnh đề tài trang trí",
+            "excerpt": "Các nhà nghiên cứu diễn giải trang trí thạp qua đời sống, thuyền chiến, mong ước mùa màng sinh sôi và tín ngưỡng phồn thực. Đây là liên hệ từ hình tượng còn lại, không phải ghi chép trực tiếp về quá trình nảy ý tưởng của nghệ nhân."
+          },
+          {
+            "number": 2,
+            "chunk_id": "DT-01-motif-detail",
+            "title": "Giới thiệu Bảo vật quốc gia. 3. Thạp đồng Đào Thịnh và thông điệp của nền văn hóa Đông Sơn",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/13608/gioi-thieu-bao-vat-quoc-gia-3-thap-djong-djao-thinh-va-thong-djiep-cua-nen-van-hoa-djong-son.html",
+            "section": "Các đề tài trang trí",
+            "excerpt": "Ngoài hình mặt trời, trang trí thạp gồm chim mỏ dài, họa tiết hình học và sáu chiến thuyền. Các chiến binh cầm cung, lao, giáo, rìu hoặc dao găm; hình tượng gắn với sinh hoạt và chiến đấu của cư dân Đông Sơn."
+          }
+        ],
+        "elapsed_ms": 7737,
+        "usage": {
+          "input_tokens": 2753,
+          "output_tokens": 291,
+          "total_tokens": 3044
+        },
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "question_focus": {
+        "intent": null,
+        "topic": "artifact",
+        "operation": "lookup",
+        "multiple": false,
+        "requests": []
+      },
+      "review": {
+        "answers_actual_question": true,
+        "supported_by_evidence": true,
+        "respects_uncertainty": true,
+        "covers_requested_parts": true,
+        "explanation": "Câu trả lời đi thẳng vào nguồn đề tài và cảm hứng trang trí, đồng thời thừa nhận rõ ràng rằng đây chỉ là sự suy luận của nhà nghiên cứu chứ không có ghi chép trực tiếp về tâm ý của người nghệ nhân. Nội dung hoàn toàn khớp với evidence và đáp ứng đúng tiêu chí."
+      }
+    },
+    {
+      "id": "sun-calendar-premise",
+      "artifact": "jar",
+      "question": "Vì sao phải có đủ 12 tia, có phải lịch 12 tháng không?",
+      "rubric": "Không xác nhận 12 tia là lịch 12 tháng. Nêu rõ thiếu chứng cứ về lý do chọn số tia.",
+      "passed": true,
+      "response": {
+        "artifact_id": "jar",
+        "status": "insufficient_evidence",
+        "answer": "Mình biết hình mặt trời trên nắp có 12 tia, nhưng chưa có căn cứ đủ rõ để nói vì sao người đúc chọn đúng số đó. Chưa thể kết luận rằng nó biểu thị 12 tháng hay một quy ước lịch cụ thể.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "DT-01-decoration",
+            "title": "Thạp Đào Thịnh",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/28056/thap-djao-thinh.html",
+            "section": "Hoa văn",
+            "excerpt": "Nắp thạp Đào Thịnh có mặt trời 12 tia và 11 vành hoa văn. Thân có 25 băng hoa văn, trong đó có hình sáu chiếc thuyền cùng các chiến binh."
+          }
+        ],
+        "elapsed_ms": 1,
+        "usage": {},
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "question_focus": {
+        "intent": "sun_reason",
+        "topic": "motif",
+        "operation": "explain",
+        "multiple": false,
+        "requests": []
+      },
+      "review": {
+        "answers_actual_question": true,
+        "supported_by_evidence": true,
+        "respects_uncertainty": true,
+        "covers_requested_parts": true,
+        "explanation": "Câu trả lời đã đáp ứng đúng các tiêu chí: không xác nhận 12 tia là lịch 12 tháng, nêu rõ thiếu chứng cứ về lý do chọn số tia, đồng thời bao quát đầy đủ cả hai vế câu hỏi và tôn trọng tính không chắc chắn của dữ kiện."
+      }
+    },
+    {
+      "id": "fertility-not-decoration",
+      "artifact": "jar",
+      "question": "Những đôi nam nữ trên nắp có ý nghĩa gì, có đơn thuần để trang trí không?",
+      "rubric": "Giải thích phồn thực, mong sinh sôi/mùa màng, và đó là cách nhà nghiên cứu diễn giải. Không chỉ nói vật đựng lương thực.",
+      "passed": true,
+      "response": {
+        "artifact_id": "jar",
+        "status": "answered",
+        "answer": "Các tượng đôi nam nữ trên nắp được các nhà nghiên cứu gắn với tín ngưỡng phồn thực: mong con người và vạn vật sinh sôi, mùa màng phát triển. Đây là cách giải thích trong bối cảnh văn hóa Đông Sơn, không chỉ là trang trí cho đẹp.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "DT-01-symbolism",
+            "title": "Nét đặc sắc nhóm Bảo vật Quốc gia văn hóa Đông Sơn",
+            "url": "https://baotanglichsu.vn/vi/Articles/3096/71184/net-djac-sac-nhom-bao-vat-quoc-gia-van-hoa-djong-son-luu-giu-tai-bao-tang-lich-su-quoc-gia.html",
+            "section": "Ý nghĩa và bối cảnh đề tài trang trí",
+            "excerpt": "Các nhà nghiên cứu diễn giải trang trí thạp qua đời sống, thuyền chiến, mong ước mùa màng sinh sôi và tín ngưỡng phồn thực. Đây là liên hệ từ hình tượng còn lại, không phải ghi chép trực tiếp về quá trình nảy ý tưởng của nghệ nhân."
+          },
+          {
+            "number": 2,
+            "chunk_id": "DT-01-meaning",
+            "title": "Thạp Đào Thịnh",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/28056/thap-djao-thinh.html",
+            "section": "Ý nghĩa và công dụng",
+            "excerpt": "Các tượng đôi nam nữ trên nắp thạp được bài nguồn liên hệ với tín ngưỡng phồn thực và mong muốn sinh sôi. Thạp dùng dự trữ lương thực; than tro và răng người trong thạp được Bảo tàng diễn giải là bằng chứng về việc dùng thạp trong mai táng."
+          }
+        ],
+        "elapsed_ms": 1,
+        "usage": {},
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "question_focus": {
+        "intent": "statue_meaning",
+        "topic": "motif",
+        "operation": "interpret",
+        "multiple": false,
+        "requests": []
+      },
+      "review": {
+        "answers_actual_question": true,
+        "supported_by_evidence": true,
+        "respects_uncertainty": true,
+        "covers_requested_parts": true,
+        "explanation": "Câu trả lời đã giải thích đúng ý nghĩa phồn thực và mong sinh sôi/mùa màng theo cách diễn giải của nhà nghiên cứu, đồng thời làm rõ rằng nó không đơn thuần chỉ để trang trí. Các thông tin đều có căn cứ từ evidence và tôn trọng tính chất diễn giải."
+      }
+    },
+    {
+      "id": "unsupported-lineage",
+      "artifact": "jar",
+      "question": "Nếu hình chim là vật tổ thì thạp này dành cho dòng họ nào?",
+      "rubric": "Không chấp nhận tiền đề chim chắc chắn là vật tổ hay bịa tên dòng họ. Cần chỉ rõ thiếu căn cứ để suy ra dòng họ/chủ nhân.",
+      "passed": true,
+      "response": {
+        "artifact_id": "jar",
+        "status": "answered",
+        "answer": "Hiện vật không có ghi chép trực tiếp hay tài liệu nào xác định thạp này dành riêng cho dòng họ nào, bạn nhé. Các dữ liệu lịch sử và danh tính chủ nhân cụ thể của thạp vẫn chưa được xác định.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "DT-01-use",
+            "title": "Bảo vật quốc gia: Thạp Đào Thịnh — hồ sơ năm 2023",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/73800/bao-vat-quoc-gia-thap-djao-thinh.html",
+            "section": "Chức năng",
+            "excerpt": "Thạp được mô tả là đồ chứa lương thực hoặc hạt giống. Than tro và răng người bên trong được bảo tàng diễn giải liên quan đến việc dùng thạp làm quan tài; danh tính chủ nhân chưa được xác định."
+          }
+        ],
+        "elapsed_ms": 10939,
+        "usage": {
+          "input_tokens": 2756,
+          "output_tokens": 150,
+          "total_tokens": 2906
+        },
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "question_focus": {
+        "intent": null,
+        "topic": "motif",
+        "operation": "reason",
+        "multiple": false,
+        "requests": []
+      },
+      "review": {
+        "answers_actual_question": true,
+        "supported_by_evidence": true,
+        "respects_uncertainty": true,
+        "covers_requested_parts": true,
+        "explanation": "Câu trả lời đã trực tiếp giải quyết câu hỏi của người dùng, làm rõ rằng không có căn cứ để xác định thạp dành cho dòng họ nào dựa theo đúng tiêu chí chấm. Câu trả lời hoàn toàn phù hợp với evidence cho biết danh tính chủ nhân chưa được xác định, không tự bịa đặt tên dòng họ và tôn trọng tính không chắc chắn."
+      }
+    },
+    {
+      "id": "material-plus-use",
+      "artifact": "jar",
+      "question": "Thạp làm bằng gì và có công dụng nào?",
+      "rubric": "Trả lời cả chất liệu đồng và công dụng chứa lương thực/hạt giống; có thể nhắc diễn giải mai táng. Không bỏ một trong hai ý.",
+      "passed": true,
+      "response": {
+        "artifact_id": "jar",
+        "status": "answered",
+        "answer": "Thạp Đào Thịnh được làm bằng đồng. Về công dụng, thạp được dùng để dự trữ lương thực hoặc hạt giống, đồng thời được bảo tàng diễn giải có liên quan đến việc dùng thạp làm quan tài trong mai táng dựa vào sự xuất hiện của than tro và răng người bên trong.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "DT-01-period",
+            "title": "Thạp Đào Thịnh",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/28056/thap-djao-thinh.html",
+            "section": "Niên đại và chất liệu",
+            "excerpt": "Thạp Đào Thịnh làm bằng đồng, thuộc văn hóa Đông Sơn, khoảng 2.500–2.000 năm trước theo bài Bảo tàng năm 2017."
+          },
+          {
+            "number": 2,
+            "chunk_id": "DT-01-use",
+            "title": "Bảo vật quốc gia: Thạp Đào Thịnh — hồ sơ năm 2023",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/73800/bao-vat-quoc-gia-thap-djao-thinh.html",
+            "section": "Chức năng",
+            "excerpt": "Thạp được mô tả là đồ chứa lương thực hoặc hạt giống. Than tro và răng người bên trong được bảo tàng diễn giải liên quan đến việc dùng thạp làm quan tài; danh tính chủ nhân chưa được xác định."
+          }
+        ],
+        "elapsed_ms": 5941,
+        "usage": {
+          "input_tokens": 2755,
+          "output_tokens": 238,
+          "total_tokens": 2993
+        },
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "question_focus": {
+        "intent": null,
+        "topic": "artifact",
+        "operation": "multiple",
+        "multiple": true,
+        "requests": [
+          "material",
+          "use"
+        ]
+      },
+      "review": {
+        "answers_actual_question": true,
+        "supported_by_evidence": true,
+        "respects_uncertainty": true,
+        "covers_requested_parts": true,
+        "explanation": "Câu trả lời đã nêu đầy đủ cả chất liệu (bằng đồng) và công dụng (dự trữ lương thực, hạt giống và diễn giải mai táng). Tất cả các ý đều có chứng cứ xác thực trong evidence và tôn trọng tính diễn giải của bảo tàng."
+      }
+    },
+    {
+      "id": "height-plus-inventory",
+      "artifact": "jar",
+      "question": "Thạp cao bao nhiêu và hiện có số đăng ký gì?",
+      "rubric": "Nêu số đăng ký LSb.32967 và cảnh báo chiều cao không thống nhất giữa nguồn (98/87/90 cm), không chốt một số duy nhất hoặc bịa lý do do nắp.",
+      "passed": true,
+      "response": {
+        "artifact_id": "jar",
+        "status": "answered",
+        "answer": "Thạp Đào Thịnh có các số đo chiều cao khác nhau tùy theo tài liệu, cụ thể là 98 cm trong bài năm 2013, 90 cm trong danh mục bảo vật năm 2023 và 87 cm theo nghiên cứu năm 2019. Hiện vật này có số đăng ký là LSb. 32967 theo danh mục năm 2023.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "DT-01-size",
+            "title": "Giới thiệu Bảo vật quốc gia. 3. Thạp đồng Đào Thịnh và thông điệp của nền văn hóa Đông Sơn",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/13608/gioi-thieu-bao-vat-quoc-gia-3-thap-djong-djao-thinh-va-thong-djiep-cua-nen-van-hoa-djong-son.html",
+            "section": "Kích thước và hình dáng",
+            "excerpt": "Thạp Đào Thịnh cao 98 cm; đường kính miệng 61 cm, đáy 60 cm. Thân hình trụ thuôn xuống đáy; nắp có dạng nón cụt."
+          },
+          {
+            "number": 2,
+            "chunk_id": "DT-01-size-2023",
+            "title": "Bảo vật quốc gia: Thạp Đào Thịnh — hồ sơ năm 2023",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/73800/bao-vat-quoc-gia-thap-djao-thinh.html",
+            "section": "Kích thước danh mục năm 2023",
+            "excerpt": "Danh mục bảo vật năm 2023 ghi thạp Đào Thịnh cao 90 cm, miệng 61 cm, đáy 60 cm. Chiều cao khác 98 cm trong bài năm 2013; tài liệu không giải thích đó có phải khác phạm vi đo hay không."
+          },
+          {
+            "number": 3,
+            "chunk_id": "DT-01-size-2019",
+            "title": "Nét đặc sắc nhóm Bảo vật Quốc gia văn hóa Đông Sơn",
+            "url": "https://baotanglichsu.vn/vi/Articles/3096/71184/net-djac-sac-nhom-bao-vat-quoc-gia-van-hoa-djong-son-luu-giu-tai-bao-tang-lich-su-quoc-gia.html",
+            "section": "Kích thước nghiên cứu năm 2019",
+            "excerpt": "Nghiên cứu năm 2019 ghi thạp cao 87 cm, đường kính nắp 64 cm, đáy 60 cm. Không đồng nhất đường kính nắp với đường kính miệng; chưa giải thích khác biệt chiều cao giữa các hồ sơ."
+          },
+          {
+            "number": 4,
+            "chunk_id": "DT-01-inventory",
+            "title": "Bảo vật quốc gia: Thạp Đào Thịnh — hồ sơ năm 2023",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/73800/bao-vat-quoc-gia-thap-djao-thinh.html",
+            "section": "Số đăng ký và công nhận",
+            "excerpt": "Danh mục năm 2023 ghi số đăng ký thạp Đào Thịnh là LSb. 32967. Hiện vật được công nhận theo Quyết định 1426/QĐ-TTg ngày 1/10/2012."
+          }
+        ],
+        "elapsed_ms": 6553,
+        "usage": {
+          "input_tokens": 2757,
+          "output_tokens": 467,
+          "total_tokens": 3224
+        },
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "question_focus": {
+        "intent": null,
+        "topic": "artifact",
+        "operation": "multiple",
+        "multiple": true,
+        "requests": [
+          "height",
+          "inventory"
+        ]
+      },
+      "review": {
+        "answers_actual_question": true,
+        "supported_by_evidence": true,
+        "respects_uncertainty": true,
+        "covers_requested_parts": true,
+        "explanation": "Câu trả lời đã nêu đầy đủ số đăng ký LSb. 32967, đồng thời tôn trọng độ bất định bằng cách nêu rõ các mức chiều cao khác nhau từ các nguồn (98 cm, 90 cm, 87 cm) mà không chốt một số duy nhất. Các thông tin này hoàn toàn khớp với evidence được cung cấp."
+      }
+    },
+    {
+      "id": "name-versus-findspot",
+      "artifact": "drum",
+      "question": "Tại sao nó mang tên Ngọc Lũ nhưng lại tìm ra ở Như Trác?",
+      "rubric": "Phân biệt nơi tìm thấy Như Trác và nơi đưa về thờ đình Ngọc Lũ; không nói hai địa điểm là một hay Ngọc Lũ là tên người đúc.",
+      "passed": true,
+      "response": {
+        "artifact_id": "drum",
+        "status": "answered",
+        "answer": "Trống được tìm thấy khi đắp đê ở Như Trác, huyện Nam Xang, rồi được đưa về đình làng Ngọc Lũ. Hồ sơ năm 2017 ghi mốc 1893; một số bài khác ghi khoảng 1893–1894. Những địa danh này được giữ theo tài liệu lịch sử.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "NL-01-discovery",
+            "title": "Bảo vật quốc gia Việt Nam: Trống đồng Ngọc Lũ",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/28538/bao-vat-quoc-gia-viet-nam-trong-djong-ngoc-lu.html",
+            "section": "Phát hiện và tên gọi",
+            "excerpt": "Trống được tìm thấy năm 1893 khi đắp đê Trần Thủy ở xã Như Trác, huyện Nam Xang. Sau đó trống được đưa về đình làng Ngọc Lũ. Địa danh được giữ theo bài nguồn; không dùng chúng để khẳng định địa giới hiện nay."
+          },
+          {
+            "number": 2,
+            "chunk_id": "NL-01-discoverers",
+            "title": "Giới thiệu bảo vật quốc gia: Trống đồng Ngọc Lũ",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/13602/gioi-thieu-bao-vat-quoc-gia-1-trong-djong-ngoc-lu-hien-vat-tieu-bieu-nhat-cua-nen-van-hoa-djong-son.html",
+            "section": "Người phát hiện và tên gọi",
+            "excerpt": "Bài năm 2013 nêu Nguyễn Văn Y, Nguyễn Văn Túc cùng những người đắp đê phát hiện trống khoảng 1893–1894 tại Như Trác. Trống được đưa về đình làng Ngọc Lũ, vì vậy không được đồng nhất làng Ngọc Lũ với địa điểm đào thấy."
+          }
+        ],
+        "elapsed_ms": 1,
+        "usage": {},
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "question_focus": {
+        "intent": "discovery",
+        "topic": "artifact",
+        "operation": "lookup",
+        "multiple": false,
+        "requests": []
+      },
+      "review": {
+        "answers_actual_question": true,
+        "supported_by_evidence": true,
+        "respects_uncertainty": true,
+        "covers_requested_parts": true,
+        "explanation": "Câu trả lời đã giải đáp chính xác lý do trống mang tên Ngọc Lũ dù được tìm thấy ở Như Trác (vì được đưa về đình làng Ngọc Lũ), đồng thời phân biệt rõ hai địa điểm này theo đúng yêu cầu của rubric và dựa hoàn toàn vào evidence."
+      }
+    },
+    {
+      "id": "weight-not-age-inference",
+      "artifact": "drum",
+      "question": "Trống này nặng bao nhiêu, có thể từ khối lượng suy ra tuổi không?",
+      "rubric": "Nêu 86 kg, không suy ra niên đại từ riêng khối lượng; nếu nhắc khoảng niên đại cần nói đó là định niên đại khảo cổ riêng.",
+      "passed": true,
+      "response": {
+        "artifact_id": "drum",
+        "status": "answered",
+        "answer": "Trống đồng Ngọc Lũ có khối lượng là 86 kg theo các tài liệu. Tuy nhiên, dữ liệu hiện có chưa cung cấp căn cứ để suy ra tuổi của trống từ khối lượng này.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "NL-01-weight",
+            "title": "Giới thiệu bảo vật quốc gia: Trống đồng Ngọc Lũ",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/13602/gioi-thieu-bao-vat-quoc-gia-1-trong-djong-ngoc-lu-hien-vat-tieu-bieu-nhat-cua-nen-van-hoa-djong-son.html",
+            "section": "Khối lượng và phân loại",
+            "excerpt": "Hồ sơ năm 2013 ghi trống Ngọc Lũ nặng 86 kg và xếp loại Heger I."
+          }
+        ],
+        "elapsed_ms": 5649,
+        "usage": {
+          "input_tokens": 2689,
+          "output_tokens": 122,
+          "total_tokens": 2811
+        },
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "question_focus": {
+        "intent": null,
+        "topic": "artifact",
+        "operation": "reason",
+        "multiple": false,
+        "requests": []
+      },
+      "review": {
+        "answers_actual_question": true,
+        "supported_by_evidence": true,
+        "respects_uncertainty": true,
+        "covers_requested_parts": true,
+        "explanation": "Câu trả lời đã nêu đúng khối lượng 86 kg theo evidence, đồng thời từ chối việc suy ra tuổi từ khối lượng đúng theo yêu cầu của rubric."
+      }
+    },
+    {
+      "id": "face-versus-base",
+      "artifact": "drum",
+      "question": "Đường kính mặt và chân có cùng số đo không?",
+      "rubric": "Phân biệt mặt 79,3 cm với chân 80/81 cm tùy nguồn, không nói chúng bằng nhau. Cần nhận biết khác biệt số đo chân giữa hồ sơ.",
+      "passed": true,
+      "response": {
+        "artifact_id": "drum",
+        "status": "insufficient_evidence",
+        "answer": "Chi tiết này mình chưa có đủ thông tin để khẳng định. Bạn có thể hỏi thêm về chất liệu, hình dáng hoặc hoa văn của hiện vật nhé.",
+        "citations": [],
+        "elapsed_ms": 6145,
+        "usage": {
+          "input_tokens": 2692,
+          "output_tokens": 244,
+          "total_tokens": 2936
+        },
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "question_focus": {
+        "intent": null,
+        "topic": "artifact",
+        "operation": "compare",
+        "multiple": true,
+        "requests": [
+          "face_diameter",
+          "base_diameter"
+        ]
+      },
+      "review": {
+        "answers_actual_question": true,
+        "supported_by_evidence": true,
+        "respects_uncertainty": true,
+        "covers_requested_parts": true,
+        "explanation": "Câu trả lời đã từ chối khéo léo vì thiếu thông tin theo đúng trạng thái insufficient_evidence và tôn trọng tính bất định, không khẳng định sai số đo của mặt và chân."
+      }
+    },
+    {
+      "id": "curved-guard-reason",
+      "artifact": "dagger",
+      "question": "Tại sao chắn tay lại cong như sừng trâu?",
+      "rubric": "Có thể mô tả dáng chắn tay nhóm Lạc Việt nhưng phải thừa nhận chưa có lý do thiết kế đã xác nhận. Không bịa vì phong thủy, thờ thần trâu, cơ chế cản kiếm hay mục đích khác như kết luận.",
+      "passed": true,
+      "response": {
+        "artifact_id": "dagger",
+        "status": "answered",
+        "answer": "Theo mình được biết, ở dòng dao găm Đông Sơn Lạc Việt, hai nhánh chắn tay được uốn cong như râu dương xỉ hoặc sừng trâu. Tài liệu hiện tại chỉ ghi nhận hình dáng đặc trưng này chứ chưa có ghi chép hay lời kể nào giải thích lý do cụ thể tại sao người xưa lại tạo hình như vậy.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "DG-DS-01-lacviet",
+            "title": "Văn hóa Đông Sơn - Chiến tranh và Hòa bình (kỳ 22): Những lưỡi dao găm mang đầy tính biểu trưng",
+            "url": "https://baotanglichsu.vn/vi/Articles/3101/76005/van-hoa-djong-son-chien-tranh-va-hoa-binh-ky-22-nhung-luoi-dao-gam-mang-djay-tinh-bieu-trung.html",
+            "section": "Dáng Lạc Việt",
+            "excerpt": "Dao găm Đông Sơn Lạc Việt có lưỡi hình lá tre; hai nhánh chắn tay uốn cong như râu dương xỉ hoặc sừng trâu. Phần lớn lưỡi để trơn; một số mẫu có trang trí."
+          }
+        ],
+        "elapsed_ms": 11783,
+        "usage": {
+          "input_tokens": 1740,
+          "output_tokens": 180,
+          "total_tokens": 1920
+        },
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "question_focus": {
+        "intent": null,
+        "topic": "artifact",
+        "operation": "explain",
+        "multiple": false,
+        "requests": []
+      },
+      "review": {
+        "answers_actual_question": true,
+        "supported_by_evidence": true,
+        "respects_uncertainty": true,
+        "covers_requested_parts": true,
+        "explanation": "Câu trả lời đã trực tiếp giải quyết câu hỏi của người dùng, đối chiếu chính xác với evidence về hình dáng chắn tay, đồng thời tuân thủ đúng rubric khi thừa nhận chưa có ghi chép giải thích lý do cụ thể mà không bịa đặt nguyên nhân."
+      }
+    },
+    {
+      "id": "power-meaning-not-shape",
+      "artifact": "dagger",
+      "question": "Cán tượng người có liên hệ gì với quyền lực không?",
+      "rubric": "Giải thích cách liên hệ một số cán tượng quý tộc/thủ lĩnh với địa vị, quyền lực; không chỉ liệt kê dạng chuôi; không áp dụng cho mọi dao hoặc định danh mô hình demo.",
+      "passed": true,
+      "response": {
+        "artifact_id": "dagger",
+        "status": "answered",
+        "answer": "Một số dao găm quý tộc có cán tượng được nhà nghiên cứu liên hệ với quyền lực và địa vị thủ lĩnh. Ý nghĩa này thuộc các mẫu đã được mô tả, không nên gán cho mọi con dao hoặc mặc định là ý nghĩa của mô hình chưa định danh.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "DG-DS-01-symbolism",
+            "title": "Văn hóa Đông Sơn - Chiến tranh và Hòa bình (kỳ 22): Những lưỡi dao găm mang đầy tính biểu trưng",
+            "url": "https://baotanglichsu.vn/vi/Articles/3101/76005/van-hoa-djong-son-chien-tranh-va-hoa-binh-ky-22-nhung-luoi-dao-gam-mang-djay-tinh-bieu-trung.html",
+            "section": "Ý nghĩa tượng cán",
+            "excerpt": "Tác giả liên hệ một số dao găm quý tộc có cán tượng thủ lĩnh với quyền lực và địa vị. Các mẫu có tạo hình người, thú, hình học; không có lời kể của nghệ nhân để xác định ý tưởng riêng của mô hình demo."
+          }
+        ],
+        "elapsed_ms": 1,
+        "usage": {},
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "question_focus": {
+        "intent": "motif_meaning",
+        "topic": "motif",
+        "operation": "interpret",
+        "multiple": false,
+        "requests": []
+      },
+      "review": {
+        "answers_actual_question": true,
+        "supported_by_evidence": true,
+        "respects_uncertainty": true,
+        "covers_requested_parts": true,
+        "explanation": "Câu trả lời đã giải thích đúng cách nhà nghiên cứu liên hệ cán tượng quý tộc/thủ lĩnh với quyền lực và địa vị, đồng thời tuân thủ nguyên tắc không gán ghép cho mọi con dao hay mô hình chưa định danh dựa trên evidence và project_context."
+      }
+    },
+    {
+      "id": "specific-dagger-false-identity",
+      "artifact": "dagger",
+      "question": "Mô hình này có phải dao găm Làng Vạc tìm năm 1973 và dài 40 cm không?",
+      "rubric": "Không gán mô hình cho Làng Vạc, năm 1973 hay chiều dài 40 cm. Nói rõ chưa xác định tiêu bản riêng cho mô hình.",
+      "passed": true,
+      "response": {
+        "artifact_id": "dagger",
+        "status": "insufficient_evidence",
+        "answer": "Chi tiết này mình chưa có đủ thông tin để khẳng định. Bạn có thể hỏi thêm về chất liệu, hình dáng hoặc hoa văn của hiện vật nhé.",
+        "citations": [],
+        "elapsed_ms": 10950,
+        "usage": {
+          "input_tokens": 1756,
+          "output_tokens": 132,
+          "total_tokens": 1888
+        },
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "question_focus": {
+        "intent": null,
+        "topic": "artifact",
+        "operation": "lookup",
+        "multiple": false,
+        "requests": []
+      },
+      "review": {
+        "answers_actual_question": true,
+        "supported_by_evidence": true,
+        "respects_uncertainty": true,
+        "covers_requested_parts": true,
+        "explanation": "Câu trả lời đã từ chối xác nhận các thông tin chưa có căn cứ về mô hình dao găm Làng Vạc, năm 1973 và chiều dài 40 cm theo đúng tiêu chí và project_context, đồng thời từ chối khéo léo và gợi ý hướng hỏi khác."
+      }
+    },
+    {
+      "id": "model-versus-artifact",
+      "artifact": "jar",
+      "question": "Tại sao nguyên bản có tượng mà mô hình không có?",
+      "rubric": "Giải thích mô hình demo đơn giản hóa/chưa thể hiện đủ chi tiết, không suy ra tượng nguyên bản đã biến mất hay người xưa không làm tượng.",
+      "passed": true,
+      "response": {
+        "artifact_id": "jar",
+        "status": "insufficient_evidence",
+        "answer": "Chi tiết này mình chưa có đủ thông tin để khẳng định. Bạn có thể hỏi thêm về chất liệu, hình dáng hoặc hoa văn của hiện vật nhé.",
+        "citations": [],
+        "elapsed_ms": 13646,
+        "usage": {
+          "input_tokens": 2752,
+          "output_tokens": 48,
+          "total_tokens": 2800
+        },
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "question_focus": {
+        "intent": null,
+        "topic": "artifact",
+        "operation": "explain",
+        "multiple": false,
+        "requests": []
+      },
+      "review": {
+        "answers_actual_question": true,
+        "supported_by_evidence": true,
+        "respects_uncertainty": true,
+        "covers_requested_parts": true,
+        "explanation": "Câu trả lời đã từ chối đưa ra khẳng định khi không có đủ thông tin, tôn trọng tính bất định và đúng giới hạn theo yêu cầu của hệ thống kiểm định."
+      }
+    },
+    {
+      "id": "remaining-statues-not-original-count",
+      "artifact": "jar",
+      "question": "Có đúng hiện còn bốn đôi tượng nguyên vẹn không?",
+      "rubric": "Không xác nhận hiện còn bốn đôi nguyên vẹn. Phân biệt số ban đầu bốn với hồ sơ 2013 ghi còn hai, và thiếu kiểm kê mới nhất.",
+      "passed": true,
+      "response": {
+        "artifact_id": "jar",
+        "status": "answered",
+        "answer": "Không đúng đâu bạn nhé, theo tài liệu thì ban đầu có bốn cặp tượng nhưng hiện chỉ còn lại hai cặp thôi.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "DT-01-restoration",
+            "title": "Giới thiệu Bảo vật quốc gia. 3. Thạp đồng Đào Thịnh và thông điệp của nền văn hóa Đông Sơn",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/13608/gioi-thieu-bao-vat-quoc-gia-3-thap-djong-djao-thinh-va-thong-djiep-cua-nen-van-hoa-djong-son.html",
+            "section": "Tình trạng phục dựng",
+            "excerpt": "Bài năm 2013 ghi nắp mất núm và hai khối tượng; bốn cặp tượng ban đầu hiện còn hai cặp."
+          }
+        ],
+        "elapsed_ms": 1831,
+        "usage": {
+          "input_tokens": 2752,
+          "output_tokens": 108,
+          "total_tokens": 2860
+        },
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "question_focus": {
+        "intent": null,
+        "topic": "artifact",
+        "operation": "lookup",
+        "multiple": false,
+        "requests": []
+      },
+      "review": {
+        "answers_actual_question": true,
+        "supported_by_evidence": true,
+        "respects_uncertainty": true,
+        "covers_requested_parts": true,
+        "explanation": "Câu trả lời đã trực tiếp phủ nhận việc hiện còn bốn đôi tượng, đồng thời căn cứ đúng vào dữ kiện trong evidence cho biết ban đầu có bốn cặp nhưng hiện chỉ còn hai cặp. Câu trả lời tuân thủ đúng giới hạn và các tiêu chí chấm điểm."
+      }
+    },
+    {
+      "id": "pattern-process-not-symbolism",
+      "artifact": "jar",
+      "question": "Các đường hoa văn này được vạch sau khi đúc hay làm từ khuôn?",
+      "rubric": "Giải thích thông tin nghiên cứu về vạch hoa văn trên khuôn trước rót đồng, với giới hạn phạm vi nghiên cứu. Không trả lời bằng nguồn cảm hứng hay số băng hoa văn.",
+      "passed": true,
+      "response": {
+        "artifact_id": "jar",
+        "status": "answered",
+        "answer": "Nghiên cứu về nắp thạp giải thích rằng hoa văn đã được vạch trên khuôn trước lúc rót đồng; vị trí gắn chân tượng làm khuôn và đường hoa văn bị gián đoạn. Điều này giúp hiểu một cách tạo họa tiết khi đúc, nhưng chưa đủ để mô tả mọi bước làm từng hoa văn trên toàn thạp.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "DT-01-pattern-making",
+            "title": "Người Đông Sơn: Những tượng rời dùng để gắn vào một đồ vật khác",
+            "url": "https://baotanglichsu.vn/vi/Articles/3101/74578/nguoi-djong-son-ky-17-nhung-tuong-roi-djong-son-dung-dje-gan-vao-mot-djo-vat-khac.html",
+            "section": "Hoa văn trên khuôn",
+            "excerpt": "Nghiên cứu năm 2024 giải thích hoa văn đã được vạch trên khuôn trước khi rót đồng; ở vị trí táp chân tượng, khuôn bị xẻ nên hoa văn gián đoạn hoặc nhòe. Nhận định này không phải quy trình từng bước cho mọi họa tiết của toàn bộ thạp."
+          }
+        ],
+        "elapsed_ms": 1,
+        "usage": {},
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "question_focus": {
+        "intent": "pattern_manufacture",
+        "topic": "motif",
+        "operation": "process",
+        "multiple": false,
+        "requests": []
+      },
+      "review": {
+        "answers_actual_question": true,
+        "supported_by_evidence": true,
+        "respects_uncertainty": true,
+        "covers_requested_parts": true,
+        "explanation": "Câu trả lời đúng vào trọng tâm câu hỏi (vạch sau khi đúc hay làm từ khuôn), dựa hoàn toàn vào evidence (vạch trên khuôn trước khi rót), tôn trọng mức độ chắc chắn khi nêu rõ giới hạn nghiên cứu, không lan man sang nguồn cảm hứng hay số băng hoa văn theo đúng rubric."
+      }
+    },
+    {
+      "id": "followup-origin",
+      "artifact": "jar",
+      "setup": [
+        "Hoa văn trên thạp có gì đặc biệt?"
+      ],
+      "question": "Cảm hứng từ đâu?",
+      "rubric": "Hiểu câu hỏi tiếp đang hỏi cảm hứng của hoa văn, không đổi sang nơi phát hiện Đào Thịnh hay ngày tìm thấy. Giữ giới hạn về ý tưởng nghệ nhân.",
+      "passed": true,
+      "response": {
+        "artifact_id": "jar",
+        "status": "answered",
+        "answer": "Các đề tài ấy có thể liên hệ với thiên nhiên, đời sống sông nước và tín ngưỡng của cư dân Đông Sơn: chim, thuyền, chiến binh và mong ước sinh sôi, mùa màng phát triển. Đó là cách các nhà nghiên cứu diễn giải những hình tượng còn lại. Chưa có ghi chép trực tiếp của nghệ nhân để xác nhận chính xác họ đã lấy ý tưởng như thế nào.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "DT-01-symbolism",
+            "title": "Nét đặc sắc nhóm Bảo vật Quốc gia văn hóa Đông Sơn",
+            "url": "https://baotanglichsu.vn/vi/Articles/3096/71184/net-djac-sac-nhom-bao-vat-quoc-gia-van-hoa-djong-son-luu-giu-tai-bao-tang-lich-su-quoc-gia.html",
+            "section": "Ý nghĩa và bối cảnh đề tài trang trí",
+            "excerpt": "Các nhà nghiên cứu diễn giải trang trí thạp qua đời sống, thuyền chiến, mong ước mùa màng sinh sôi và tín ngưỡng phồn thực. Đây là liên hệ từ hình tượng còn lại, không phải ghi chép trực tiếp về quá trình nảy ý tưởng của nghệ nhân."
+          },
+          {
+            "number": 2,
+            "chunk_id": "DT-01-motif-detail",
+            "title": "Giới thiệu Bảo vật quốc gia. 3. Thạp đồng Đào Thịnh và thông điệp của nền văn hóa Đông Sơn",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/13608/gioi-thieu-bao-vat-quoc-gia-3-thap-djong-djao-thinh-va-thong-djiep-cua-nen-van-hoa-djong-son.html",
+            "section": "Các đề tài trang trí",
+            "excerpt": "Ngoài hình mặt trời, trang trí thạp gồm chim mỏ dài, họa tiết hình học và sáu chiến thuyền. Các chiến binh cầm cung, lao, giáo, rìu hoặc dao găm; hình tượng gắn với sinh hoạt và chiến đấu của cư dân Đông Sơn."
+          }
+        ],
+        "elapsed_ms": 0,
+        "usage": {},
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "question_focus": {
+        "intent": "motif_inspiration",
+        "topic": "motif",
+        "operation": "interpret",
+        "multiple": false,
+        "requests": []
+      },
+      "review": {
+        "answers_actual_question": true,
+        "supported_by_evidence": true,
+        "respects_uncertainty": true,
+        "covers_requested_parts": true,
+        "explanation": "Câu trả lời đã bám sát câu hỏi về cảm hứng nghệ thuật, giải thích dựa trên diễn giải của nhà nghiên cứu về thiên nhiên và đời sống sông nước, đồng thời tuân thủ quy tắc không khẳng định tâm ý nghệ nhân khi không có ghi chép trực tiếp."
+      }
+    },
+    {
+      "id": "followup-explicit-topic-change",
+      "artifact": "jar",
+      "setup": [
+        "Hoa văn lấy ý tưởng từ đâu?"
+      ],
+      "question": "Còn chất liệu thì sao?",
+      "rubric": "Đổi sang trả lời chất liệu đồng, không tiếp tục lặp tín ngưỡng và hoa văn.",
+      "passed": true,
+      "response": {
+        "artifact_id": "jar",
+        "status": "answered",
+        "answer": "Thạp Đào Thịnh được làm bằng đồng nhé.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "DT-01-period",
+            "title": "Thạp Đào Thịnh",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/28056/thap-djao-thinh.html",
+            "section": "Niên đại và chất liệu",
+            "excerpt": "Thạp Đào Thịnh làm bằng đồng, thuộc văn hóa Đông Sơn, khoảng 2.500–2.000 năm trước theo bài Bảo tàng năm 2017."
+          }
+        ],
+        "elapsed_ms": 0,
+        "usage": {},
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "question_focus": {
+        "intent": "material",
+        "topic": "artifact",
+        "operation": "lookup",
+        "multiple": false,
+        "requests": []
+      },
+      "review": {
+        "answers_actual_question": true,
+        "supported_by_evidence": true,
+        "respects_uncertainty": true,
+        "covers_requested_parts": true,
+        "explanation": "Câu trả lời đã chuyển sang đề cập đến chất liệu đồng theo đúng yêu cầu của rubric, đồng thời dựa trên chứng cứ chắc chắn từ evidence và không lặp lại nội dung về hoa văn hay tín ngưỡng."
+      }
+    },
+    {
+      "id": "followup-conflict-explanation",
+      "artifact": "jar",
+      "setup": [
+        "Thạp cao bao nhiêu?"
+      ],
+      "question": "Vậy vì sao những con số đó khác nhau?",
+      "rubric": "Nhận biết đang hỏi lý do chênh lệch số đo chiều cao. Không tự bịa do nắp/thân, cách đo, sai số hay phục dựng; phải nói chưa có giải thích chính thức.",
+      "passed": false,
+      "response": {
+        "artifact_id": "jar",
+        "status": "insufficient_evidence",
+        "answer": "Chi tiết này mình chưa có đủ thông tin để khẳng định. Bạn có thể hỏi thêm về chất liệu, hình dáng hoặc hoa văn của hiện vật nhé.",
+        "citations": [],
+        "elapsed_ms": 7723,
+        "usage": {
+          "input_tokens": 2854,
+          "output_tokens": 263,
+          "total_tokens": 3117
+        },
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "question_focus": {
+        "intent": null,
+        "topic": "artifact",
+        "operation": "explain",
+        "multiple": false,
+        "requests": []
+      },
+      "review": {
+        "answers_actual_question": false,
+        "supported_by_evidence": true,
+        "respects_uncertainty": true,
+        "covers_requested_parts": false,
+        "explanation": "Câu hỏi yêu cầu giải thích lý do vì sao các con số chiều cao khác nhau. Tuy nhiên, câu trả lời lại từ chối và lái sang chủ đề khác (chất liệu, hình dáng, hoa văn) thay vì bám sát vào việc thừa nhận chưa có giải thích chính thức cho sự chênh lệch này theo đúng tiêu chí."
+      }
+    },
+    {
+      "id": "dual-use-evidence-versus-intention",
+      "artifact": "jar",
+      "question": "Tại sao người xưa dùng thạp làm quan tài?",
+      "rubric": "Phân biệt dấu tích làm cơ sở cho diễn giải mai táng với lý do chủ quan của người xưa vốn chưa rõ; không khẳng định tên thủ lĩnh hay một nghi lễ cụ thể không có chứng cứ.",
+      "passed": true,
+      "response": {
+        "artifact_id": "jar",
+        "status": "answered",
+        "answer": "Mình thấy thạp vốn dùng để dự trữ lương thực, nhưng việc dùng làm quan tài được bảo tàng diễn giải dựa trên sự xuất hiện của than tro và răng người bên trong bạn nhé.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "DT-01-meaning",
+            "title": "Thạp Đào Thịnh",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/28056/thap-djao-thinh.html",
+            "section": "Ý nghĩa và công dụng",
+            "excerpt": "Thạp dùng dự trữ lương thực; than tro và răng người trong thạp được Bảo tàng diễn giải là bằng chứng về việc dùng thạp trong mai táng."
+          },
+          {
+            "number": 2,
+            "chunk_id": "DT-01-use",
+            "title": "Bảo vật quốc gia: Thạp Đào Thịnh — hồ sơ năm 2023",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/73800/bao-vat-quoc-gia-thap-djao-thinh.html",
+            "section": "Chức năng",
+            "excerpt": "Thạp được mô tả là đồ chứa lương thực hoặc hạt giống. Than tro và răng người bên trong được bảo tàng diễn giải liên quan đến việc dùng thạp làm quan tài; danh tính chủ nhân chưa được xác định."
+          }
+        ],
+        "elapsed_ms": 5281,
+        "usage": {
+          "input_tokens": 2751,
+          "output_tokens": 203,
+          "total_tokens": 2954
+        },
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "question_focus": {
+        "intent": null,
+        "topic": "artifact",
+        "operation": "explain",
+        "multiple": false,
+        "requests": []
+      },
+      "review": {
+        "answers_actual_question": true,
+        "supported_by_evidence": true,
+        "respects_uncertainty": true,
+        "covers_requested_parts": true,
+        "explanation": "Câu trả lời đã giải thích rõ lý do thạp được dùng làm quan tài dựa trên các dấu tích khảo cổ (than tro và răng người) được bảo tàng diễn giải, đồng thời tránh suy diễn chủ quan hay biến giả thuyết thành sự thật, hoàn toàn tuân thủ các tiêu chí chấm điểm."
+      }
+    }
+  ]
+}

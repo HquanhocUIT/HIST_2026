@@ -1,0 +1,27 @@
+{
+  "checks": [
+    "Vite proxy reaches the real indexed backend",
+    "No selected artifact: question input disabled with guidance",
+    "Chat sends current artifact ID and renders a source link",
+    "API failure preserves question and shows a recovery message",
+    "Provider outage is explained conversationally and keeps the question ready to retry",
+    "Visitor can cancel a pending response and edit the preserved question",
+    "Changing artifact while a response is pending does not leak the old answer",
+    "Each artifact keeps its own visible conversation",
+    "Synthetic microphone + mocked STT fills an editable question",
+    "Mobile layout has an accessible composer and no horizontal page overflow",
+    "Sandbox requires an admin token and loads the real source corpus",
+    "Sandbox shows the answer and retrieved evidence",
+    "Real source-backed answer rendered through the frontend and backend",
+    "Live Gemini writes a conversational answer while source details remain expandable",
+    "Exact Telex identity and material questions return separate, relevant answers",
+    "Purpose and unknown dagger date answer promptly in a conversational tone",
+    "Exact ornament inspiration follow-up answers its meaning and limits, not the previous count paragraph",
+    "Conflicting museum measurements are disclosed instead of choosing a single value"
+  ],
+  "passed": 18,
+  "interaction_responses_mocked": true,
+  "live_chat_checked": true,
+  "browser_stt_mocked": true,
+  "note": "Interaction checks use mocked responses and synthetic audio; live API evaluation is reported separately. Physical microphone quality still needs a human test."
+}

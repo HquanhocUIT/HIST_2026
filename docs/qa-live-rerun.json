@@ -1,0 +1,43 @@
+{
+  "run_at": 1793690951,
+  "model": "gemini-3.5-flash-lite",
+  "embedding_model": "gemini-embedding-001",
+  "corpus_version": "494c5c3cc5f7b125",
+  "elapsed_seconds": 0,
+  "attempted_this_run": 1,
+  "total": 1,
+  "passed": 1,
+  "method": "Expected status + source terms + runtime citation validation; not an independent historical review.",
+  "results": [
+    {
+      "id": "typo-50",
+      "group": "typo",
+      "artifact_id": "drum",
+      "question": "nguon goc cai nay la j",
+      "expected": "answered",
+      "terms": [
+        "1893"
+      ],
+      "passed": true,
+      "missing_terms": [],
+      "response": {
+        "artifact_id": "drum",
+        "status": "answered",
+        "answer": "Theo tư liệu, trống được tìm thấy năm 1893 khi đắp đê Trần Thủy ở xã Như Trác, huyện Nam Xang. [1]",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "NL-01-discovery",
+            "title": "Bảo vật quốc gia Việt Nam: Trống đồng Ngọc Lũ",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/28538/bao-vat-quoc-gia-viet-nam-trong-djong-ngoc-lu.html",
+            "section": "Phát hiện và tên gọi",
+            "excerpt": "Trống được tìm thấy năm 1893 khi đắp đê Trần Thủy ở xã Như Trác, huyện Nam Xang."
+          }
+        ],
+        "elapsed_ms": 179,
+        "usage": {},
+        "corpus_version": "494c5c3cc5f7b125"
+      }
+    }
+  ]
+}

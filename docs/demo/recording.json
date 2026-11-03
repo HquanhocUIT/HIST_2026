@@ -1,0 +1,38 @@
+{
+  "video": "chatbot-demo.webm",
+  "resolution": "1920x1080 recording canvas",
+  "live_responses": true,
+  "narration": false,
+  "scenes": [
+    {
+      "question": "Trống Ngọc Lũ cao bao nhiêu?",
+      "artifact_id": "drum",
+      "status": "answered",
+      "elapsed_ms": 1301
+    },
+    {
+      "question": "Cái này có niên đại thế nào?",
+      "artifact_id": "jar",
+      "status": "answered",
+      "elapsed_ms": 1683
+    },
+    {
+      "question": "Còn năm phát hiện thì sao?",
+      "artifact_id": "jar",
+      "status": "answered",
+      "elapsed_ms": 2234
+    },
+    {
+      "question": "Lưỡi dao Lạc Việt có hình gì?",
+      "artifact_id": "dagger",
+      "status": "answered",
+      "elapsed_ms": 1698
+    },
+    {
+      "question": "Dao này dài bao nhiêu?",
+      "artifact_id": "dagger",
+      "status": "insufficient_evidence",
+      "elapsed_ms": 0
+    }
+  ]
+}
