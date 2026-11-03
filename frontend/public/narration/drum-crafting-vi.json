@@ -1,0 +1,14 @@
+{
+  "provider": "local",
+  "model": "KorvaTTS-0.1.3",
+  "voice": "ngoc_huyen",
+  "language": "vi",
+  "exhibit": "drum",
+  "video_kind": "crafting",
+  "steps": 32,
+  "speed": 0.96,
+  "seed": 42,
+  "fingerprint": "93c88e5067064567c02e64e65f04d1bf0c70033872567818bc52852b4e5e6bd7",
+  "duration_seconds": 14.88,
+  "sample_rate": 44100
+}

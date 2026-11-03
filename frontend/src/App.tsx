@@ -197,6 +197,7 @@ function App() {
                   </p>
 
                   <StoryPlayer
+                    key={selectedExhibit.id}
                     exhibitId={selectedExhibit.id}
                     title={selectedExhibit.name}
                   />
