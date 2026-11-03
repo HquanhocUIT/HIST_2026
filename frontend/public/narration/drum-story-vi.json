@@ -1,0 +1,14 @@
+{
+  "provider": "local",
+  "model": "KorvaTTS-0.1.3",
+  "voice": "ngoc_huyen",
+  "language": "vi",
+  "exhibit": "drum",
+  "video_kind": "story",
+  "steps": 32,
+  "speed": 0.96,
+  "seed": 42,
+  "fingerprint": "eb119b170c49447e9999c84d4dd93415c0c9977edec3374dc6c95d55cc7e68c6",
+  "duration_seconds": 17.65,
+  "sample_rate": 44100
+}

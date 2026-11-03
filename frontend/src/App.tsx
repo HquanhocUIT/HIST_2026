@@ -4,6 +4,7 @@ import { InteractiveStructureScene } from "./InteractiveStructureScene";
 import { exhibitInformation } from "./exhibitInformation";
 import { exhibitStories } from "./exhibitStories";
 import { CraftingVideo } from "./CraftingVideo";
+import { NarratedVideo } from "./NarratedVideo";
 import { QuizPanel, readDemoPoints } from "./QuizPanel";
 import { Chatbot, type ExhibitChatContext } from "./Chatbot";
 import { CameraPassthrough } from "./CameraPassthrough";
@@ -361,20 +362,14 @@ function App() {
 
                     <div className="spatial-story-video">
                       {!storyVideoUnavailable ? (
-                        <video
-                          key={selectedStory.videoSrc}
-                          controls
-                          playsInline
-                          preload="metadata"
-                          aria-label={`Video câu chuyện ${selectedExhibit.name}`}
+                        <NarratedVideo
+                          key={selectedExhibit.id}
+                          exhibitId={selectedExhibit.id}
+                          kind="story"
+                          ariaLabel={`Video câu chuyện ${selectedExhibit.name}`}
+                          onLoadedData={() => setStoryVideoUnavailable(false)}
                           onError={() => setStoryVideoUnavailable(true)}
-                        >
-                          <source
-                            src={selectedStory.videoSrc}
-                            type="video/mp4"
-                          />
-                          Trình duyệt không hỗ trợ phát video.
-                        </video>
+                        />
                       ) : (
                         <div
                           className="story-viewer-video-error"
