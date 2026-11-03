@@ -1,17 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import type { ExhibitId } from "./InteractiveScene";
+import { NarratedVideo } from "./NarratedVideo";
 import "./CraftingVideo.css";
 
 type CraftingVideoProps = {
   exhibitId: ExhibitId;
   title: string;
   onContinueToFact: () => void;
-};
-
-const craftingVideoSources: Record<ExhibitId, string> = {
-  drum: "/videos/ngoc-lu-bronze-drum-crafting.mp4",
-  jar: "/videos/dao-thinh-bronze-jar-crafting.mp4",
-  dagger: "/videos/dong-son-bronze-dagger-crafting.mp4",
 };
 
 const castingSource =
@@ -23,7 +18,6 @@ export function CraftingVideo({
   onContinueToFact,
 }: CraftingVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const videoSource = craftingVideoSources[exhibitId];
 
   const [videoUnavailable, setVideoUnavailable] = useState(false);
   const [hasCompleted, setHasCompleted] = useState(false);
@@ -61,26 +55,21 @@ export function CraftingVideo({
         <div className="crafting-video-error" role="status">
           <strong>Không tải được video chế tác.</strong>
           <span>
-            Kiểm tra tên file trong frontend/public/videos và đường dẫn video
-            ở đầu file CraftingVideo.tsx.
+            Kiểm tra đường dẫn video trong frontend/src/videoNarrations.json.
           </span>
         </div>
       ) : (
-        <video
-          key={videoSource}
-          ref={videoRef}
-          className="crafting-video"
-          controls
-          playsInline
-          preload="metadata"
-          aria-label={`Hoạt họa quá trình chế tác ${title}`}
+        <NarratedVideo
+          key={exhibitId}
+          exhibitId={exhibitId}
+          kind="crafting"
+          ariaLabel={`Hoạt họa quá trình chế tác ${title}`}
+          videoClassName="crafting-video"
+          videoRef={videoRef}
           onLoadedData={() => setVideoUnavailable(false)}
           onError={() => setVideoUnavailable(true)}
           onEnded={() => setHasCompleted(true)}
-        >
-          <source src={videoSource} type="video/mp4" />
-          Trình duyệt không hỗ trợ phát video.
-        </video>
+        />
       )}
 
       <p className="crafting-video-note">

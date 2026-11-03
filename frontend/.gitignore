@@ -11,6 +11,13 @@ node_modules
 dist
 dist-ssr
 *.local
+.venv/
+audio_ai_engineering/.venv/
+audio_ai_engineering/.hf-cache/
+audio_ai_engineering/model_assets/
+.env
+.env.*
+!.env.example
 
 # Editor directories and files
 .vscode/*
