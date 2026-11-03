@@ -1,0 +1,21 @@
+﻿Metric,Value,Unit,Basis / limitation
+Input price,0.3,USD / 1M tokens,"Gemini 3.5 Flash-Lite, Standard paid reference"
+Output price,2.5,USD / 1M tokens,Includes thinking tokens at provider rates
+Embedding price,0.15,USD / 1M tokens,Gemini embedding-001
+Measured mean input,43.6,tokens / answered question,From 40 answered QA cases; includes deterministic zero-token replies
+Measured mean output,3.12,tokens / answered question,From 40 answered QA cases; includes deterministic zero-token replies
+Questions per visit,5,questions,"Editable planning assumption, not measured visitor behavior"
+Visits per month,1000,visits,Editable planning assumption
+Hosting per month,0,USD,Local demo only; replace with hosting quote before production
+Pricing source,https://ai.google.dev/gemini-api/docs/pricing,URL,Checked 2026-11-02; recheck before presenting
+Chat cost per answered question,=B5*B2/1000000+B6*B3/1000000,USD,"Reference paid rates, not actual invoice"
+Chat cost per visit,=B11*B7,USD,Excludes STT and embedding
+Monthly chat cost,=B12*B8,USD,"Excludes STT, embeddings, TTS, operations and taxes"
+Chat plus hosting subtotal,=B13+B9,USD,Partial cost only
+STT input price,0.3,USD / 1M tokens,Same configured Flash-Lite model; no live audio API
+STT output price,2.5,USD / 1M tokens,Text transcription output
+Measured STT clip input,120,tokens,"Synthetic speech fixture, not museum average"
+Measured STT clip output,15,tokens,Synthetic speech fixture
+STT cost for measured clip,=B15*B17/1000000+B16*B18/1000000,USD,Not an estimate for every clip duration
+Document embedding tokens,,tokens,Not measured; do not claim an exact indexing cost
+Document embedding cost,"=IF(ISNUMBER(B20),B20*B4/1000000,"""")",USD,One-off until corpus/model changes

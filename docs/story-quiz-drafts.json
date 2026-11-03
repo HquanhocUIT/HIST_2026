@@ -1,0 +1,268 @@
+{
+  "corpus_version": "3961ea3654429a27",
+  "model": "gemini-3.5-flash-lite",
+  "review_required": true,
+  "artifacts": [
+    {
+      "artifact_id": "drum",
+      "name": "Trống đồng Ngọc Lũ",
+      "review_required": true,
+      "quiz_origin": "ai_source_checked",
+      "title": "Trống đồng Ngọc Lũ",
+      "narration": [
+        {
+          "chunk_id": "NL-01-period",
+          "quote": "Trống đồng Ngọc Lũ thuộc văn hóa Đông Sơn, có niên đại khoảng 2.000–2.500 năm trước theo bài Bảo tàng năm 2017. Hiện vật làm bằng đồng."
+        },
+        {
+          "chunk_id": "NL-01-size",
+          "quote": "Trống Ngọc Lũ cao 63 cm; đường kính mặt 79,3 cm và đường kính chân 80 cm."
+        },
+        {
+          "chunk_id": "NL-01-discovery",
+          "quote": "Trống được tìm thấy năm 1893 khi đắp đê Trần Thủy ở xã Như Trác, huyện Nam Xang. Sau đó trống được đưa về đình làng Ngọc Lũ. Địa danh được giữ theo bài nguồn; không dùng chúng để khẳng định địa giới hiện nay."
+        },
+        {
+          "chunk_id": "NL-01-decoration",
+          "quote": "Giữa mặt trống Ngọc Lũ là hình mặt trời 14 tia, tiếp đến có 16 vành hoa văn. Các hình trang trí có cảnh nhảy múa, nhà sàn, giã gạo và đánh trống."
+        }
+      ],
+      "quizzes": [
+        {
+          "question": "Trống đồng Ngọc Lũ thuộc văn hóa nào?",
+          "options": [
+            "Văn hóa Đông Sơn",
+            "Văn hóa Sa Huỳnh",
+            "Văn hóa Óc Eo",
+            "Văn hóa Phùng Nguyên"
+          ],
+          "correct_index": 0,
+          "chunk_id": "NL-01-period",
+          "quote": "Trống đồng Ngọc Lũ thuộc văn hóa Đông Sơn, có niên đại khoảng 2.000–2.500 năm trước theo bài Bảo tàng năm 2017. Hiện vật làm bằng đồng."
+        },
+        {
+          "question": "Trống Ngọc Lũ cao bao nhiêu?",
+          "options": [
+            "cao 60 cm",
+            "cao 63 cm",
+            "cao 79,3 cm",
+            "cao 80 cm"
+          ],
+          "correct_index": 1,
+          "chunk_id": "NL-01-size",
+          "quote": "Trống Ngọc Lũ cao 63 cm; đường kính mặt 79,3 cm và đường kính chân 80 cm."
+        },
+        {
+          "question": "Trống được tìm thấy vào năm nào?",
+          "options": [
+            "năm 1890",
+            "năm 1893",
+            "năm 1903",
+            "năm 2012"
+          ],
+          "correct_index": 1,
+          "chunk_id": "NL-01-discovery",
+          "quote": "Trống được tìm thấy năm 1893 khi đắp đê Trần Thủy ở xã Như Trác, huyện Nam Xang. Sau đó trống được đưa về đình làng Ngọc Lũ. Địa danh được giữ theo bài nguồn; không dùng chúng để khẳng định địa giới hiện nay."
+        },
+        {
+          "question": "Viện nào đã sưu tầm trống Ngọc Lũ vào tháng 4/1903?",
+          "options": [
+            "Viện Viễn Đông Bác cổ",
+            "Viện Bảo tàng Lịch sử",
+            "Viện Khảo cổ học",
+            "Viện Văn hóa Nghệ thuật"
+          ],
+          "correct_index": 0,
+          "chunk_id": "NL-01-collection",
+          "quote": "Tháng 4/1903, Viện Viễn Đông Bác cổ sưu tầm trống Ngọc Lũ. Trống từng được giữ tại Bảo tàng Louis Finot, nay là Bảo tàng Lịch sử Quốc gia."
+        },
+        {
+          "question": "Giữa mặt trống Ngọc Lũ là hình gì?",
+          "options": [
+            "hình mặt trời 12 tia",
+            "hình mặt trời 14 tia",
+            "hình mặt trời 16 tia",
+            "hình mặt trời 18 tia"
+          ],
+          "correct_index": 1,
+          "chunk_id": "NL-01-decoration",
+          "quote": "Giữa mặt trống Ngọc Lũ là hình mặt trời 14 tia, tiếp đến có 16 vành hoa văn. Các hình trang trí có cảnh nhảy múa, nhà sàn, giã gạo và đánh trống."
+        }
+      ]
+    },
+    {
+      "artifact_id": "jar",
+      "name": "Thạp đồng Đào Thịnh",
+      "review_required": true,
+      "quiz_origin": "ai_source_checked",
+      "title": "Thạp đồng Đào Thịnh",
+      "narration": [
+        {
+          "chunk_id": "DT-01-period",
+          "quote": "Thạp Đào Thịnh làm bằng đồng, thuộc văn hóa Đông Sơn, khoảng 2.500–2.000 năm trước theo bài Bảo tàng năm 2017."
+        },
+        {
+          "chunk_id": "DT-01-size",
+          "quote": "Thạp Đào Thịnh cao 98 cm; đường kính miệng 61 cm, đáy 60 cm. Thân hình trụ thuôn xuống đáy; nắp có dạng nón cụt."
+        },
+        {
+          "chunk_id": "DT-01-discovery",
+          "quote": "Thạp được phát hiện ngày 14/9/1961 tại xã Đào Thịnh, huyện Trấn Yên, tỉnh Yên Bái, khi bờ sông bị lở. Đây là địa danh theo bài nguồn năm 2013."
+        },
+        {
+          "chunk_id": "DT-01-decoration",
+          "quote": "Nắp thạp Đào Thịnh có mặt trời 12 tia và 11 vành hoa văn. Thân có 25 băng hoa văn, trong đó có hình sáu chiếc thuyền cùng các chiến binh."
+        }
+      ],
+      "quizzes": [
+        {
+          "question": "Thạp Đào Thịnh làm bằng chất liệu gì?",
+          "options": [
+            "Đồng",
+            "Sắt",
+            "Gốm",
+            "Đá"
+          ],
+          "correct_index": 0,
+          "chunk_id": "DT-01-period",
+          "quote": "Thạp Đào Thịnh làm bằng đồng, thuộc văn hóa Đông Sơn, khoảng 2.500–2.000 năm trước theo bài Bảo tàng năm 2017."
+        },
+        {
+          "question": "Thạp được phát hiện vào thời gian nào?",
+          "options": [
+            "Ngày 14/9/1961",
+            "Ngày 15/9/1961",
+            "Ngày 14/10/1961",
+            "Ngày 01/09/1961"
+          ],
+          "correct_index": 0,
+          "chunk_id": "DT-01-discovery",
+          "quote": "Thạp được phát hiện ngày 14/9/1961 tại xã Đào Thịnh, huyện Trấn Yên, tỉnh Yên Bái, khi bờ sông bị lở. Đây là địa danh theo bài nguồn năm 2013."
+        },
+        {
+          "question": "Hình dáng thân thạp Đào Thịnh như thế nào?",
+          "options": [
+            "Thân hình vuông",
+            "Thân hình trụ thuôn xuống đáy",
+            "Thân hình cầu",
+            "Thân hình bầu dục"
+          ],
+          "correct_index": 1,
+          "chunk_id": "DT-01-size",
+          "quote": "Thạp Đào Thịnh cao 98 cm; đường kính miệng 61 cm, đáy 60 cm. Thân hình trụ thuôn xuống đáy; nắp có dạng nón cụt."
+        },
+        {
+          "question": "Nắp thạp Đào Thịnh có bao nhiêu tia mặt trời?",
+          "options": [
+            "10 tia",
+            "11 tia",
+            "12 tia",
+            "13 tia"
+          ],
+          "correct_index": 2,
+          "chunk_id": "DT-01-decoration",
+          "quote": "Nắp thạp Đào Thịnh có mặt trời 12 tia và 11 vành hoa văn. Thân có 25 băng hoa văn, trong đó có hình sáu chiếc thuyền cùng các chiến binh."
+        },
+        {
+          "question": "Các tượng đôi nam nữ trên nắp thạp được liên hệ với điều gì?",
+          "options": [
+            "Tín ngưỡng phồn thực và mong muốn sinh sôi",
+            "Chiến tranh và bảo vệ lãnh thổ",
+            "Nông nghiệp lúa nước",
+            "Thờ cúng tổ tiên"
+          ],
+          "correct_index": 0,
+          "chunk_id": "DT-01-meaning",
+          "quote": "Các tượng đôi nam nữ trên nắp thạp được bài nguồn liên hệ với tín ngưỡng phồn thực và mong muốn sinh sôi. Thạp dùng dự trữ lương thực; than tro và răng người trong thạp được Bảo tàng diễn giải là bằng chứng về việc dùng thạp trong mai táng."
+        }
+      ]
+    },
+    {
+      "artifact_id": "dagger",
+      "name": "Dao găm Đông Sơn",
+      "review_required": true,
+      "quiz_origin": "curated_source_checked",
+      "title": "Dao găm Đông Sơn",
+      "narration": [
+        {
+          "chunk_id": "DG-DS-01-use",
+          "quote": "Dao găm đồng Đông Sơn vừa có thể tự vệ, cắt gọt trong đời sống, vừa mang tính biểu trưng. Bài nguồn nhận định uy lực chiến trường của loại này không lớn bằng rìu chiến và giáo."
+        },
+        {
+          "chunk_id": "DG-DS-01-classification",
+          "quote": "Bài nguồn chia dao găm Đông Sơn bản địa thành hai phổ lớn: Đông Sơn Tây Âu và Đông Sơn Lạc Việt. Tây Âu thường có lưỡi tam giác và chắn tay ngang tạo dáng chữ T."
+        },
+        {
+          "chunk_id": "DG-DS-01-lacviet",
+          "quote": "Dao găm Đông Sơn Lạc Việt có lưỡi hình lá tre; hai nhánh chắn tay uốn cong như râu dương xỉ hoặc sừng trâu. Phần lớn lưỡi để trơn; một số mẫu có trang trí."
+        },
+        {
+          "chunk_id": "DG-DS-01-hilt",
+          "quote": "Chuôi dao găm Lạc Việt có nhiều cách tạo hình: đốc ngang, đốc bầu dạng củ hành, hoặc hình người và động vật. Không phải mọi dao găm đều có cán tượng."
+        }
+      ],
+      "quizzes": [
+        {
+          "question": "Lưỡi dao găm phổ Lạc Việt được mô tả có hình gì?",
+          "options": [
+            "hình vuông",
+            "hình tròn",
+            "lá tre",
+            "hình quạt"
+          ],
+          "correct_index": 2,
+          "chunk_id": "DG-DS-01-lacviet",
+          "quote": "Dao găm Đông Sơn Lạc Việt có lưỡi hình lá tre; hai nhánh chắn tay uốn cong như râu dương xỉ hoặc sừng trâu. Phần lớn lưỡi để trơn; một số mẫu có trang trí."
+        },
+        {
+          "question": "Hai phổ lớn của dao găm Đông Sơn bản địa trong bài nguồn là gì?",
+          "options": [
+            "Lạc Việt và Óc Eo",
+            "Tây Âu và Sa Huỳnh",
+            "Điền và Hòa Bình",
+            "Đông Sơn Tây Âu và Đông Sơn Lạc Việt"
+          ],
+          "correct_index": 3,
+          "chunk_id": "DG-DS-01-classification",
+          "quote": "Bài nguồn chia dao găm Đông Sơn bản địa thành hai phổ lớn: Đông Sơn Tây Âu và Đông Sơn Lạc Việt. Tây Âu thường có lưỡi tam giác và chắn tay ngang tạo dáng chữ T."
+        },
+        {
+          "question": "Chắn tay phổ Lạc Việt được so sánh với hình dáng nào?",
+          "options": [
+            "râu dương xỉ hoặc sừng trâu",
+            "cánh quạt",
+            "vòng tròn khép kín",
+            "mái nhà"
+          ],
+          "correct_index": 0,
+          "chunk_id": "DG-DS-01-lacviet",
+          "quote": "Dao găm Đông Sơn Lạc Việt có lưỡi hình lá tre; hai nhánh chắn tay uốn cong như râu dương xỉ hoặc sừng trâu. Phần lớn lưỡi để trơn; một số mẫu có trang trí."
+        },
+        {
+          "question": "Ngoài tính biểu trưng, bài nguồn nhắc đến những công dụng nào của dao găm?",
+          "options": [
+            "nấu cơm",
+            "tự vệ, cắt gọt",
+            "đo thiên văn",
+            "đánh trống"
+          ],
+          "correct_index": 1,
+          "chunk_id": "DG-DS-01-use",
+          "quote": "Dao găm đồng Đông Sơn vừa có thể tự vệ, cắt gọt trong đời sống, vừa mang tính biểu trưng. Bài nguồn nhận định uy lực chiến trường của loại này không lớn bằng rìu chiến và giáo."
+        },
+        {
+          "question": "Một cách tạo hình chuôi dao găm Lạc Việt được bài nguồn nhắc đến là gì?",
+          "options": [
+            "mặt đồng hồ",
+            "cánh quạt máy",
+            "hình người và động vật",
+            "bóng đèn"
+          ],
+          "correct_index": 2,
+          "chunk_id": "DG-DS-01-hilt",
+          "quote": "Chuôi dao găm Lạc Việt có nhiều cách tạo hình: đốc ngang, đốc bầu dạng củ hành, hoặc hình người và động vật. Không phải mọi dao găm đều có cán tượng."
+        }
+      ]
+    }
+  ]
+}

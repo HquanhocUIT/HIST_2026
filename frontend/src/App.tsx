@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { InteractiveScene, type ExhibitId } from "./InteractiveScene";
 import { InteractiveStructureScene } from "./InteractiveStructureScene";
 import { exhibitInformation } from "./exhibitInformation";
 import { exhibitStories } from "./exhibitStories";
 import { CraftingVideo } from "./CraftingVideo";
 import { QuizPanel, readDemoPoints } from "./QuizPanel";
-import { Chatbot, type ExhibitChatContext } from "./Chatbot";
+import type { ExhibitChatContext } from "./Chatbot";
+import { PhuChatbot } from "./components/PhuChatbot";
 import { CameraPassthrough } from "./CameraPassthrough";
 import "./App.css";
 import "./HeritageExperience.css";
+
+const RagSandbox = lazy(() => import("./components/RagSandbox"));
 
 type ExperienceScreen =
   | "scan"
@@ -64,7 +67,7 @@ const contentFlow: ObjectSection[] = [
   "quiz",
 ];
 
-function App() {
+function MuseumApp() {
   const [selectedId, setSelectedId] = useState<ExhibitId | null>(null);
   const [screen, setScreen] = useState<ExperienceScreen>("scan");
   const [points, setPoints] = useState(readDemoPoints);
@@ -245,7 +248,7 @@ function App() {
                     </button>
                   </header>
 
-                  <Chatbot exhibit={chatContext} />
+                  <PhuChatbot exhibit={chatContext} />
                 </aside>
               )}
 
@@ -430,6 +433,13 @@ function App() {
       </main>
     </CameraPassthrough>
   );
+}
+
+function App() {
+  if (new URLSearchParams(window.location.search).has("sandbox")) {
+    return <Suspense fallback={<p role="status">Đang mở không gian thử nghiệm…</p>}><RagSandbox /></Suspense>;
+  }
+  return <MuseumApp />;
 }
 
 export default App;

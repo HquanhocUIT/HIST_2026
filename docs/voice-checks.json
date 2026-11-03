@@ -1,0 +1,11 @@
+{
+  "fixture": "AI-generated Vietnamese speech, not a physical microphone recording",
+  "expected": "Trống đồng Ngọc Lũ cao bao nhiêu?",
+  "transcript": "Trống đồng Ngọc Lũ cao bao nhiêu?",
+  "passed": true,
+  "usage": {
+    "input_tokens": 120,
+    "output_tokens": 15
+  },
+  "human_test_required": "Microphone permission, real Vietnamese pronunciation, ambient museum noise and target phone."
+}

@@ -1,0 +1,361 @@
+{
+  "service_version": "2026.11.03-research.5",
+  "live_generation_requested": true,
+  "passed": 11,
+  "total": 11,
+  "results": [
+    {
+      "question": "Hiện vật được dùng làm gì?",
+      "artifact_id": "dagger",
+      "passed": true,
+      "http_status": 200,
+      "response": {
+        "artifact_id": "dagger",
+        "status": "answered",
+        "answer": "Dao găm Đông Sơn có thể dùng để tự vệ và cắt gọt trong sinh hoạt hằng ngày. Một số mẫu còn có tính biểu trưng, nên công dụng không chỉ gói gọn trong chiến đấu.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "DG-DS-01-use",
+            "title": "Văn hóa Đông Sơn - Chiến tranh và Hòa bình (kỳ 22): Những lưỡi dao găm mang đầy tính biểu trưng",
+            "url": "https://baotanglichsu.vn/vi/Articles/3101/76005/van-hoa-djong-son-chien-tranh-va-hoa-binh-ky-22-nhung-luoi-dao-gam-mang-djay-tinh-bieu-trung.html",
+            "section": "Công dụng và tính biểu trưng",
+            "excerpt": "Dao găm đồng Đông Sơn vừa có thể tự vệ, cắt gọt trong đời sống, vừa mang tính biểu trưng. Bài nguồn nhận định uy lực chiến trường của loại này không lớn bằng rìu chiến và giáo."
+          }
+        ],
+        "elapsed_ms": 3,
+        "usage": {},
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "end_to_end_ms": 19,
+      "latency_budget_ms": 1000,
+      "no_inline_citations_or_article_voice": true
+    },
+    {
+      "question": "cái dao này làm bằng gì",
+      "artifact_id": "dagger",
+      "passed": true,
+      "http_status": 200,
+      "response": {
+        "artifact_id": "dagger",
+        "status": "answered",
+        "answer": "Loại dao găm Đông Sơn mình đang giới thiệu được làm bằng đồng nhé. Đây là thông tin về loại hình lịch sử, không phải phép phân tích vật liệu của mô hình số.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "DG-DS-01-material",
+            "title": "Văn hóa Đông Sơn - Chiến tranh và Hòa bình (kỳ 22): Những lưỡi dao găm mang đầy tính biểu trưng",
+            "url": "https://baotanglichsu.vn/vi/Articles/3101/76005/van-hoa-djong-son-chien-tranh-va-hoa-binh-ky-22-nhung-luoi-dao-gam-mang-djay-tinh-bieu-trung.html",
+            "section": "Chất liệu",
+            "excerpt": "Bài viết gọi loại hình này là “dao găm đồng Đông Sơn”."
+          }
+        ],
+        "elapsed_ms": 0,
+        "usage": {},
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "end_to_end_ms": 7,
+      "latency_budget_ms": 1000,
+      "no_inline_citations_or_article_voice": true
+    },
+    {
+      "question": "cái dao này được làm từ bao giờ",
+      "artifact_id": "dagger",
+      "passed": true,
+      "http_status": 200,
+      "response": {
+        "artifact_id": "dagger",
+        "status": "insufficient_evidence",
+        "answer": "Mình chưa có niên đại riêng của mẫu dao này, vì đây là mô hình minh họa chưa gắn với một tiêu bản khảo cổ cụ thể. Mình xác nhận được chủ đề đang giới thiệu là dao găm thuộc văn hóa Đông Sơn.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "DG-DS-01-overview",
+            "title": "Văn hóa Đông Sơn - Chiến tranh và Hòa bình (kỳ 22): Những lưỡi dao găm mang đầy tính biểu trưng",
+            "url": "https://baotanglichsu.vn/vi/Articles/3101/76005/van-hoa-djong-son-chien-tranh-va-hoa-binh-ky-22-nhung-luoi-dao-gam-mang-djay-tinh-bieu-trung.html",
+            "section": "Khái quát",
+            "excerpt": "Trong các vật dụng được xếp hạng vào “vũ khí Đông Sơn”, dao găm là một loại hình độc đáo, tiêu biểu."
+          }
+        ],
+        "elapsed_ms": 0,
+        "usage": {},
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "end_to_end_ms": 8,
+      "latency_budget_ms": 1000,
+      "no_inline_citations_or_article_voice": true
+    },
+    {
+      "question": "Cái này có nguồn gốc thế nào?",
+      "artifact_id": "drum",
+      "passed": true,
+      "http_status": 200,
+      "response": {
+        "artifact_id": "drum",
+        "status": "answered",
+        "answer": "Trống được tìm thấy khi đắp đê ở Như Trác, huyện Nam Xang, rồi được đưa về đình làng Ngọc Lũ. Hồ sơ năm 2017 ghi mốc 1893; một số bài khác ghi khoảng 1893–1894. Những địa danh này được giữ theo tài liệu lịch sử.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "NL-01-discovery",
+            "title": "Bảo vật quốc gia Việt Nam: Trống đồng Ngọc Lũ",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/28538/bao-vat-quoc-gia-viet-nam-trong-djong-ngoc-lu.html",
+            "section": "Phát hiện và tên gọi",
+            "excerpt": "Trống được tìm thấy năm 1893 khi đắp đê Trần Thủy ở xã Như Trác, huyện Nam Xang. Sau đó trống được đưa về đình làng Ngọc Lũ. Địa danh được giữ theo bài nguồn; không dùng chúng để khẳng định địa giới hiện nay."
+          },
+          {
+            "number": 2,
+            "chunk_id": "NL-01-discoverers",
+            "title": "Giới thiệu bảo vật quốc gia: Trống đồng Ngọc Lũ",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/13602/gioi-thieu-bao-vat-quoc-gia-1-trong-djong-ngoc-lu-hien-vat-tieu-bieu-nhat-cua-nen-van-hoa-djong-son.html",
+            "section": "Người phát hiện và tên gọi",
+            "excerpt": "Bài năm 2013 nêu Nguyễn Văn Y, Nguyễn Văn Túc cùng những người đắp đê phát hiện trống khoảng 1893–1894 tại Như Trác. Trống được đưa về đình làng Ngọc Lũ, vì vậy không được đồng nhất làng Ngọc Lũ với địa điểm đào thấy."
+          }
+        ],
+        "elapsed_ms": 1,
+        "usage": {},
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "end_to_end_ms": 7,
+      "latency_budget_ms": 1000,
+      "no_inline_citations_or_article_voice": true
+    },
+    {
+      "question": "Cái này cao bao nhiêu?",
+      "artifact_id": "jar",
+      "passed": true,
+      "http_status": 200,
+      "response": {
+        "artifact_id": "jar",
+        "status": "answered",
+        "answer": "Chiều cao thạp đang có số liệu không thống nhất: bài năm 2013 ghi 98 cm, nghiên cứu năm 2019 ghi 87 cm, còn danh mục năm 2023 ghi 90 cm. Các nguồn chưa giải thích chênh lệch, nên mình chưa thể chốt một số duy nhất hay đoán rằng khác nhau do tính cả nắp.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "DT-01-size",
+            "title": "Giới thiệu Bảo vật quốc gia. 3. Thạp đồng Đào Thịnh và thông điệp của nền văn hóa Đông Sơn",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/13608/gioi-thieu-bao-vat-quoc-gia-3-thap-djong-djao-thinh-va-thong-djiep-cua-nen-van-hoa-djong-son.html",
+            "section": "Kích thước và hình dáng",
+            "excerpt": "Thạp Đào Thịnh cao 98 cm; đường kính miệng 61 cm, đáy 60 cm. Thân hình trụ thuôn xuống đáy; nắp có dạng nón cụt."
+          },
+          {
+            "number": 2,
+            "chunk_id": "DT-01-size-2019",
+            "title": "Nét đặc sắc nhóm Bảo vật Quốc gia văn hóa Đông Sơn",
+            "url": "https://baotanglichsu.vn/vi/Articles/3096/71184/net-djac-sac-nhom-bao-vat-quoc-gia-van-hoa-djong-son-luu-giu-tai-bao-tang-lich-su-quoc-gia.html",
+            "section": "Kích thước nghiên cứu năm 2019",
+            "excerpt": "Nghiên cứu năm 2019 ghi thạp cao 87 cm, đường kính nắp 64 cm, đáy 60 cm. Không đồng nhất đường kính nắp với đường kính miệng; chưa giải thích khác biệt chiều cao giữa các hồ sơ."
+          },
+          {
+            "number": 3,
+            "chunk_id": "DT-01-size-2023",
+            "title": "Bảo vật quốc gia: Thạp Đào Thịnh — hồ sơ năm 2023",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/73800/bao-vat-quoc-gia-thap-djao-thinh.html",
+            "section": "Kích thước danh mục năm 2023",
+            "excerpt": "Danh mục bảo vật năm 2023 ghi thạp Đào Thịnh cao 90 cm, miệng 61 cm, đáy 60 cm. Chiều cao khác 98 cm trong bài năm 2013; tài liệu không giải thích đó có phải khác phạm vi đo hay không."
+          }
+        ],
+        "elapsed_ms": 1,
+        "usage": {},
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "end_to_end_ms": 8,
+      "latency_budget_ms": 1000,
+      "no_inline_citations_or_article_voice": true
+    },
+    {
+      "question": "hoa văn đc lấy ý tưởng từ đâu",
+      "artifact_id": "jar",
+      "passed": true,
+      "http_status": 200,
+      "response": {
+        "artifact_id": "jar",
+        "status": "answered",
+        "answer": "Các đề tài ấy có thể liên hệ với thiên nhiên, đời sống sông nước và tín ngưỡng của cư dân Đông Sơn: chim, thuyền, chiến binh và mong ước sinh sôi, mùa màng phát triển. Đó là cách các nhà nghiên cứu diễn giải những hình tượng còn lại. Chưa có ghi chép trực tiếp của nghệ nhân để xác nhận chính xác họ đã lấy ý tưởng như thế nào.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "DT-01-symbolism",
+            "title": "Nét đặc sắc nhóm Bảo vật Quốc gia văn hóa Đông Sơn",
+            "url": "https://baotanglichsu.vn/vi/Articles/3096/71184/net-djac-sac-nhom-bao-vat-quoc-gia-van-hoa-djong-son-luu-giu-tai-bao-tang-lich-su-quoc-gia.html",
+            "section": "Ý nghĩa và bối cảnh đề tài trang trí",
+            "excerpt": "Các nhà nghiên cứu diễn giải trang trí thạp qua đời sống, thuyền chiến, mong ước mùa màng sinh sôi và tín ngưỡng phồn thực. Đây là liên hệ từ hình tượng còn lại, không phải ghi chép trực tiếp về quá trình nảy ý tưởng của nghệ nhân."
+          },
+          {
+            "number": 2,
+            "chunk_id": "DT-01-motif-detail",
+            "title": "Giới thiệu Bảo vật quốc gia. 3. Thạp đồng Đào Thịnh và thông điệp của nền văn hóa Đông Sơn",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/13608/gioi-thieu-bao-vat-quoc-gia-3-thap-djong-djao-thinh-va-thong-djiep-cua-nen-van-hoa-djong-son.html",
+            "section": "Các đề tài trang trí",
+            "excerpt": "Ngoài hình mặt trời, trang trí thạp gồm chim mỏ dài, họa tiết hình học và sáu chiến thuyền. Các chiến binh cầm cung, lao, giáo, rìu hoặc dao găm; hình tượng gắn với sinh hoạt và chiến đấu của cư dân Đông Sơn."
+          }
+        ],
+        "elapsed_ms": 0,
+        "usage": {},
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "end_to_end_ms": 7,
+      "latency_budget_ms": 1000,
+      "no_inline_citations_or_article_voice": true
+    },
+    {
+      "question": "Trống nặng bao nhiêu?",
+      "artifact_id": "drum",
+      "passed": true,
+      "http_status": 200,
+      "response": {
+        "artifact_id": "drum",
+        "status": "answered",
+        "answer": "Khối lượng được ghi nhận của trống Ngọc Lũ là 86 kg.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "NL-01-weight",
+            "title": "Giới thiệu bảo vật quốc gia: Trống đồng Ngọc Lũ",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/13602/gioi-thieu-bao-vat-quoc-gia-1-trong-djong-ngoc-lu-hien-vat-tieu-bieu-nhat-cua-nen-van-hoa-djong-son.html",
+            "section": "Khối lượng và phân loại",
+            "excerpt": "Hồ sơ năm 2013 ghi trống Ngọc Lũ nặng 86 kg và xếp loại Heger I."
+          }
+        ],
+        "elapsed_ms": 0,
+        "usage": {},
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "end_to_end_ms": 6,
+      "latency_budget_ms": 1000,
+      "no_inline_citations_or_article_voice": true
+    },
+    {
+      "question": "Ai phát hiện thạp?",
+      "artifact_id": "jar",
+      "passed": true,
+      "http_status": 200,
+      "response": {
+        "artifact_id": "jar",
+        "status": "answered",
+        "answer": "Người phát hiện được mô tả là một quân nhân phục viên đang đi câu khi bờ sông lở. Tài liệu mình kiểm tra không nêu tên riêng của người ấy.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "DT-01-discoverer",
+            "title": "Giới thiệu Bảo vật quốc gia. 3. Thạp đồng Đào Thịnh và thông điệp của nền văn hóa Đông Sơn",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/13608/gioi-thieu-bao-vat-quoc-gia-3-thap-djong-djao-thinh-va-thong-djiep-cua-nen-van-hoa-djong-son.html",
+            "section": "Người phát hiện",
+            "excerpt": "Bài năm 2013 kể một quân nhân phục viên đi câu phát hiện thạp ngày 14/9/1961 khi bờ sông lở. Bài không nêu tên riêng của người đó; không tự đặt tên cho người phát hiện."
+          }
+        ],
+        "elapsed_ms": 0,
+        "usage": {},
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "end_to_end_ms": 8,
+      "latency_budget_ms": 1000,
+      "no_inline_citations_or_article_voice": true
+    },
+    {
+      "question": "Ai là chủ nhân đầu tiên của thạp?",
+      "artifact_id": "jar",
+      "passed": true,
+      "http_status": 200,
+      "response": {
+        "artifact_id": "jar",
+        "status": "insufficient_evidence",
+        "answer": "Có nhà nghiên cứu cho rằng thạp có thể thuộc một người giàu hoặc thủ lĩnh dựa trên độ quý và dấu tích mai táng. Đó là suy đoán khảo cổ; chưa xác định được danh tính chủ nhân cụ thể.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "DT-01-funerary-limit",
+            "title": "Thạp đồng Đào Thịnh — tên gọi và những cách diễn giải",
+            "url": "https://baotanglichsu.vn/vi/Articles/1001/19667/thap-djong-djao-thinh.html",
+            "section": "Giới hạn của diễn giải mai táng",
+            "excerpt": "Tác giả bài năm 2016 cho rằng thạp có thể thuộc người giàu hoặc thủ lĩnh, nhưng đó là suy đoán từ đồ tùy táng. Than tro gợi ý hỏa táng; tác giả vẫn coi đây là vấn đề cần nghiên cứu thêm, không xác nhận tên hay chức danh của một chủ nhân cụ thể."
+          }
+        ],
+        "elapsed_ms": 0,
+        "usage": {},
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "end_to_end_ms": 7,
+      "latency_budget_ms": 1000,
+      "no_inline_citations_or_article_voice": true
+    },
+    {
+      "question": "Kể một điều thú vị về hiện vật này nhé",
+      "artifact_id": "dagger",
+      "passed": true,
+      "http_status": 200,
+      "response": {
+        "artifact_id": "dagger",
+        "status": "answered",
+        "answer": "Điểm thú vị là dao găm Đông Sơn được chia thành hai phổ lớn là Đông Sơn Tây Âu và Đông Sơn Lạc Việt với nhiều kiểu dáng chuôi độc đáo như đốc bầu củ hành hoặc hình người và động vật đấy bạn ạ.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "DG-DS-01-classification",
+            "title": "Văn hóa Đông Sơn - Chiến tranh và Hòa bình (kỳ 22): Những lưỡi dao găm mang đầy tính biểu trưng",
+            "url": "https://baotanglichsu.vn/vi/Articles/3101/76005/van-hoa-djong-son-chien-tranh-va-hoa-binh-ky-22-nhung-luoi-dao-gam-mang-djay-tinh-bieu-trung.html",
+            "section": "Hai phổ lớn",
+            "excerpt": "Bài nguồn chia dao găm Đông Sơn bản địa thành hai phổ lớn: Đông Sơn Tây Âu và Đông Sơn Lạc Việt. Tây Âu thường có lưỡi tam giác và chắn tay ngang tạo dáng chữ T."
+          },
+          {
+            "number": 2,
+            "chunk_id": "DG-DS-01-hilt",
+            "title": "Văn hóa Đông Sơn - Chiến tranh và Hòa bình (kỳ 22): Những lưỡi dao găm mang đầy tính biểu trưng",
+            "url": "https://baotanglichsu.vn/vi/Articles/3101/76005/van-hoa-djong-son-chien-tranh-va-hoa-binh-ky-22-nhung-luoi-dao-gam-mang-djay-tinh-bieu-trung.html",
+            "section": "Chuôi dao",
+            "excerpt": "Chuôi dao găm Lạc Việt có nhiều cách tạo hình: đốc ngang, đốc bầu dạng củ hành, hoặc hình người và động vật. Không phải mọi dao găm đều có cán tượng."
+          }
+        ],
+        "elapsed_ms": 3222,
+        "usage": {
+          "input_tokens": 1958,
+          "output_tokens": 221,
+          "total_tokens": 2179
+        },
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "end_to_end_ms": 3231,
+      "latency_budget_ms": 20000,
+      "no_inline_citations_or_article_voice": true
+    },
+    {
+      "question": "Giải thích ngắn gọn hơn được không?",
+      "artifact_id": "dagger",
+      "passed": true,
+      "http_status": 200,
+      "response": {
+        "artifact_id": "dagger",
+        "status": "answered",
+        "answer": "Dao găm Đông Sơn được chia thành hai phổ lớn là Tây Âu và Lạc Việt với nhiều kiểu dáng chuôi độc đáo như đốc bầu củ hành hoặc hình người và động vật bạn nhé.",
+        "citations": [
+          {
+            "number": 1,
+            "chunk_id": "DG-DS-01-classification",
+            "title": "Văn hóa Đông Sơn - Chiến tranh và Hòa bình (kỳ 22): Những lưỡi dao găm mang đầy tính biểu trưng",
+            "url": "https://baotanglichsu.vn/vi/Articles/3101/76005/van-hoa-djong-son-chien-tranh-va-hoa-binh-ky-22-nhung-luoi-dao-gam-mang-djay-tinh-bieu-trung.html",
+            "section": "Hai phổ lớn",
+            "excerpt": "Bài nguồn chia dao găm Đông Sơn bản địa thành hai phổ lớn: Đông Sơn Tây Âu và Đông Sơn Lạc Việt. Tây Âu thường có lưỡi tam giác và chắn tay ngang tạo dáng chữ T."
+          },
+          {
+            "number": 2,
+            "chunk_id": "DG-DS-01-hilt",
+            "title": "Văn hóa Đông Sơn - Chiến tranh và Hòa bình (kỳ 22): Những lưỡi dao găm mang đầy tính biểu trưng",
+            "url": "https://baotanglichsu.vn/vi/Articles/3101/76005/van-hoa-djong-son-chien-tranh-va-hoa-binh-ky-22-nhung-luoi-dao-gam-mang-djay-tinh-bieu-trung.html",
+            "section": "Chuôi dao",
+            "excerpt": "Chuôi dao găm Lạc Việt có nhiều cách tạo hình: đốc ngang, đốc bầu dạng củ hành, hoặc hình người và động vật. Không phải mọi dao găm đều có cán tượng."
+          }
+        ],
+        "elapsed_ms": 1456,
+        "usage": {
+          "input_tokens": 1966,
+          "output_tokens": 211,
+          "total_tokens": 2177
+        },
+        "corpus_version": "ae1e7fc0c34fdd29"
+      },
+      "end_to_end_ms": 1465,
+      "latency_budget_ms": 20000,
+      "no_inline_citations_or_article_voice": true
+    }
+  ]
+}

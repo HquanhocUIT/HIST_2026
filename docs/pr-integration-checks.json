@@ -1,0 +1,20 @@
+{
+  "base_commit": "00605aa",
+  "url": "http://127.0.0.1:5180",
+  "passed": 8,
+  "checks": [
+    "Main UI proxy reaches indexed FastAPI",
+    "Trống đồng Ngọc Lũ: correct scoped answer, sources and voice control",
+    "Thạp đồng Đào Thịnh: correct scoped answer, sources and voice control",
+    "Jar conflicting heights remain explicit on main UI",
+    "Dao găm đồng Đông Sơn: correct scoped answer, sources and voice control",
+    "Mobile main UI: chat input visible without horizontal overflow",
+    "Sandbox entry loads independently of museum flow",
+    "No browser JavaScript runtime errors"
+  ],
+  "backend_tests": "290 passed",
+  "build": "passed",
+  "lint": "0 errors; 18 warnings in unchanged main files",
+  "live_api": true,
+  "note": "Known grounded replies; no new model-generation coverage claimed."
+}

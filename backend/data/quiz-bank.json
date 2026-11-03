@@ -1,0 +1,23 @@
+{
+  "drum": [
+    {"question":"Trống Ngọc Lũ cao bao nhiêu?","options":["63 cm","98 cm","61 cm","80 cm"],"correct_index":0,"chunk_id":"NL-01-size"},
+    {"question":"Trống được tìm thấy vào năm nào?","options":["1961","1893","1903","2012"],"correct_index":1,"chunk_id":"NL-01-discovery"},
+    {"question":"Mặt trời giữa mặt trống có bao nhiêu tia?","options":["12","16","14","25"],"correct_index":2,"chunk_id":"NL-01-decoration"},
+    {"question":"Trống Ngọc Lũ thuộc văn hóa nào?","options":["Sa Huỳnh","Óc Eo","Hòa Bình","Đông Sơn"],"correct_index":3,"chunk_id":"NL-01-period"},
+    {"question":"Năm nào trống Ngọc Lũ được công nhận Bảo vật quốc gia?","options":["2012","2017","1961","1903"],"correct_index":0,"chunk_id":"NL-01-treasure"}
+  ],
+  "jar": [
+    {"question":"Thạp Đào Thịnh cao bao nhiêu?","options":["63 cm","98 cm","80 cm","61 cm"],"correct_index":1,"chunk_id":"DT-01-size"},
+    {"question":"Năm phát hiện thạp Đào Thịnh là năm nào?","options":["1893","2017","1961","1903"],"correct_index":2,"chunk_id":"DT-01-discovery"},
+    {"question":"Hình mặt trời trên nắp thạp có bao nhiêu tia?","options":["14","16","25","12"],"correct_index":3,"chunk_id":"DT-01-decoration"},
+    {"question":"Thân thạp có bao nhiêu băng hoa văn?","options":["25","11","16","14"],"correct_index":0,"chunk_id":"DT-01-decoration"},
+    {"question":"Có bao nhiêu chiếc thuyền được thể hiện trong hoa văn thân thạp?","options":["bốn","sáu","tám","mười"],"correct_index":1,"chunk_id":"DT-01-decoration"}
+  ],
+  "dagger": [
+    {"question":"Lưỡi dao găm phổ Lạc Việt được mô tả có hình gì?","options":["hình vuông","hình tròn","lá tre","hình quạt"],"correct_index":2,"chunk_id":"DG-DS-01-lacviet"},
+    {"question":"Hai phổ lớn của dao găm Đông Sơn bản địa trong bài nguồn là gì?","options":["Lạc Việt và Óc Eo","Tây Âu và Sa Huỳnh","Điền và Hòa Bình","Đông Sơn Tây Âu và Đông Sơn Lạc Việt"],"correct_index":3,"chunk_id":"DG-DS-01-classification"},
+    {"question":"Chắn tay phổ Lạc Việt được so sánh với hình dáng nào?","options":["râu dương xỉ hoặc sừng trâu","cánh quạt","vòng tròn khép kín","mái nhà"],"correct_index":0,"chunk_id":"DG-DS-01-lacviet"},
+    {"question":"Ngoài tính biểu trưng, bài nguồn nhắc đến những công dụng nào của dao găm?","options":["nấu cơm","tự vệ, cắt gọt","đo thiên văn","đánh trống"],"correct_index":1,"chunk_id":"DG-DS-01-use"},
+    {"question":"Một cách tạo hình chuôi dao găm Lạc Việt được bài nguồn nhắc đến là gì?","options":["mặt đồng hồ","cánh quạt máy","hình người và động vật","bóng đèn"],"correct_index":2,"chunk_id":"DG-DS-01-hilt"}
+  ]
+}
