@@ -1,0 +1,136 @@
+﻿.spatial-audio-panel {
+  display: grid;
+  gap: 11px;
+  margin-top: 18px;
+  padding: 13px;
+  border: 1px solid #343a34;
+  border-radius: 5px;
+  background: #151916;
+}
+
+.spatial-audio-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.spatial-audio-heading h4 {
+  margin: 0;
+  color: #d6d8d2;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.orientation-status {
+  padding: 5px 7px;
+  border: 1px solid #424942;
+  border-radius: 3px;
+  color: #8e988e;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+.orientation-status.is-active {
+  border-color: #477557;
+  color: #99d1a6;
+}
+
+.ambience-file-picker {
+  display: flex !important;
+  width: 100%;
+  min-width: 0;
+  min-height: 38px;
+  align-items: center;
+  overflow: hidden;
+  padding: 9px 10px;
+  border: 1px solid #343a34;
+  border-radius: 4px;
+  color: #aeb5ae !important;
+  background: #101311;
+  cursor: pointer;
+  font: inherit;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ambience-file-picker input {
+  display: none;
+}
+
+.spatial-audio-element {
+  display: none;
+}
+
+.spatial-direction-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.direction-dial {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  place-items: center;
+  border: 1px solid #61583e;
+  border-radius: 50%;
+  color: #e1c77e;
+  font-size: 24px;
+}
+
+.direction-dial span {
+  display: inline-block;
+  transition: transform 120ms ease-out;
+}
+
+.spatial-direction-control label {
+  display: grid;
+  flex: 1;
+  gap: 6px;
+  color: #aeb5ae;
+  font-size: 11px;
+}
+
+.spatial-direction-control strong {
+  color: #d7c289;
+  font-weight: 500;
+}
+
+.spatial-direction-control input[type="range"] {
+  width: 100%;
+  accent-color: #d2bd82;
+}
+
+.spatial-play-button {
+  min-height: 34px;
+  border: 1px solid #a89461;
+  border-radius: 4px;
+  color: #d7c289;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.spatial-play-button:hover {
+  color: #101311;
+  background: #e3d09a;
+}
+
+.spatial-audio-message {
+  margin: 0;
+  color: #c6b17b;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.spatial-audio-note {
+  margin: 0;
+  color: #788078;
+  font-size: 10px;
+  line-height: 1.45;
+}
