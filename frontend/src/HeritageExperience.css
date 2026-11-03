@@ -345,14 +345,14 @@
 .spatial-assistant-panel {
   position: absolute;
   z-index: 16;
-  top: 82px;
+  top: 94px;
   right: 16px;
   display: grid;
   width: min(360px, calc(100vw - 24px));
   max-height: calc(100% - 200px);
   grid-template-rows: auto minmax(0, 1fr);
   overflow: hidden;
-  border-radius: 14px;
+  border-radius: 14px;  
 }
 
 .spatial-assistant-panel > header {
@@ -743,7 +743,7 @@
   }
 
   .spatial-assistant-panel {
-    top: 62px;
+    top: 72px;
     right: 8px;
     max-height: calc(100% - 150px);
   }
