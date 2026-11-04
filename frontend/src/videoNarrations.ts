@@ -7,6 +7,7 @@ type ExhibitVideo = {
   title: string;
   source: string;
   narration: string;
+  speechText?: string;
 };
 
 export const exhibitVideos: Record<

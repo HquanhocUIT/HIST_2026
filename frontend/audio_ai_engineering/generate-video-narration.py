@@ -3,17 +3,24 @@
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path
 from uuid import uuid4
-
-import numpy as np
-import soundfile as sf
-from korvatts import TTS
-
 
 MODULE_DIR = Path(__file__).resolve().parent
 FRONTEND_DIR = MODULE_DIR.parent
 OUTPUT_DIR = FRONTEND_DIR / "public" / "narration"
+
+
+def speech_text(video: dict, label: str) -> str:
+    """Use a reviewed reading for dates/numbers instead of guessing their meaning."""
+    text = video.get("speechText", video["narration"]).strip()
+    if not text or re.search(r"\d", text):
+        raise ValueError(
+            f"{label}: write all numbers/dates as Vietnamese words in speechText "
+            "before generating audio. Keep narration for the displayed text."
+        )
+    return text
 
 
 def main() -> None:
@@ -28,17 +35,13 @@ def main() -> None:
     videos = json.loads(
         (FRONTEND_DIR / "src" / "videoNarrations.json").read_text(encoding="utf-8")
     )
-    scripts = {
-        exhibit: {kind: video["narration"] for kind, video in choices.items()}
-        for exhibit, choices in videos.items()
-    }
-    exhibits = list(scripts) if args.exhibit == "all" else [args.exhibit]
+    exhibits = list(videos) if args.exhibit == "all" else [args.exhibit]
     video_kinds = ("crafting", "story") if args.video == "all" else (args.video,)
     jobs = []
 
     for exhibit in exhibits:
         for video_kind in video_kinds:
-            text = scripts[exhibit][video_kind].strip()
+            text = speech_text(videos[exhibit][video_kind], f"{exhibit}/{video_kind}")
             output = OUTPUT_DIR / f"{exhibit}-{video_kind}-vi.mp3"
             metadata_file = output.with_suffix(".json")
             settings = {
@@ -73,6 +76,10 @@ def main() -> None:
     if not jobs:
         return
 
+    import numpy as np
+    import soundfile as sf
+    from korvatts import TTS
+
     print(f"Loading KorvaTTS; voice: {args.voice}", flush=True)
     tts = TTS(assets_dir=args.assets_dir, auto_download=args.assets_dir is None)
     if args.voice not in tts.list_voices():
@@ -100,6 +107,7 @@ def main() -> None:
             metadata = {key: value for key, value in settings.items() if key != "text"}
             metadata.update(
                 fingerprint=fingerprint,
+                spoken_text=text,
                 duration_seconds=round(info.duration, 2),
                 sample_rate=info.samplerate,
             )
